@@ -1,3 +1,129 @@
 ﻿@using Asyl.ViewModels
 @model CreateUserVM
+@addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Views/Shared/_Layout";
+}
+
+
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-text">
+                    <span class="name">Enter your information</span>
+                </div>
+                <hr class="star-light">
+                <div class="row" style="padding-bottom: 200px">
+                    <div class="box">
+                        <div class="col-lg-12" align="center">
+                                <hr />
+                                <h1 style="padding-bottom: 20px">
+                                    Create an account and apply for internships!
+                                    <hr />
+                                </h1>
+                                @*<div asp-validation-summary="ValidationSummary.All"></div>*@
+                                <div class="text-center">
+                                    <form asp-controller="Admin" asp-action="AddUser">
+                                        <table align="center">
+                                            <tr>
+                                                <td><label asp-for="Username"></label></td>
+                                                <td>
+                                                    <input asp-for="Username" />
+                                                    <span asp-validation-for="Username"></span>
+                                                </td>
+                                                </ br>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td><label asp-for="Password"></label></td>
+                                                <td>
+                                                    <input asp-for="Password" />
+                                                    <span asp-validation-for="Password"></span>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><label asp-for="Email"></label></td>
+                                                <td>
+                                                    <input asp-for="Email" />
+                                                    <span asp-validation-for="Email"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="Name"></label></td>
+                                                <td>
+                                                    <input asp-for="Name" />
+                                                    <span asp-validation-for="Name"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="PhoneNumber"></label></td>
+                                                <td>
+                                                    <input asp-for="PhoneNumber" />
+                                                    <span asp-validation-for="PhoneNumber"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="YearsInPrimarySchool"></label></td>
+                                                <td>
+                                                    <input asp-for="YearsInPrimarySchool" />
+                                                    <span asp-validation-for="YearsInPrimarySchool"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="YearsInSecondarySchool"></label></td>
+                                                <td>
+                                                    <input asp-for="YearsInSecondarySchool" />
+                                                    <span asp-validation-for="YearsInSecondarySchool"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="WorkExperience"></label></td>
+                                                <td>
+                                                    <input asp-for="WorkExperience" />
+                                                    <span asp-validation-for="WorkExperience"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="SpeaksSwedish"></label></td>
+                                                <td>
+                                                    <input asp-for="SpeaksSwedish" />
+                                                    <span asp-validation-for="SpeaksSwedish"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="SpeaksEnglish"></label></td>
+                                                <td>
+                                                    <input asp-for="SpeaksEnglish" />
+                                                    <span asp-validation-for="SpeaksEnglish"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label asp-for="DrivingLicense"></label></td>
+                                                <td>
+                                                    <input asp-for="DrivingLicense" />
+                                                    <span asp-validation-for="DrivingLicense"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td><input type="submit" value="Register!" /></td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</header>
+
+@section script{
+    <script src="~/scripts/jquery.validate.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+}
 
