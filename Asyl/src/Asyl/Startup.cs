@@ -50,7 +50,7 @@ namespace Asyl
                 //o.LoginPath = new PathString("/Members/Login/");
             });
 
-            app.UseIdentity();
+            //app.UseIdentity();
             app.UseMvcWithDefaultRoute();
         }
 
