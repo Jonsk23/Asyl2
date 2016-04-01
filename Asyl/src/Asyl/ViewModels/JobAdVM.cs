@@ -7,6 +7,6 @@ namespace Asyl.ViewModels
 {
     public class JobAdVM
     {
-
+        //blablabla
     }
 }
