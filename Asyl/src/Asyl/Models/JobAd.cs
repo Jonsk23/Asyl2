@@ -12,8 +12,11 @@ namespace Asyl.Models
         public string FieldOfWork { get; set; }
         public int CompanyId { get; set; }
 
+
+        public virtual Company Company { get; set; }
         //Navigation property
         public virtual ICollection<Application> Applications { get; set; }
 
+      
     }
 }
