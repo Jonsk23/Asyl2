@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Asyl.Models
+namespace Asyl.ViewModels
 {
-    public class Class
+    public class JobAdVM
     {
+        //blablabla
     }
 }
