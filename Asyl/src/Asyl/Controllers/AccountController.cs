@@ -39,16 +39,16 @@ namespace Asyl.Controllers
         }
 
         [HttpPost]
-        public IActionResult LoginPage(LoginVM viewModel)
+        public async Task<IActionResult> LoginPage(LoginVM viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
 
-            
+            await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
 
-            return View();
+            return RedirectToAction(nameof(HomeController.Index));
         }
 
         public IActionResult RegistrationPage()
