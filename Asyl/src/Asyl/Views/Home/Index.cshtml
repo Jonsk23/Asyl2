@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="~/jquery.js"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,6 +84,16 @@
                         <span class="name">Welcome Talent!</span>
                         <hr class="star-light">
                         <span class="skills">The awesomest website for newly arrived talents</span>
+
+                        @*@*<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14" />
+                        <script>
+                            $('#ex1').slider({
+                                formatter: function (value) {
+                                    return 'Current value: ' + value;
+                                }
+                            });
+                        </script>*@
+                        </div>
                     </div>
                 </div>
             </div>
