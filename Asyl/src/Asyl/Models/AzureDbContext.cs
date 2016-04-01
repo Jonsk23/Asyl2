@@ -8,6 +8,6 @@ namespace Asyl.Models
 {
     public class AzureDbContext : DbContext
     {
-        public DbSet<> MyProperty { get; set; }
+        //public DbSet<> MyProperty { get; set; }
     }
 }
