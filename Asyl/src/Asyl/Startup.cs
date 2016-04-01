@@ -19,23 +19,23 @@ namespace Asyl
         {
             services.AddMvc();
 
-            var connString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=CatShelter;Integrated Security=True;Pooling=False";
-            var identityConnString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=IdentityDB;Integrated Security=True;Pooling=False";
+            //var connString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=CatShelter;Integrated Security=True;Pooling=False";
+            //var identityConnString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=IdentityDB;Integrated Security=True;Pooling=False";
 
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<IdentityDbContext>(o => o.UseSqlServer(identityConnString));
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            //    .AddDbContext<IdentityDbContext>(o => o.UseSqlServer(identityConnString));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<IdentityDbContext>()
+            //    .AddDefaultTokenProviders();
 
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<CatShelterContext>(o => o.UseSqlServer(connString));
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            //    .AddDbContext<CatShelterContext>(o => o.UseSqlServer(connString));
 
-            //services.AddTransient<ICatsRepository, DbCatsRepository>();
-            services.AddTransient<ICatsRepository, TestCatsRepository>();
+            ////services.AddTransient<ICatsRepository, DbCatsRepository>();
+            //services.AddTransient<ICatsRepository, TestCatsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
