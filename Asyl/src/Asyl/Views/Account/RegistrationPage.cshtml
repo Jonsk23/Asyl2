@@ -25,8 +25,8 @@
                                     <hr />
                                 </h1>
                                 @*<div asp-validation-summary="ValidationSummary.All"></div>*@
-                                <div class="text-center">
-                                    <form asp-controller="Account" asp-action="RegistrationPage">
+                                <div class="text-center" style="color:black">
+                                    <form asp-controller="Admin" asp-action="AddUser">
                                         <table align="center">
                                             <tr>
                                                 <td><label asp-for="Username"></label></td>
@@ -91,21 +91,21 @@
                                             <tr>
                                                 <td><label asp-for="SpeaksSwedish"></label></td>
                                                 <td>
-                                                    <input asp-for="SpeaksSwedish" />
+                                                    <input asp-for="SpeaksSwedish" /> Yes
                                                     <span asp-validation-for="SpeaksSwedish"></span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td><label asp-for="SpeaksEnglish"></label></td>
                                                 <td>
-                                                    <input asp-for="SpeaksEnglish" />
+                                                    <input asp-for="SpeaksEnglish" /> Yes
                                                     <span asp-validation-for="SpeaksEnglish"></span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td><label asp-for="DrivingLicense"></label></td>
                                                 <td>
-                                                    <input asp-for="DrivingLicense" />
+                                                    <input asp-for="DrivingLicense" /> Yes
                                                     <span asp-validation-for="DrivingLicense"></span>
                                                 </td>
                                             </tr>

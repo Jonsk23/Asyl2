@@ -25,9 +25,9 @@ namespace Asyl.Models
                 context.Talents.Add(new Talent
                 {
                     Username = viewModel.Username,
-                    Name = viewModel.CompanyName,
+                    Name = viewModel.Name,
                     Email = viewModel.Email,
-                    PhoneNumber = viewModel.CompanyWebPage,
+                    PhoneNumber = viewModel.PhoneNumber,
                     YearsInPrimarySchool = viewModel.YearsInPrimarySchool,
                     YearsInSecondarySchool = viewModel.YearsInSecondarySchool,
                     WorkExperience = viewModel.WorkExperience,
@@ -94,17 +94,25 @@ namespace Asyl.Models
 
         }
 
-        public void ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
+        public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
             //tar in jobID som tillhör det jobb vi vill ha ut ansökningar för.
-            var lista = context.Applications
+            return context.Applications
                 .Where(o => o.JobAdId == jobId)
                 .OrderBy(o => o.Talent.Id)
                   .Select(o => new ApplicationVM {
                       JobAdId = o.JobAdId,
                       TalentId = o.TalentId,
                       Name = o.Talent.Name,
-                      Email = o.Talent.Email                  
+                      Email = o.Talent.Email,
+                      CoverLetter = o.CoverLetter,
+                      WorkExperience = o.Talent.WorkExperience,                  
+                      DrivingLicense = o.Talent.DrivingLicense,
+                      PhoneNumber = o.Talent.PhoneNumber,
+                      SpeaksSwedish = o.Talent.SpeaksSwedish,
+                      SpeaksEnglish = o.Talent.SpeaksEnglish,
+                      YearsInPrimarySchool = o.Talent.YearsInPrimarySchool,
+                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool                      
                   })
                   .ToList();
         }
