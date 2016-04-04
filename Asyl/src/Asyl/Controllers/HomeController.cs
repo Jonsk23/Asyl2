@@ -20,9 +20,11 @@ namespace Asyl.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var dataManager = new DataManager(context);
-            var model = dataManager.ListAllJobAds();
-            return View(model);
+            //var dataManager = new DataManager(context);
+            //var model = dataManager.ListAllJobAds();
+            //return View(model);
+
+            return View();
         }
 
       

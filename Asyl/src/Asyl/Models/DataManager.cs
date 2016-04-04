@@ -44,12 +44,10 @@ namespace Asyl.Models
 
         public void CreateJobAd(JobAdVM viewModel, string userName)
         {
-            var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
+            var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
                 .Where(o => o.CompanyUsername == userName)
                 .Select(o => o.Id)
-                .ToString();
-
-            var companyId = Convert.ToInt32(id);
+                .Single();
 
             context.Add(new JobAd
             {
@@ -57,28 +55,29 @@ namespace Asyl.Models
                 Description = viewModel.Description,
                 Title = viewModel.Title,
                 DurationInWeeks = viewModel.DurationInWeeks,
-                LocationId = viewModel.LocationId,               
+                LocationId = viewModel.LocationId,
                 CompanyId = companyId
             });
             context.SaveChanges();
         } //Skapar jobannons, avsedd för företag endast. Tar in företags username
 
-       
+
         public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
-        { 
+        {
             return context.JobAd
                 .OrderBy(o => o.Company.CompanyName)
-                  .Select(o => new PublishAdVM {
+                  .Select(o => new PublishAdVM
+                  {
                       Description = o.Description,
                       FieldOfWork = o.FieldOfWork,
                       CompanyName = o.Company.CompanyName,
                       CompanyWebPage = o.Company.CompanyWebPage,
                       DurationInWeeks = o.DurationInWeeks,
                       LocationId = o.LocationId,
-                      Title = o.Title                      
-                  })                 
-                  .ToList(); 
-                
+                      Title = o.Title
+                  })
+                  .ToList();
+
         }
 
         public void CreateCompany(CreateCompanyVM viewModel)
@@ -93,7 +92,7 @@ namespace Asyl.Models
                     CorporateIdentityNumber = viewModel.CorporateIdentityNumber,
                     ContactPerson = viewModel.ContactPerson,
                     CompanyWebPage = viewModel.CompanyWebPage,
-                    Email = viewModel.Email                    
+                    Email = viewModel.Email
 
                 });
                 context.SaveChanges();
@@ -109,19 +108,20 @@ namespace Asyl.Models
             return context.Applications
                 .Where(o => o.JobAdId == jobId)
                 .OrderBy(o => o.Talent.Id)
-                  .Select(o => new ApplicationVM {
+                  .Select(o => new ApplicationVM
+                  {
                       JobAdId = o.JobAdId,
                       TalentId = o.TalentId,
                       Name = o.Talent.Name,
                       Email = o.Talent.Email,
                       CoverLetter = o.CoverLetter,
-                      WorkExperience = o.Talent.WorkExperience,                  
+                      WorkExperience = o.Talent.WorkExperience,
                       DrivingLicense = o.Talent.DrivingLicense,
                       PhoneNumber = o.Talent.PhoneNumber,
                       SpeaksSwedish = o.Talent.SpeaksSwedish,
                       SpeaksEnglish = o.Talent.SpeaksEnglish,
                       YearsInPrimarySchool = o.Talent.YearsInPrimarySchool,
-                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool                      
+                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool
                   })
                   .ToList();
         }
@@ -131,30 +131,31 @@ namespace Asyl.Models
 
         }
 
-        public List<CompanyExistingAdsVM> ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+        public CompanyExistingAdsVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+
         {
-            var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
+
+            var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
                 .Where(o => o.CompanyUsername == companyUsername)
                 .Select(o => o.Id)
-                .ToString();
-
-            var companyId = Convert.ToInt32(id);
+                .Single();
 
             return context.JobAd
                 .Where(o => o.CompanyId == companyId)
                .OrderBy(o => o.Id)
-                 .Select(o => new CompanyExistingAdsVM {
+                 .Select(o => new CompanyExistingAdsVM
+                 {
                      Id = o.Id,
-                     Applications = o.Applications,
-                     Company = o.Company,
+                     ApplicationCount = o.Applications.Count,
                      CompanyId = o.CompanyId,
                      Description = o.Description,
                      FieldOfWork = o.FieldOfWork,
                      Title = o.Title,
                      DurationInWeeks = o.DurationInWeeks,
-                     LocationId = o.LocationId                     
+                     LocationId = o.LocationId
                  })
-                 .ToList();
+                 .ToArray();
+
 
 
         }
