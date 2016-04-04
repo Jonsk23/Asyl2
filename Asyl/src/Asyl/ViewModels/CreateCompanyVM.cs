@@ -15,6 +15,7 @@ namespace Asyl.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        public string CompanyName { get; set; }
         public int CorporateIdentityNumber { get; set; }
         public string ContactPerson { get; set; }
         public string CompanyWebPage { get; set; }

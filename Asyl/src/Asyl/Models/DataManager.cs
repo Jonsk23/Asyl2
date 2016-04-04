@@ -45,7 +45,7 @@ namespace Asyl.Models
         public void CreateJobAd(JobAdVM viewModel, string userName)
         {
             var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
-                .Where(o => o.CompanyName == userName)
+                .Where(o => o.CompanyUsername == userName)
                 .Select(o => o.Id)
                 .ToString();
 
@@ -74,13 +74,13 @@ namespace Asyl.Models
 
         public void CreateCompany(CreateCompanyVM viewModel)
         {
-            var existingCompany = context.Company.ToList().Find(o => o.CompanyName == viewModel.Username);
+            var existingCompany = context.Company.ToList().Find(o => o.CompanyUsername == viewModel.Username);
 
             if (existingCompany == null)
             {
                 context.Company.Add(new Company
                 {
-                    CompanyName = viewModel.Username,
+                    CompanyName = viewModel.CompanyName,
                     CorporateIdentityNumber = viewModel.CorporateIdentityNumber,
                     ContactPerson = viewModel.ContactPerson,
                     CompanyWebPage = viewModel.CompanyWebPage,
@@ -125,7 +125,7 @@ namespace Asyl.Models
         public List<CompanyExistingAdsVM> ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
         {
             var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
-                .Where(o => o.CompanyName == companyUsername)
+                .Where(o => o.CompanyUsername == companyUsername)
                 .Select(o => o.Id)
                 .ToString();
 
