@@ -90,7 +90,6 @@ namespace Asyl.Controllers
 
         public IActionResult CreateCompany()
         {
-
             return View();
         }
         public async Task<IActionResult> CreateCompany(CreateCompanyVM viewModel)
