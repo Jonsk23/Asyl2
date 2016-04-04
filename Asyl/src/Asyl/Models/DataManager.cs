@@ -25,10 +25,10 @@ namespace Asyl.Models
                 context.Talents.Add(new Talent
                 {
                     Username = viewModel.Username,
-                    Name = viewModel.CompanyName,
+                    Name = viewModel.Name,
                     Email = viewModel.Email,
-                    PhoneNumber = viewModel.CompanyWebPage,
-                    YearsInPrimarySchool = viewModel.ContactPerson,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    YearsInPrimarySchool = viewModel.YearsInPrimarySchool,
                     YearsInSecondarySchool = viewModel.YearsInSecondarySchool,
                     WorkExperience = viewModel.WorkExperience,
                     SpeaksSwedish = viewModel.SpeaksSwedish,
