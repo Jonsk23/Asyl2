@@ -40,7 +40,7 @@ namespace Asyl.Models
             }
             else
                 throw new Exception("Username already exists!");
-        }
+        } //Skapar privat användares profil (erfarenheter osv.)
 
         public void CreateJobAd(JobAdVM viewModel, string userName)
         {
@@ -58,7 +58,7 @@ namespace Asyl.Models
                 CompanyId = companyId
             });
             context.SaveChanges();
-        }
+        } //Skapar jobannons, avsedd för företag endast. Tar in företags username
 
        
         public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
@@ -92,7 +92,7 @@ namespace Asyl.Models
             else
                 throw new Exception("Company already exists!");
 
-        }
+        } // Skapar ett företag med info.
 
         public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
@@ -117,8 +117,34 @@ namespace Asyl.Models
                   .ToList();
         }
 
-        public void CreateApplication()
+        public void CreateApplication() //Skapar en ansökan , avsedd för privata användare
         {
+
+        }
+
+        public List<CompanyExistingAdsVM> ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+        {
+            var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
+                .Where(o => o.CompanyName == companyUsername)
+                .Select(o => o.Id)
+                .ToString();
+
+            var companyId = Convert.ToInt32(id);
+
+            return context.JobAd
+                .Where(o => o.CompanyId == companyId)
+               .OrderBy(o => o.Id)
+                 .Select(o => new CompanyExistingAdsVM {
+                     Id = o.Id,
+                     Applications = o.Applications,
+                     Company = o.Company,
+                     CompanyId = o.CompanyId,
+                     Description = o.Description,
+                     FieldOfWork = o.FieldOfWork
+                     
+                 })
+                 .ToList();
+
 
         }
     }

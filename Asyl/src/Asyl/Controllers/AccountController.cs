@@ -103,6 +103,9 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
+            var rolename = "company user"; //eventuellt skapa en klass för detta. 
+            var role = await roleManager.CreateAsync(new IdentityRole(rolename));
+
             //Skapar användare(företag)
             await context.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
