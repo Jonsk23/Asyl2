@@ -2,6 +2,11 @@
 @model LoginVM
 @addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
 
+@* ska vi ha följande?*@
+@using System.Collections.Generic
+@using Microsoft.AspNet.Http
+@using Microsoft.AspNet.Http.Authentication
+
 @{
     Layout = "~/Views/Shared/_Layout";
 }
@@ -18,43 +23,93 @@
                 <hr class="star-light">
                 <div class="row" style="padding-bottom: 200px">
                     <div class="box">
-                        <div class="col-lg-12" align="center">
-                            <form asp-controller="Admin" asp-action="Login">
-                                <hr />
-                                <h1 style="padding-bottom: 20px">
-                                    Enter your username and password
-                                    <hr />
-                                </h1>
-                                <table style="color:black">
-                                    <tr>
-                                        <td style="padding-bottom: 5px;"><label asp-for="Username"></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-bottom: 20px;"><input asp-for="Username" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-bottom: 10px;"><span asp-validation-for="Username"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-bottom: 5px;"><label asp-for="Password"></label></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-bottom: 20px;"><input type="password" asp-for="Password" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-bottom: 20px;"><span asp-validation-for="Password"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" align="center"><input type="submit" value="OK" /></td>
-                                    </tr>
-                                </table>
-                            </form>                
+                        <div class="col-lg-8" align="center">
+                            @*<div></div>*@
+                            @*<div class="col-xs-6 col-sm-4 col-md-3">*@
+                                <form asp-controller="Admin" asp-action="Login">
+                                    <div class="row">
+                                        <br />
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label asp-for="Username"></label>
+                                            <input asp-for="Username" placeholder="*******" class="form-control input-lg" tabindex="1">
+                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label asp-for="Password"></label>
+                                            <input asp-for="Password" placeholder="*******" class="form-control input-lg" tabindex="2">
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6">
+                                            <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <a href="~/Account/create" class="btn btn-success btn-block btn-lg">No account? - Register here!</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6">
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <a href="#" style="color:#ffffff">Forgot password? - Click here</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br />
+                                    </div>
+
+                                    @*<a asp-action="ForgotPassword" class="col-xs-12 col-md-6">Glömt lösenord?</a>*@
+
+                                </form>
+                            </div>
+                            @*// gammal inloggning*@
+                            @*<hr />
+                                    <h1 style="padding-bottom: 20px">
+                                        Enter your username and password
+                                        <hr />
+                                    </h1>
+                                    <table>
+                                        <tr>
+                                            <td style="padding-bottom: 5px;"><label asp-for="Username"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding-bottom: 20px;"><input asp-for="Username" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding-bottom: 10px;"><span asp-validation-for="Username"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding-bottom: 5px;"><label asp-for="Password"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding-bottom: 20px;"><input type="password" asp-for="Password" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding-bottom: 20px;"><span asp-validation-for="Password"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" align="center"><input type="submit" value="OK" /></td>
+                                        </tr>
+                                    </table>
+                                </form>*@
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </header>
 
 @section script{

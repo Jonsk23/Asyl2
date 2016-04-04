@@ -16,8 +16,9 @@ namespace Asyl.ViewModels
         public int LocationId { get; set; }
         public int DurationInWeeks { get; set; }
 
-        public virtual Company Company { get; set; }
+        //public virtual Company Company { get; set; }
         //Navigation property
-        public virtual ICollection<Application> Applications { get; set; }
+        //public virtual ICollection<Application> Applications { get; set; }
+        public int ApplicationCount { get; set; }
     }
 }
