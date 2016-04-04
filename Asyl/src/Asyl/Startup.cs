@@ -8,6 +8,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using Asyl.Models;
 
 namespace Asyl
 {
@@ -19,23 +20,20 @@ namespace Asyl
         {
             services.AddMvc();
 
-            //var connString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=CatShelter;Integrated Security=True;Pooling=False";
-            //var identityConnString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=IdentityDB;Integrated Security=True;Pooling=False";
+            var connString = @"Data Source=project3server.database.windows.net;Initial Catalog=project3database;User ID=ProjectAwesomer;Password=Academy2016";
+            var identityConnString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=IdentityDB;Integrated Security=True;Pooling=False";
 
-            //services.AddEntityFramework()
-            //    .AddSqlServer()
-            //    .AddDbContext<IdentityDbContext>(o => o.UseSqlServer(identityConnString));
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<IdentityDbContext>(o => o.UseSqlServer(identityConnString));
 
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<IdentityDbContext>()
-            //    .AddDefaultTokenProviders();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddDefaultTokenProviders();
 
-            //services.AddEntityFramework()
-            //    .AddSqlServer()
-            //    .AddDbContext<CatShelterContext>(o => o.UseSqlServer(connString));
-
-            ////services.AddTransient<ICatsRepository, DbCatsRepository>();
-            //services.AddTransient<ICatsRepository, TestCatsRepository>();
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<AzureDbContext>(o => o.UseSqlServer(connString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Asyl.ViewModels
 {
-    public class ClassVM
+    public class JobAdVM
     {
+        public string Description { get; set; }
+        public string FieldOfWork { get; set; }
     }
 }
