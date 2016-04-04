@@ -55,6 +55,9 @@ namespace Asyl.Models
             {
                 FieldOfWork = viewModel.FieldOfWork,
                 Description = viewModel.Description,
+                Title = viewModel.Title,
+                DurationInWeeks = viewModel.DurationInWeeks,
+                LocationId = viewModel.LocationId,               
                 CompanyId = companyId
             });
             context.SaveChanges();
@@ -63,12 +66,18 @@ namespace Asyl.Models
        
         public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
         { 
-
             return context.JobAd
                 .OrderBy(o => o.Company.CompanyName)
-                  .Select(o => new PublishAdVM { Description = o.Description, FieldOfWork = o.FieldOfWork, CompanyName = o.Company.CompanyName, CompanyWebPage = o.Company.CompanyWebPage})                 
-                  .ToList();          
-          
+                  .Select(o => new PublishAdVM {
+                      Description = o.Description,
+                      FieldOfWork = o.FieldOfWork,
+                      CompanyName = o.Company.CompanyName,
+                      CompanyWebPage = o.Company.CompanyWebPage,
+                      DurationInWeeks = o.DurationInWeeks,
+                      LocationId = o.LocationId,
+                      Title = o.Title                      
+                  })                 
+                  .ToList(); 
                 
         }
 
@@ -140,8 +149,10 @@ namespace Asyl.Models
                      Company = o.Company,
                      CompanyId = o.CompanyId,
                      Description = o.Description,
-                     FieldOfWork = o.FieldOfWork
-                     
+                     FieldOfWork = o.FieldOfWork,
+                     Title = o.Title,
+                     DurationInWeeks = o.DurationInWeeks,
+                     LocationId = o.LocationId                     
                  })
                  .ToList();
 

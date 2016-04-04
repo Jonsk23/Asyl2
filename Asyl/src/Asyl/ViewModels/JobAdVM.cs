@@ -9,5 +9,8 @@ namespace Asyl.ViewModels
     {
         public string Description { get; set; }
         public string FieldOfWork { get; set; }
+        public string Title { get; set; }
+        public int LocationId { get; set; }
+        public int DurationInWeeks { get; set; }
     }
 }

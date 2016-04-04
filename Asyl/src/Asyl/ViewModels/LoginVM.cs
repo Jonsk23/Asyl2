@@ -8,12 +8,12 @@ namespace Asyl.ViewModels
 {
     public class LoginVM
     {
-        [Required(ErrorMessage = "Submit username")]
+        [Required(ErrorMessage = "Enter your username")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
 
-        [Required(ErrorMessage = "Submit password")]
+        [Required(ErrorMessage = "Enter your password")]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
