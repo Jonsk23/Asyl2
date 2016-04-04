@@ -11,5 +11,8 @@ namespace Asyl.ViewModels
         public string FieldOfWork { get; set; }
         public string CompanyName { get; set; }
         public string CompanyWebPage { get; set; }
+        public string Title { get; set; }
+        public int LocationId { get; set; }
+        public int DurationInWeeks { get; set; }
     }
 }

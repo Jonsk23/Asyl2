@@ -40,12 +40,12 @@ namespace Asyl.Models
             }
             else
                 throw new Exception("Username already exists!");
-        }
+        } //Skapar privat användares profil (erfarenheter osv.)
 
         public void CreateJobAd(JobAdVM viewModel, string userName)
         {
             var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
-                .Where(o => o.CompanyName == userName)
+                .Where(o => o.CompanyUsername == userName)
                 .Select(o => o.Id)
                 .ToString();
 
@@ -55,32 +55,41 @@ namespace Asyl.Models
             {
                 FieldOfWork = viewModel.FieldOfWork,
                 Description = viewModel.Description,
+                Title = viewModel.Title,
+                DurationInWeeks = viewModel.DurationInWeeks,
+                LocationId = viewModel.LocationId,               
                 CompanyId = companyId
             });
             context.SaveChanges();
-        }
+        } //Skapar jobannons, avsedd för företag endast. Tar in företags username
 
        
         public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
         { 
-
             return context.JobAd
                 .OrderBy(o => o.Company.CompanyName)
-                  .Select(o => new PublishAdVM { Description = o.Description, FieldOfWork = o.FieldOfWork, CompanyName = o.Company.CompanyName, CompanyWebPage = o.Company.CompanyWebPage})                 
-                  .ToList();          
-          
+                  .Select(o => new PublishAdVM {
+                      Description = o.Description,
+                      FieldOfWork = o.FieldOfWork,
+                      CompanyName = o.Company.CompanyName,
+                      CompanyWebPage = o.Company.CompanyWebPage,
+                      DurationInWeeks = o.DurationInWeeks,
+                      LocationId = o.LocationId,
+                      Title = o.Title                      
+                  })                 
+                  .ToList(); 
                 
         }
 
         public void CreateCompany(CreateCompanyVM viewModel)
         {
-            var existingCompany = context.Company.ToList().Find(o => o.CompanyName == viewModel.Username);
+            var existingCompany = context.Company.ToList().Find(o => o.CompanyUsername == viewModel.Username);
 
             if (existingCompany == null)
             {
                 context.Company.Add(new Company
                 {
-                    CompanyName = viewModel.Username,
+                    CompanyName = viewModel.CompanyName,
                     CorporateIdentityNumber = viewModel.CorporateIdentityNumber,
                     ContactPerson = viewModel.ContactPerson,
                     CompanyWebPage = viewModel.CompanyWebPage,
@@ -92,7 +101,7 @@ namespace Asyl.Models
             else
                 throw new Exception("Company already exists!");
 
-        }
+        } // Skapar ett företag med info.
 
         public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
@@ -117,8 +126,36 @@ namespace Asyl.Models
                   .ToList();
         }
 
-        public void CreateApplication()
+        public void CreateApplication() //Skapar en ansökan , avsedd för privata användare
         {
+
+        }
+
+        public List<CompanyExistingAdsVM> ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+        {
+            var id = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
+                .Where(o => o.CompanyUsername == companyUsername)
+                .Select(o => o.Id)
+                .ToString();
+
+            var companyId = Convert.ToInt32(id);
+
+            return context.JobAd
+                .Where(o => o.CompanyId == companyId)
+               .OrderBy(o => o.Id)
+                 .Select(o => new CompanyExistingAdsVM {
+                     Id = o.Id,
+                     Applications = o.Applications,
+                     Company = o.Company,
+                     CompanyId = o.CompanyId,
+                     Description = o.Description,
+                     FieldOfWork = o.FieldOfWork,
+                     Title = o.Title,
+                     DurationInWeeks = o.DurationInWeeks,
+                     LocationId = o.LocationId                     
+                 })
+                 .ToList();
+
 
         }
     }

@@ -9,6 +9,7 @@ namespace Asyl.Models
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
+        public string CompanyUsername { get; set; }
         public int CorporateIdentityNumber { get; set; }
         public string ContactPerson { get; set; }
         public string CompanyWebPage { get; set; }
