@@ -12,6 +12,8 @@ namespace Asyl.Models
         public int JobAdId { get; set; }
         public string CoverLetter { get; set; }
 
+        public virtual Talent Talent { get; set; }
+
         //Commit issues
     }
 }
