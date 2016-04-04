@@ -28,7 +28,7 @@ namespace Asyl.Models
                     Name = viewModel.CompanyName,
                     Email = viewModel.Email,
                     PhoneNumber = viewModel.CompanyWebPage,
-                    YearsInPrimarySchool = viewModel.ContactPerson,
+                    YearsInPrimarySchool = viewModel.YearsInPrimarySchool,
                     YearsInSecondarySchool = viewModel.YearsInSecondarySchool,
                     WorkExperience = viewModel.WorkExperience,
                     SpeaksSwedish = viewModel.SpeaksSwedish,
