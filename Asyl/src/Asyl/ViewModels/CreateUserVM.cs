@@ -20,6 +20,7 @@ namespace Asyl.ViewModels
         [Required(ErrorMessage = "E-mail is required")]
         [EmailAddress(ErrorMessage = "E-mail format is invalid")]
         public string Email { get; set; }
+        [Display(Name = "Phone number / #")]
         public string PhoneNumber { get; set; }
         public int YearsInPrimarySchool { get; set; }
         public int YearsInSecondarySchool { get; set; }

@@ -99,13 +99,16 @@
 
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-3 col-md-3">
-                                            <input asp-for="AcceptTerms" data-val="false" />
-                                            <small>Terms and Conditions</small>
-                                            <span asp-validation-for="AcceptTerms" class="text-danger"></span>
-                                        </div>
+<p></p>
+</div>
                                         <div class="col-xs-8 col-sm-9 col-md-9">
-                                            <small>If you press <strong class="label label-primary">Register</strong> you accept the <a href="#" data-toggle="modal" data-target="#modal" style="color:#ffffff">Terms and Conditions</a>.</small>
-                                        </div>
+                                            @*<large>If you press <strong class="label label-primary">Register</strong> you accept the <a href="#" data-toggle="modal" data-target="#modal" style="color:#ffffff">Terms and Conditions</a>.</large>*@
+                                            <input asp-for="AcceptTerms" data-val="false" />
+                                            <a href="#" data-toggle="modal" data-target="#modal" style="color:#ffffff">
+                                                Terms and Conditions
+                                            </a>
+                                            <span asp-validation-for="AcceptTerms" class="text-danger"></span>
+                                         </div>
                                     </div>
                                     <div class="row">
                                         <br />
@@ -113,7 +116,7 @@
                                     @*<hr class="colorgraph">*@
                                     <div class="row">
                                         <div class="col-xs-12 col-md-6"><a href="~/customers/login"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="8"></a></div>
-                                        <div class="col-xs-12 col-md-6"><a href="~/customers/login" class="btn btn-success btn-block btn-lg">Already registered? - Login</a></div>
+                                        <div class="col-xs-12 col-md-6"><a href="~/customers/login" class="btn btn-primary btn-block btn-lg">Already registered? - Login</a></div>
                                     </div>
                                     <div class="row">
                                         <br />
