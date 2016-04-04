@@ -42,13 +42,13 @@ namespace Asyl
             app.UseStaticFiles();
             app.UseDeveloperExceptionPage();
 
-            app.UseCookieAuthentication(o =>
+            app.UseIdentity()
+                .UseCookieAuthentication(o =>
             {
                 o.AutomaticChallenge = true;
-                //o.LoginPath = new PathString("/Members/Login/");
+                o.LoginPath = new PathString("/Members/Login/");
             });
-
-            //app.UseIdentity();
+                       
             app.UseMvcWithDefaultRoute();
         }
 

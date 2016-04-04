@@ -60,7 +60,8 @@ namespace Asyl.Models
             context.SaveChanges();
         }
 
-        public List<PublishAdVM> ListAllJobAds()
+       
+        public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
         { 
 
             return context.JobAd
@@ -93,9 +94,19 @@ namespace Asyl.Models
 
         }
 
-        public void ListAllApplication()
+        public void ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
-
+            //tar in jobID som tillhör det jobb vi vill ha ut ansökningar för.
+            var lista = context.Applications
+                .Where(o => o.JobAdId == jobId)
+                .OrderBy(o => o.Talent.Id)
+                  .Select(o => new ApplicationVM {
+                      JobAdId = o.JobAdId,
+                      TalentId = o.TalentId,
+                      Name = o.Talent.Name,
+                      Email = o.Talent.Email                  
+                  })
+                  .ToList();
         }
 
         public void CreateApplication()
