@@ -17,16 +17,20 @@ namespace Asyl.Controllers
         AzureDbContext context;
         DataManager dataManager;
 
-        public CompanyController(AzureDbContext context, DataManager dataManager)
+        public CompanyController(AzureDbContext context)
         {
             this.context = context;
-            this.dataManager = dataManager;
         }
 
         //[Authorize(Roles = "company user")]
         public IActionResult Index()
         {
-            return View();
+            dataManager = new DataManager(context);
+            //var model = dataManager.ListAllJobsAdsForCompany(User.Identity.Name);  <-- den riktiga
+            var model = dataManager.ListAllJobsAdsForCompany("Doktorn");
+            return View(model);
+
+            //return View();
         }
 
         //[Authorize(Roles = "company user")]
