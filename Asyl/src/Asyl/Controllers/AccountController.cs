@@ -20,11 +20,10 @@ namespace Asyl.Controllers
         IdentityDbContext idContext;
         AzureDbContext context;
         DataManager dataManager;
-        RoleManager<IdentityUser> roleManager;
-
+        RoleManager<IdentityRole> roleManager;
 
         //En konstruktor som tar in kontexterna
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IdentityDbContext idContext, AzureDbContext context, RoleManager<IdentityUser> roleManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,IdentityDbContext idContext, AzureDbContext context, RoleManager<IdentityRole> roleManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
@@ -66,7 +65,9 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            //Skapar användare
+            roleManager.CreateAsync(new IdentityRole())
+
+
             await context.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
             var currentUser = userManager.FindByNameAsync(viewModel.Username);
@@ -93,6 +94,8 @@ namespace Asyl.Controllers
 
             return View();
         }
+
+        [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyVM viewModel)
         {
             if (!ModelState.IsValid)
@@ -100,7 +103,7 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            //Skapar användare
+            //Skapar användare(företag)
             await context.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
             var currentUser = userManager.FindByNameAsync(viewModel.Username);
