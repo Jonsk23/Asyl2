@@ -92,7 +92,6 @@ namespace Asyl.Controllers
 
         public IActionResult CreateCompany()
         {
-
             return View();
         }
 

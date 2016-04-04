@@ -15,10 +15,10 @@ namespace Asyl.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public int YearsInPrimarySchool { get; set; }
+        public string CompanyWebPage { get; set; }
+        public int ContactPerson { get; set; }
         public int YearsInSecondarySchool { get; set; }
         public string WorkExperience { get; set; }
         public bool SpeaksSwedish { get; set; }
