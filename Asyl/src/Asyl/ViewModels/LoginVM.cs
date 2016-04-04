@@ -8,13 +8,13 @@ namespace Asyl.ViewModels
 {
     public class LoginVM
     {
-        [Required(ErrorMessage = "Ange användarnamn")]
-        [Display(Name = "Användarnamn")]
+        [Required(ErrorMessage = "Submit username")]
+        [Display(Name = "Username")]
         public string Username { get; set; }
 
 
-        [Required(ErrorMessage = "Ange lösenord")]
-        [Display(Name = "Lösenord")]
+        [Required(ErrorMessage = "Submit password")]
+        [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
