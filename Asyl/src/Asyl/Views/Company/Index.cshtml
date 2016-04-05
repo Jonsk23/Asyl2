@@ -9,12 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   
 </head>
 <body>
     <br />
@@ -22,17 +17,22 @@
     <br />
     <br />
     <br />
-  
+    <br />
     <div class="container">
-        <h2>Click on a job to see the applications</h2>
-        <div class="list-group">
-            @foreach (var item in Model)
-            {
-            <a asp-controller="Foo" asp-action="Bar" asp-route-id="@item.Id" class="list-group-item">@item.Id  @item.Title  @item.FieldOfWork  No of applicants: @item.ApplicationCount</a>              
-            }
-            <a href="~/company/createjobad" class="btn btn-success" role="button">Add new job</a>
+        <div class="container">           
+        <p>This is your current job openings</p>
+
+            <div class="list-group">
+                @foreach (var item in Model)
+                {
+                <a asp-controller="Company" asp-action="Applications" asp-route-id="@item.Id" class="list-group-item"><b>Job ID:</b> @item.Id <b>Job Title:</b> @item.Title <b>No of applications:</b> @item.ApplicationCount</a>
+                }
+            </div>
         </div>
+
+            
     </div>
+
 
 </body>
 </html>
