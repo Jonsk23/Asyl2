@@ -1,4 +1,5 @@
 ﻿@using Asyl.ViewModels
+@model PublishAdVM[]
 @addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
 
 @{
@@ -89,7 +90,7 @@
                         </div>
                         <hr>
 
-                         <div class="post-preview">
+                        <div class="post-preview">
                             <a href="post.html">
                                 <div class="col-sm-4 portfolio-item">
                                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
@@ -102,11 +103,31 @@
                                     </a>
                                 </div>
                                 <h3 class="post-title">
-                                    Economy assistant at Dahl
+                                    @*Economy assistant at Dahl*@
                                 </h3>
-                                <h4 class="post-subtitle">
+                                <table style="width:auto">
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th>Title</th>
+                                        </tr>
+                                        <tr>
+                                            <td>@item.Title</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Job description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>@item.Description</td>
+                                        </tr>
+                                    }
+                                </table>
+
+                                @*<h4 class="post-subtitle">
                                     Are you a wellorganised and good with numbers? Dahl is the place to be!
-                                </h4>
+                                </h4>*@
                             </a>
                             <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
                         </div>
