@@ -62,7 +62,7 @@ namespace Asyl.Models
         } //Skapar jobannons, avsedd för företag endast. Tar in företags username
 
 
-        public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
+        public PublishAdVM[] ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
         {
             return context.JobAd
                 .OrderBy(o => o.Company.CompanyName)
@@ -76,7 +76,7 @@ namespace Asyl.Models
                       LocationId = o.LocationId,
                       Title = o.Title
                   })
-                  .ToList();
+                  .ToArray();
 
         }
 
