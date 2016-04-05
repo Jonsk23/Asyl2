@@ -43,11 +43,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        
                         <div class="post-preview">
                             <a href="post.html">
-
                                 <div class="col-sm-4 portfolio-item">
-                                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal" data-book-id="my_id_value">
                                         <div class="caption">
                                             <div class="caption-content">
                                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -249,6 +249,17 @@
     </section>
 
     <!-- Portfolio Modals -->
+
+    <!--triggered when modal is about to be shown-->
+    <script type="text/javascript">
+       $('#portfolioModal6').on('show.bs.modal', function(e) {
+    // get data-id attribute of the clicked element
+    var bookId = $(e.relatedTarget).data('book-id');
+    //populate the textbox
+           $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+       });
+    </script> 
+
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
