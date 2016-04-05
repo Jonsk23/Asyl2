@@ -14,6 +14,7 @@ namespace Asyl.Models
         public string ContactPerson { get; set; }
         public string CompanyWebPage { get; set; }
         public string Email { get; set; }
+        public string Logo { get; set; }
 
         //Navigation property
         public virtual ICollection<JobAd> JobAds { get; set; }

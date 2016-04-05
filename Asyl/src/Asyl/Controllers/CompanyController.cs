@@ -57,8 +57,7 @@ namespace Asyl.Controllers
         public IActionResult Applications(int id)
         {
 
-            dataManager = new DataManager(context);
-            //var model = dataManager.ListAllJobsAdsForCompany(User.Identity.Name);  <-- den riktiga
+            dataManager = new DataManager(context);           
             var model = dataManager.ListAllApplication(id);
             return View(model);
 

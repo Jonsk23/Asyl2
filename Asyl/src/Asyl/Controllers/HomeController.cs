@@ -26,8 +26,17 @@ namespace Asyl.Controllers
 
             //return View();
         }
+        public IActionResult PostApplication(string coverLetter, string jobAdId2)
+        {
+            var jobAdId = Convert.ToInt32(jobAdId2);
+            var datamanager = new DataManager(context);
+            //var talentUsername = User.Identity.Name; <---den riktiga
+            var talentUsername = "Zlatan10";
+            datamanager.SaveApplication(talentUsername, coverLetter, jobAdId);
+            var model = "succeded";
+            return Json(model);
+        }
 
-      
 
     }
 }
