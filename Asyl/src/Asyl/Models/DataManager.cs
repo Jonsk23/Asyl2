@@ -74,7 +74,8 @@ namespace Asyl.Models
                       CompanyWebPage = o.Company.CompanyWebPage,
                       DurationInWeeks = o.DurationInWeeks,
                       LocationId = o.LocationId,
-                      Title = o.Title
+                      Title = o.Title,
+                      JobAdId = o.Id
                   })
                   .ToArray();
 
@@ -102,27 +103,28 @@ namespace Asyl.Models
 
         } 
 
-        public ApplicationsOnJobVM[] ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
+        public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
             //tar in jobID som tillhör det jobb vi vill ha ut ansökningar för.
             return context.Applications
                 .Where(o => o.JobAdId == jobId)
                 .OrderBy(o => o.Talent.Id)
-                  .Select(o => new ApplicationsOnJobVM
+                  .Select(o => new ApplicationVM
                   {
+                      JobAdId = o.JobAdId,
                       TalentId = o.TalentId,
                       Name = o.Talent.Name,
                       Email = o.Talent.Email,
                       CoverLetter = o.CoverLetter,
                       WorkExperience = o.Talent.WorkExperience,
-                      DrivingLicense = (o.Talent.DrivingLicense == true) ? "Yes" : "No",
+                      DrivingLicense = o.Talent.DrivingLicense,
                       PhoneNumber = o.Talent.PhoneNumber,
-                      SpeaksSwedish = (o.Talent.SpeaksSwedish == true) ? "Yes" : "No",
-                      SpeaksEnglish = (o.Talent.SpeaksEnglish == true) ? "Yes" : "No",
+                      SpeaksSwedish = o.Talent.SpeaksSwedish,
+                      SpeaksEnglish = o.Talent.SpeaksEnglish,
                       YearsInPrimarySchool = o.Talent.YearsInPrimarySchool,
-                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool,                      
+                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool
                   })
-                  .ToArray();
+                  .ToList();
         }
 
         public void CreateApplication() //Skapar en ansökan , avsedd för privata användare
