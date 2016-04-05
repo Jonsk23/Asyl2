@@ -21,9 +21,7 @@ namespace Asyl
             services.AddMvc();
 
             var connString = @"Data Source=project3server.database.windows.net;Initial Catalog=project3database;User ID=ProjectAwesomer;Password=Academy2016";
-            var identityConnString = @"Data Source=project3server.database.windows.net;Initial Catalog=IdentityDB;User ID=ProjectAwesomer;Password=Academy2016";
-
-            //var identityConnString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=IdentityDB;Integrated Security=True;Pooling=False";
+            var identityConnString = @"Data Source=project3server.database.windows.net;Initial Catalog=project3database;User ID=ProjectAwesomer;Password=Academy2016";
 
             services.AddEntityFramework()
                 .AddSqlServer()

@@ -16,7 +16,7 @@ namespace Asyl.ViewModels
         public string Password { get; set; }
 
         public string CompanyName { get; set; }
-        public int CorporateIdentityNumber { get; set; }
+        public string CorporateIdentityNumber { get; set; }
         public string ContactPerson { get; set; }
         public string CompanyWebPage { get; set; }
         public string Email { get; set; }
