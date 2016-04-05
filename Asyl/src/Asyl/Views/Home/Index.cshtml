@@ -8,6 +8,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+
+        function viewApplicationInfo(id) {
+
+            //hämtar info
+            var Description = $("#Description" + id).text();
+            var CompanyName = $("#CompanyName" + id).text();
+            var Title = $("#Title" + id).text();
+            var DurationInWeeks = $("#DurationInWeeks" + id).text();
+            var LocationId = $("#LocationId" + id).text();
+            var CompanyWebpage = $("#CompanyWebpage" + id).text();
+
+            //anpassar modal
+            $('#jobDescription').text(Description);
+            $('#companyName').text(CompanyName);
+            $('#title').text(Title);
+            $('#durationInWeeks').text(DurationInWeeks);
+            $('#locationId').text(LocationId);
+            $('#companyWebpage').text(CompanyWebpage);
+
+
+            $('#portfolioModal3').modal('show');
+
+        }
+
+    </script>
 </head>
 <body>
 
@@ -36,11 +62,11 @@
             <div class="row">
 
                 @*test utan headline över internships*@
-                
+
                 @*<div class="col-lg-12 text-center">
-                    <h2>Find your internship here!</h2>
-                    <hr class="star-primary">
-                </div>*@
+                        <h2>Find your internship here!</h2>
+                        <hr class="star-primary">
+                    </div>*@
             </div>
             <hr />
             <!-- Main Content -->
@@ -53,7 +79,7 @@
                                 <a href="post.html">
 
                                     <div class="col-sm-4 portfolio-item">
-                                        <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                                        <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                                             <div class="caption">
                                                 <div class="caption-content">
                                                     <i class="fa fa-search-plus fa-3x"></i>
@@ -62,90 +88,29 @@
                                             <img src="~/img/portfolio/submarine.png" class="img-responsive" alt="">
                                         </a>
                                     </div>
-                                    <h3 class="post-title">
+                                    <h3 class="post-title" id="@string.Format("Title{0}",item.JobAdId)">
                                         @*Janitor for popular elementary school*@
                                         @item.Title
                                     </h3>
-                                    <h4 class="post-subtitle">
+                                    <h4 hidden class="post-subtitle" id="@string.Format("Description{0}",item.JobAdId)">
                                         @*Are you a handy and social person, who think that children are our future? Apply this internship now!*@
                                         @item.Description
                                     </h4>
+                                    <h6 class="post-subtitle" id="@string.Format("FieldOfWork{0}",item.JobAdId)">Field of work: @item.FieldOfWork</h6>
+                                    <h6 class="post-subtitle" id="@string.Format("DurationInWeeks{0}",item.JobAdId)">Duration in Weeks: @item.DurationInWeeks</h6>
+                                    <h6 hidden class="post-subtitle" id="@string.Format("CompanyName{0}",item.JobAdId)">@item.CompanyName</h6>
+                                    <h6 hidden class="post-subtitle" id="@string.Format("LocationId{0}",item.JobAdId)">@item.LocationId</h6>
+
                                 </a>
-                                <p class="post-meta">Posted by <a href="http://@item.CompanyWebPage">@item.CompanyName</a></p>
+                                <br />
+                                <button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-default">javascript</button>
+                                <p hidden class="post-meta">Posted by <a id="@string.Format("CompanyWebpage{0}",item.JobAdId)" href="http://@item.CompanyWebPage">http://@item.CompanyWebPage</a></p>
                             </div>
-                                <hr>
+                            <hr>
                         }
 
 
-                        <div class="post-preview">
-                            <a href="post.html">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                <i class="fa fa-search-plus fa-3x"></i>
-                                            </div>
-                                        </div>
-                                        <img src="~/img/portfolio/cabin.png" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-                                <h3 class="post-title">
-                                    Work as a nurs at Vitsippans retirement home
-                                </h3>
-                                <h4>
-                                    Work as a nurs at Vitsippans retirement home, blabalalallaskaslnasjnla
-                                </h4>
-                            </a>
-                            <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
-                        </div>
-                        <hr>
 
-                        <div class="post-preview">
-                            <a href="post.html">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                <i class="fa fa-search-plus fa-3x"></i>
-                                            </div>
-                                        </div>
-                                        <img src="~/img/portfolio/cake.png" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-                                <h3 class="post-title">
-                                    Economy assistant at Dahl
-                                </h3>
-
-                                <h4 class="post-subtitle">
-                                    Are you a wellorganised and good with numbers? Dahl is the place to be!
-                                </h4>
-                            </a>
-                            <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-                        </div>
-                        <hr>
-
-                        <div class="post-preview">
-                            <a href="post.html">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                <i class="fa fa-search-plus fa-3x"></i>
-                                            </div>
-                                        </div>
-                                        <img src="~/img/portfolio/circus.png" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-                                <h3 class="post-title">
-                                    Learn to code in Java at Microsoft
-                                </h3>
-                                <h4 class="post-subtitle">
-                                    For the first time ever, Microsoft is now arranging an internship program in Java. You don't want to miss this, apply now!
-                                </h4>
-                            </a>
-                            <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-                        </div>
-                        <hr>
 
                         <!-- Pager -->
                         <ul class="pager">
@@ -240,346 +205,94 @@
     </section>
 
     <!-- Portfolio Modals -->
-    <script>
+    <!-- Modal -->
+    <div id="portfolioModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-        function viewApplicationInfo(id) {
-            //Hämtar aktuell info.
-            var Description = $("#Description" + id).text();
-            var FieldOfWork = $("#FieldOfWork" + id).text();
-            var CompanyName = $("#CompanyName" + id).text();
-            var CompanyWebPage = $("#CompanyWebPage" + id).text();
-            var Title = $("#Title" + id).text();
-            var LocationId = $("#LocationId" + id).text();
-
-            ////Anpassar modal.
-            $('#descriptionInfo').text(Description);
-            $('#fieldOfWorkInfo').text(FieldOfWork);
-            $('#companyNameInfo').text(CompanyName);
-            $('#companyWebPageInfo').text(CompanyWebPage);
-            $('#titleInfo').text(Title);
-            $('#locationIdInfo').text(LocationId);
-
-            //visa modal
-            $('#portfolioModal2').modal('show');
-        }
-
-    </script>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td id="@string.Format("Description{0}",item.JobAdId)">@item.Description</td>
-                            <td id="@string.Format("FieldOfWork{0}",item.JobAdId)">@item.FieldOfWork</td>
-                            <td id="@string.Format("CompanyName{0}",item.JobAdId)">@item.CompanyName</td>
-                            <td id="@string.Format("CompanyWebPage{0}",item.JobAdId)">@item.CompanyWebPage</td>
-                            <td id="@string.Format("Title{0}",item.JobAdId)">@item.Title</td>
-                            <td id="@string.Format("LocationId{0}",item.JobAdId)">@item.LocationId</td>
-              
-                            <td><button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-primary btn-md">View ad</button></td>
-                        </tr>
-
-                    }
-
-
-        <!-- Modal -->
-        <div id="portfolioModal2" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="nameInfo">"About this jobb"</h4>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="nameInfo">"About this jobb"</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Field of work</div>
+                            <div class="panel-body" id="coverInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Company</div>
+                            <div class="panel-body" id="workInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Company web page</div>
+                            <div class="panel-body" id="emailInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Job title</div>
+                        </div>
+                        <div class="panel-body" id="phoneInfo"></div>
                     </div>
-                    <div class="modal-body">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Field of work</div>
-                                <div class="panel-body" id="coverInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Company</div>
-                                <div class="panel-body" id="workInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Company web page</div>
-                                <div class="panel-body" id="emailInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Job title</div></div>
-                                <div class="panel-body" id="phoneInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Location</div>
-                                <div class="panel-body" id="drivingInfo"></div>
-                            </div>         
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Location</div>
+                        <div class="panel-body" id="drivingInfo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="contact()">Apply now!</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2 id="title"></h2>
+                            <hr class="star-primary">
+                            <img src="~/img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <h4 id="companyName"></h4>
+                            <p id="jobDescription">Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    <strong>
+                                        <p id="durationInWeeks"></p>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Location:
+                                    <strong>
+                                        <p id="locationId"></p>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Webpage:
+                                    <strong>
+                                        <a id="companyWebpage" href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onclick="contact()">Apply now!</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-            </div>
-
-@*<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="star-primary">
-                        <img src="~/img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>
-                                Client:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Date:
-                                <strong>
-                                    <a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Service:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="star-primary">
-                        <img src="~/img/portfolio/cake.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>
-                                Client:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Date:
-                                <strong>
-                                    <a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Service:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="star-primary">
-                        <img src="~/img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>
-                                Client:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Date:
-                                <strong>
-                                    <a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Service:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="star-primary">
-                        <img src="~/img/portfolio/game.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>
-                                Client:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Date:
-                                <strong>
-                                    <a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Service:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="star-primary">
-                        <img src="~/img/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>
-                                Client:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Date:
-                                <strong>
-                                    <a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Service:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="star-primary">
-                        <img src="~/img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>
-                                Client:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Date:
-                                <strong>
-                                    <a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>
-                                Service:
-                                <strong>
-                                    <a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>
