@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Asyl.ViewModels
 {
-    public class ApplicationVM
+    public class ApplicationsOnJobVM
     {
-        public int JobAdId { get; set; }
         public int TalentId { get; set; }
         public string Name { get; set; }
         public string CoverLetter { get; set; }
@@ -16,9 +15,9 @@ namespace Asyl.ViewModels
         public int YearsInPrimarySchool { get; set; }
         public int YearsInSecondarySchool { get; set; }
         public string WorkExperience { get; set; }
-        public bool SpeaksSwedish { get; set; }
-        public bool SpeaksEnglish { get; set; }
-        public bool DrivingLicense { get; set; }
+        public string SpeaksSwedish { get; set; }
+        public string SpeaksEnglish { get; set; }
+        public string DrivingLicense { get; set; }
 
     }
 }

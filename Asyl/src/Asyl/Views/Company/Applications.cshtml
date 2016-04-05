@@ -1,0 +1,143 @@
+﻿@using Asyl.ViewModels
+@model ApplicationsOnJobVM[]
+@addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Views/Shared/_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function contact() {
+            alert("Open outlook you lazy ass");
+
+        }
+
+
+        function viewApplicationInfo(id) {
+            //Hämtar aktuell info.
+            var Name = $("#Name" + id).text();
+            var PhoneNumber = $("#PhoneNumber" + id).text();
+            var Email = $("#Email" + id).text();
+            var SpeaksSwedish = $("#SpeaksSwedish" + id).text();
+            var SpeaksEnglish = $("#SpeaksEnglish" + id).text();
+            var YearsInPrumarySchool = $("#YearsInPrumarySchool" + id).text();
+            var YearsInSecondarySchool = $("#YearsInSecondarySchool" + id).text();
+            var WorkExperience = $("#WorkExperience" + id).text();
+            var DrivingLicense = $("#DrivingLicense" + id).text();
+            var CoverLetter = $("#CoverLetter" + id).text();
+
+            
+            ////Anpassar modal.
+            $('#emailInfo').text(Email);
+            $('#coverInfo').text(CoverLetter);
+            $('#drivingInfo').text(DrivingLicense);
+            $('#primaryInfo').text(YearsInPrumarySchool);
+            $('#secondaryInfo').text(YearsInSecondarySchool);
+            $('#workInfo').text(WorkExperience);
+            $('#nameInfo').text(Name);
+            $('#phoneInfo').text(PhoneNumber);
+
+            //visa modal
+            $('#myModal').modal('show');
+        }
+
+    </script>
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+  
+        <p>This is the people who have applied for your vacancy</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Speaking Swedish</th>
+                    <th>Speaking English</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td id="@string.Format("Name{0}",item.TalentId)">@item.Name</td>
+                        <td id="@string.Format("SpeaksSwedish{0}",item.TalentId)">@item.SpeaksSwedish</td>
+                        <td id="@string.Format("SpeaksEnglish{0}",item.TalentId)">@item.SpeaksEnglish</td>
+                        <td hidden id="@string.Format("PhoneNumber{0}",item.TalentId)">@item.PhoneNumber</td>
+                        <td hidden id="@string.Format("Email{0}",item.TalentId)">@item.Email</td>
+                        <td hidden id="@string.Format("YearsInPrumarySchool{0}",item.TalentId)">@item.YearsInPrimarySchool</td>
+                        <td hidden id="@string.Format("YearsInSecondarySchool{0}",item.TalentId)">@item.YearsInSecondarySchool</td>
+                        <td hidden id="@string.Format("WorkExperience{0}",item.TalentId)">@item.WorkExperience</td>
+                        <td hidden id="@string.Format("DrivingLicense{0}",item.TalentId)">@item.DrivingLicense</td>
+                        <td hidden id="@string.Format("CoverLetter{0}",item.TalentId)">@item.CoverLetter</td>                        
+                        <td><button type="button" onclick="viewApplicationInfo(@item.TalentId)" class="btn btn-primary btn-md">View Application</button></td>
+                    </tr>
+                    
+                }                            
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="nameInfo">"Name of job seeker"</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Cover Letter</div>
+                            <div class="panel-body" id="coverInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Work Expreience</div>
+                            <div class="panel-body" id="workInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Email</div>
+                            <div class="panel-body" id="emailInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Phone Number</div>
+                            <div class="panel-body" id="phoneInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Driving Licence</div>
+                            <div class="panel-body" id="drivingInfo"></div>
+                        </div>                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Years in primary school</div>
+                            <div class="panel-body" id="primaryInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Years in secondary school</div>
+                            <div class="panel-body" id="secondaryInfo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="contact()" >Contact</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+
