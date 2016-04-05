@@ -65,14 +65,14 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            var rolename = "talent user"; //eventuellt skapa en klass för detta. 
-            var role = await roleManager.CreateAsync(new IdentityRole(rolename));
+            //var rolename = "talent user"; //eventuellt skapa en klass för detta. 
+            //var role = await roleManager.CreateAsync(new IdentityRole(rolename));
 
 
             await context.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
-            var currentUser = userManager.FindByNameAsync(viewModel.Username);
-            var newResult = await userManager.AddToRoleAsync(currentUser.Result, rolename);
+            //var currentUser = userManager.FindByNameAsync(viewModel.Username);
+            //var newResult = await userManager.AddToRoleAsync(currentUser.Result, rolename);
             
             //Visa eventuella felmeddelanden
             if (!result.Succeeded)

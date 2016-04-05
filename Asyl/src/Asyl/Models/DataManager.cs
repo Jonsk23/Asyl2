@@ -74,7 +74,8 @@ namespace Asyl.Models
                       CompanyWebPage = o.Company.CompanyWebPage,
                       DurationInWeeks = o.DurationInWeeks,
                       LocationId = o.LocationId,
-                      Title = o.Title
+                      Title = o.Title,
+                      JobAdId = o.Id
                   })
                   .ToArray();
 

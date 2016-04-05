@@ -7,6 +7,7 @@ namespace Asyl.ViewModels
 {
     public class PublishAdVM
     {
+        public int JobAdId { get; set; }
         public string Description { get; set; }
         public string FieldOfWork { get; set; }
         public string CompanyName { get; set; }
