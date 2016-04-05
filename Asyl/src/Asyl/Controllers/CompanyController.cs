@@ -52,5 +52,16 @@ namespace Asyl.Controllers
 
             return RedirectToAction(nameof (CompanyController.Index));
         }
+
+        //[Authorize(Roles = "company user")]
+        public IActionResult Applications(int id)
+        {
+
+            dataManager = new DataManager(context);
+            //var model = dataManager.ListAllJobsAdsForCompany(User.Identity.Name);  <-- den riktiga
+            var model = dataManager.ListAllApplication(id);
+            return View(model);
+
+        }
     }
 }

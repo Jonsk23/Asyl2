@@ -62,7 +62,7 @@ namespace Asyl.Models
         } //Skapar jobannons, avsedd för företag endast. Tar in företags username
 
 
-        public List<PublishAdVM> ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
+        public PublishAdVM[] ListAllJobAds() //Listar alla jobb, avsedd för jobbsökande användare.
         {
             return context.JobAd
                 .OrderBy(o => o.Company.CompanyName)
@@ -76,7 +76,7 @@ namespace Asyl.Models
                       LocationId = o.LocationId,
                       Title = o.Title
                   })
-                  .ToList();
+                  .ToArray();
 
         }
 
@@ -102,28 +102,27 @@ namespace Asyl.Models
 
         } // Skapar ett företag med info.
 
-        public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
+        public ApplicationsOnJobVM[] ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
             //tar in jobID som tillhör det jobb vi vill ha ut ansökningar för.
             return context.Applications
                 .Where(o => o.JobAdId == jobId)
                 .OrderBy(o => o.Talent.Id)
-                  .Select(o => new ApplicationVM
+                  .Select(o => new ApplicationsOnJobVM
                   {
-                      JobAdId = o.JobAdId,
                       TalentId = o.TalentId,
                       Name = o.Talent.Name,
                       Email = o.Talent.Email,
                       CoverLetter = o.CoverLetter,
                       WorkExperience = o.Talent.WorkExperience,
-                      DrivingLicense = o.Talent.DrivingLicense,
+                      DrivingLicense = (o.Talent.DrivingLicense == true) ? "Yes" : "No",
                       PhoneNumber = o.Talent.PhoneNumber,
-                      SpeaksSwedish = o.Talent.SpeaksSwedish,
-                      SpeaksEnglish = o.Talent.SpeaksEnglish,
+                      SpeaksSwedish = (o.Talent.SpeaksSwedish == true) ? "Yes" : "No",
+                      SpeaksEnglish = (o.Talent.SpeaksEnglish == true) ? "Yes" : "No",
                       YearsInPrimarySchool = o.Talent.YearsInPrimarySchool,
-                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool
+                      YearsInSecondarySchool = o.Talent.YearsInSecondarySchool,                      
                   })
-                  .ToList();
+                  .ToArray();
         }
 
         public void CreateApplication() //Skapar en ansökan , avsedd för privata användare

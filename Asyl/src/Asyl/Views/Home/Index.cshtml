@@ -1,4 +1,5 @@
 ﻿@using Asyl.ViewModels
+@model PublishAdVM[]
 @addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
 
 @{
@@ -42,29 +43,35 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <div class="post-preview">
-                            <a href="post.html">
+                        @foreach (var item in Model)
+                        {
+                            <div class="post-preview">
+                                <a href="post.html">
 
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                <i class="fa fa-search-plus fa-3x"></i>
+                                    <div class="col-sm-4 portfolio-item">
+                                        <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                                            <div class="caption">
+                                                <div class="caption-content">
+                                                    <i class="fa fa-search-plus fa-3x"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <img src="~/img/portfolio/submarine.png" class="img-responsive" alt="">
+                                            <img src="~/img/portfolio/submarine.png" class="img-responsive" alt="">
+                                        </a>
+                                    </div>
+                                    <h3 class="post-title">
+                                        @*Janitor for popular elementary school*@
+                                        @item.Title
+                                    </h3>
+                                    <h4 class="post-subtitle">
+                                        @*Are you a handy and social person, who think that children are our future? Apply this internship now!*@
+                                        @item.Description
+                                    </h4>
                                     </a>
+                                    <p class="post-meta">Posted by <a href="http://@item.CompanyWebPage">@item.CompanyName</a></p>
                                 </div>
-                                <h3 class="post-title">
-                                    Janitor for popular elementary school
-                                </h3>
-                                <h4 class="post-subtitle">
-                                    Are you a handy and social person, who think that children are our future? Apply this internship now!
-                                </h4>
-                            </a>
-                            <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-                        </div>
-                        <hr>
+                                <hr>
+                        }
+
 
                         <div class="post-preview">
                             <a href="post.html">
@@ -89,7 +96,7 @@
                         </div>
                         <hr>
 
-                         <div class="post-preview">
+                        <div class="post-preview">
                             <a href="post.html">
                                 <div class="col-sm-4 portfolio-item">
                                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
@@ -104,8 +111,9 @@
                                 <h3 class="post-title">
                                     Economy assistant at Dahl
                                 </h3>
+
                                 <h4 class="post-subtitle">
-                                    Are you a wellorganised and good with numbers? Dahl is the place to be!
+                                        Are you a wellorganised and good with numbers? Dahl is the place to be!
                                 </h4>
                             </a>
                             <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
