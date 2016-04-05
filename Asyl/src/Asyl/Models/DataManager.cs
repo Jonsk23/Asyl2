@@ -81,7 +81,7 @@ namespace Asyl.Models
 
         }
 
-        public void CreateCompany(CreateCompanyVM viewModel)
+        public void CreateCompany(CreateCompanyVM viewModel) // Skapar ett företag med info.
         {
             var existingCompany = context.Company.ToList().Find(o => o.CompanyUsername == viewModel.Username);
 
@@ -93,15 +93,15 @@ namespace Asyl.Models
                     CorporateIdentityNumber = viewModel.CorporateIdentityNumber,
                     ContactPerson = viewModel.ContactPerson,
                     CompanyWebPage = viewModel.CompanyWebPage,
-                    Email = viewModel.Email
-
+                    Email = viewModel.Email,
+                    CompanyUsername = viewModel.Username                    
                 });
                 context.SaveChanges();
             }
             else
                 throw new Exception("Company already exists!");
 
-        } // Skapar ett företag med info.
+        } 
 
         public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {

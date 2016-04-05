@@ -23,13 +23,13 @@ namespace Asyl.Controllers
         RoleManager<IdentityRole> roleManager;
 
         //En konstruktor som tar in kontexterna
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,IdentityDbContext idContext, AzureDbContext context, RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IdentityDbContext idContext, AzureDbContext context, RoleManager<IdentityRole> roleManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.idContext = idContext;
             this.context = context;
-            this.roleManager = roleManager;      
+            this.roleManager = roleManager;
         }
 
 
@@ -69,11 +69,11 @@ namespace Asyl.Controllers
             //var role = await roleManager.CreateAsync(new IdentityRole(rolename));
 
 
-            await context.Database.EnsureCreatedAsync();
+            await idContext.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
             //var currentUser = userManager.FindByNameAsync(viewModel.Username);
             //var newResult = await userManager.AddToRoleAsync(currentUser.Result, rolename);
-            
+
             //Visa eventuella felmeddelanden
             if (!result.Succeeded)
             {
@@ -85,7 +85,7 @@ namespace Asyl.Controllers
 
             dataManager = new DataManager(context);
             dataManager.CreateUser(viewModel);
-            return RedirectToAction(nameof(HomeController.Index));  
+            return RedirectToAction(nameof(HomeController.Index));
 
 
         }
@@ -103,14 +103,14 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            var rolename = "company user"; //eventuellt skapa en klass för detta. 
-            var role = await roleManager.CreateAsync(new IdentityRole(rolename));
+            //var rolename = "company user"; //eventuellt skapa en klass för detta. 
+            //var role = await roleManager.CreateAsync(new IdentityRole(rolename));
 
             //Skapar användare(företag)
             await context.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
-            var currentUser = userManager.FindByNameAsync(viewModel.Username);
-            var newResult = await userManager.AddToRoleAsync(currentUser.Result, "company user");
+            //var currentUser = userManager.FindByNameAsync(viewModel.Username);
+            //var newResult = await userManager.AddToRoleAsync(currentUser.Result, "company user");
 
             //Visa eventuella felmeddelanden
             if (!result.Succeeded)
@@ -123,7 +123,7 @@ namespace Asyl.Controllers
 
             dataManager = new DataManager(context);
             dataManager.CreateCompany(viewModel);
-            return RedirectToAction(nameof(HomeController.Index));
+            return RedirectToAction(nameof(CompanyController.Index));
         }
     }
 }
