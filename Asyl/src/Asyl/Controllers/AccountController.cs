@@ -67,6 +67,12 @@ namespace Asyl.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Logout ()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
         [HttpPost]
         public async Task<IActionResult> RegistrationPage(CreateUserVM viewModel)
         {
@@ -96,8 +102,7 @@ namespace Asyl.Controllers
             dataManager = new DataManager(context);
             dataManager.CreateUser(viewModel);
             return RedirectToAction(nameof(HomeController.Index));
-
-
+          
         }
 
         public IActionResult CreateCompany()
@@ -144,6 +149,8 @@ namespace Asyl.Controllers
             var model = dataManager.ViewMyApplications("Barack");
             return View(model);
         }
+
+
 
     }
 }

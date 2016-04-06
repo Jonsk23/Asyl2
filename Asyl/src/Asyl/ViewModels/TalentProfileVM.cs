@@ -8,5 +8,9 @@ namespace Asyl.ViewModels
     public class TalentProfileVM
     {
         public CreateUserVM createUser { get; set; }
+
+
+
+
     }
 }
