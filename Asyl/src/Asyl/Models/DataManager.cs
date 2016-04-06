@@ -19,7 +19,7 @@ namespace Asyl.Models
 
         public void CreateUser(CreateUserVM viewModel)
         {
-            var existingTalent = context.Talents.ToList().Find(o => o.Username == viewModel.Username);         
+            var existingTalent = context.Talents.ToList().Find(o => o.Username == viewModel.Username);
 
             if (existingTalent == null)
             {
@@ -199,6 +199,29 @@ namespace Asyl.Models
                 })
                    .ToArray();
         }
+
+        public MyProfileVM ViewMyProfile(string talentUsername) // hämtar alla ansökningar för en viss talang. avsedd för talangen.
+        {
+            return context.Talents
+                .Where(o => o.Username == talentUsername)
+                .Select(o => new MyProfileVM
+                {
+                    Username = o.Username,
+                    Name = o.Name,
+                    Email = o.Email,
+                    PhoneNumber = o.PhoneNumber,
+                    YearsInPrimarySchool = o.YearsInPrimarySchool,
+                    YearsInSecondarySchool = o.YearsInSecondarySchool,
+                    WorkExperience = o.WorkExperience,
+                    SpeaksSwedish = o.SpeaksSwedish,
+                    SpeaksEnglish = o.SpeaksEnglish,
+                    DrivingLicense = o.DrivingLicense
+
+                })
+                   .Single();
+        }
+
+
 
     }
 

@@ -150,6 +150,14 @@ namespace Asyl.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "talent user")]
+        public IActionResult MyProfile()
+        {
+            dataManager = new DataManager(context);
+            var model = dataManager.ViewMyProfile(User.Identity.Name);
+            return View(model);
+        }
+
 
 
     }
