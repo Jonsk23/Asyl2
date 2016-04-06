@@ -50,7 +50,7 @@ namespace Asyl.Controllers
 
             await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
 
-            return RedirectToAction(nameof(HomeController.Index));
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         public IActionResult RegistrationPage()
@@ -86,7 +86,7 @@ namespace Asyl.Controllers
 
             dataManager = new DataManager(context);
             dataManager.CreateUser(viewModel);
-            return RedirectToAction(nameof(HomeController.Index));
+            return RedirectToAction(nameof(HomeController.Index), "Home");
 
 
         }
@@ -124,10 +124,11 @@ namespace Asyl.Controllers
 
             dataManager = new DataManager(context);
             dataManager.CreateCompany(viewModel);
-            return RedirectToAction(nameof(CompanyController.Index));
+            return RedirectToAction(nameof(CompanyController.Index), "Company");
+            
         }
 
-        //[Authorize]  <-- denna ska vara på . ska bara vara synlig för privata användare.
+        [Authorize] /* <-- denna ska vara på.ska bara vara synlig för privata användare.*/
         public IActionResult MyApplications()
         {
             dataManager = new DataManager(context);

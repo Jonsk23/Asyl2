@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Asyl.Models;
+using Microsoft.AspNet.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,12 +27,14 @@ namespace Asyl.Controllers
 
             //return View();
         }
+
+        [Authorize]
         public IActionResult PostApplication(string coverLetter, string jobAdId2)
         {
             var jobAdId = Convert.ToInt32(jobAdId2);
             var datamanager = new DataManager(context);
-            //var talentUsername = User.Identity.Name; <---den riktiga
-            var talentUsername = "Zlatan10";
+            var talentUsername = User.Identity.Name; /*< ---den riktiga*/
+            //var talentUsername = "Zlatan10";
             datamanager.SaveApplication(talentUsername, coverLetter, jobAdId);
             var model = "succeded";
             return Json(model);
