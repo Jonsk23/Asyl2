@@ -30,7 +30,7 @@
             var DurationInWeeks = $("#DurationInWeeks" + id).text();
             var LocationId = $("#LocationId" + id).text();
             var CompanyWebpage = $("#CompanyWebpage" + id).text();
-            var CompanyLogo = $("#CompanyLogo" + id).text();
+            //var CompanyLogo = $("#CompanyLogo" + id).text();
             var JobApplicationId = $("#HiddenJobId" + id).text();
             
             //anpassar modal
@@ -42,10 +42,9 @@
             $('#companyWebpage').text(CompanyWebpage);
             $('#companyLogo').text(CompanyLogo);
             $('#jobApplicationId').text(JobApplicationId);
-
+            //$('#companyLogo').attr('src', CompanyLogo); // byter image src
 
             $('#portfolioModal3').modal('show');
-
         }
 
     </script>
@@ -100,9 +99,10 @@
                                                     <i class="fa fa-search-plus fa-3x"></i>
                                                 </div>
                                             </div>
-                                            <img src="@item.Logo" class="img-responsive" alt="" id="@string.Format("companyLogo{0}",item.JobAdId)">
+                                            <img src="@item.Logo" class="img-responsive" alt="">
                                         </a>
                                     </div>
+                                    @*<p hidden id="@string.Format("companyLogo{0}",item.JobAdId)">@item.Logo</p>*@
                                     <p hidden id="@string.Format("HiddenJobId{0}",item.JobAdId)">@item.JobAdId</p> 
                                     <h3 class="post-title" id="@string.Format("Title{0}",item.JobAdId)">
                                         
@@ -110,7 +110,6 @@
                                         @item.Title
                                     </h3>
                                     <h4 hidden class="post-subtitle" id="@string.Format("Description{0}",item.JobAdId)">
-                                        @*Are you a handy and social person, who think that children are our future? Apply this internship now!*@
                                         @item.Description
                                     </h4>
                                     <h6 class="post-subtitle" id="@string.Format("FieldOfWork{0}",item.JobAdId)">Field of work: @item.FieldOfWork</h6>
@@ -125,9 +124,6 @@
                             </div>
                             <hr>
                         }
-
-
-
 
                         <!-- Pager -->
                         <ul class="pager">
@@ -222,7 +218,7 @@
     </section>*@
 
     <!-- Portfolio Modals -->
-    <!-- Modal -->
+    @*<!-- Modal -->
     <div id="portfolioModal2" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -263,7 +259,7 @@
             </div>
         </div>
 
-    </div>
+    </div>*@
 
 
 
