@@ -30,7 +30,7 @@
             var DurationInWeeks = $("#DurationInWeeks" + id).text();
             var LocationId = $("#LocationId" + id).text();
             var CompanyWebpage = $("#CompanyWebpage" + id).text();
-            //var CompanyLogo = $("#CompanyLogo" + id).text();
+            var CompanyLogo = $("#CompanyLogo" + id).text();
             var JobApplicationId = $("#HiddenJobId" + id).text();
             
             //anpassar modal
@@ -102,7 +102,7 @@
                                             <img src="@item.Logo" class="img-responsive" alt="">
                                         </a>
                                     </div>
-                                    @*<p hidden id="@string.Format("companyLogo{0}",item.JobAdId)">@item.Logo</p>*@
+                                    <p hidden id="@string.Format("companyLogo{0}",item.JobAdId)">@item.Logo</p>
                                     <p hidden id="@string.Format("HiddenJobId{0}",item.JobAdId)">@item.JobAdId</p> 
                                     <h3 class="post-title" id="@string.Format("Title{0}",item.JobAdId)">
                                         
