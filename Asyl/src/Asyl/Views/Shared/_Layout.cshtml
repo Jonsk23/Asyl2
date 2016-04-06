@@ -86,8 +86,17 @@
                     <li>
                         <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="~/account/myapplications">My Applications</a></li>
+                                <li><a href="~/account/Logout">Log out</a></li>
+
+                            }
+                            else
+                            { 
                             <li><a href="~/account/registrationpage">Register</a></li>
                             <li><a href="~/account/loginpage">Login</a></li>
+                            }
                         </ul>
                     </li>
                 </ul>

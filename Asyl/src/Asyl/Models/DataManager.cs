@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
+using System.Diagnostics;
 
 namespace Asyl.Models
 {
@@ -18,7 +19,7 @@ namespace Asyl.Models
 
         public void CreateUser(CreateUserVM viewModel)
         {
-            var existingTalent = context.Talents.ToList().Find(o => o.Username == viewModel.Username);
+            var existingTalent = context.Talents.ToList().Find(o => o.Username == viewModel.Username);         
 
             if (existingTalent == null)
             {
@@ -200,4 +201,5 @@ namespace Asyl.Models
         }
 
     }
+
 }

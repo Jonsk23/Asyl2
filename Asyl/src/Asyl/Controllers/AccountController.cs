@@ -53,9 +53,24 @@ namespace Asyl.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
+        //public IActionResult Profiles()
+        //{
+        //    DataManager dm = new DataManager(context);
+        //    TalentProfileVM vm = null;
+        //    if (Request.Cookies["username"].Count() > 0)
+        //        vm = dm.MyProfile(Request.Cookies["username"].ToString());
+        //    return View(vm);
+        //}
+
         public IActionResult RegistrationPage()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Logout ()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         [HttpPost]
@@ -87,8 +102,7 @@ namespace Asyl.Controllers
             dataManager = new DataManager(context);
             dataManager.CreateUser(viewModel);
             return RedirectToAction(nameof(HomeController.Index), "Home");
-
-
+          
         }
 
         public IActionResult CreateCompany()
@@ -125,17 +139,18 @@ namespace Asyl.Controllers
             dataManager = new DataManager(context);
             dataManager.CreateCompany(viewModel);
             return RedirectToAction(nameof(CompanyController.Index), "Company");
-            
         }
 
-        [Authorize] /* <-- denna ska vara på.ska bara vara synlig för privata användare.*/
+        [Authorize]  /*<-- denna ska vara på.ska bara vara synlig för privata användare.*/
         public IActionResult MyApplications()
         {
             dataManager = new DataManager(context);
-            //var model = dataManager.ViewMyApplications(User.Identity.Name); <-- den riktiga
-            var model = dataManager.ViewMyApplications("Barack");
+            var model = dataManager.ViewMyApplications(User.Identity.Name); /*< --den riktiga*/
+            //var model = dataManager.ViewMyApplications("Barack");
             return View(model);
         }
+
+
 
     }
 }
