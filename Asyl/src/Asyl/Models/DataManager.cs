@@ -176,7 +176,7 @@ namespace Asyl.Models
 
         } // skapar en ansökan , avsedd för privata anv.
 
-        public MyApplicationsVM[] ViewMyApplications(string talentUsername) // hämtar alla ansökningar för en viss talang. avsedd för talangen.
+        public MyProfileVM[] ViewMyApplications(string talentUsername) // hämtar alla ansökningar för en viss talang. avsedd för talangen.
         {
             var talentId = context.Talents  //Hämtar talangID baserat på inloggads anv.namn
          .Where(o => o.Username == talentUsername)
@@ -186,7 +186,7 @@ namespace Asyl.Models
             return context.Applications
                 .Where(o => o.TalentId == talentId)
                 .OrderBy(o => o.JobAdId)
-                .Select(o => new MyApplicationsVM
+                .Select(o => new MyProfileVM
                 {
                     JobAdId = o.JobAdId,
                     CoverLetter = o.CoverLetter,

@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity.EntityFramework;
 @using Microsoft.AspNet.Identity;
-@inject UserManager<IdentityUser> userManager
+@inject UserManager<IdentityUser> userManager 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,11 +75,11 @@
                     </li>
                     <li>
                         @*<li class="page-scroll">*@
-                        <a href="#about" data-toggle="modal">For employees <span class="glyphicon glyphicon-heart" style="font-size:30px; color:white"></span></a>
+                        <a href="#aboutmodal" data-toggle="modal">For employees <span class="glyphicon glyphicon-heart" style="font-size:30px; color:white"></span></a>
                     </li>
                     <li>
                         @*<li class="page-scroll">*@
-                        <a href="#worklife" data-toggle="modal">For employers <span class="glyphicon glyphicon-briefcase" style="font-size:30px; color:white"></span></a>
+                        <a href="#worklifemodal" data-toggle="modal">For employers <span class="glyphicon glyphicon-briefcase" style="font-size:30px; color:white"></span></a>
                     </li>
                     <li>
                         <a href="~/home/index" type="button" data-toggle="dropdown">Language <span class="glyphicon glyphicon-globe" style="font-size:30px; color:white"></span><span class="caret"></span></a>
@@ -90,7 +90,7 @@
                     </li>
                     <li>
                         <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
-                        <ul class="dropdown-menu">                            
+                        <ul class="dropdown-menu">
                             @{
                                 if (User.Identity.IsAuthenticated)
                                 {
@@ -124,8 +124,7 @@
     </nav>
 
     <!--Page content will be put here!-->
-    <div>       
-
+    <div>
         @RenderBody()
     </div>
 
@@ -154,13 +153,13 @@
                                 <a href="https://www.linkedin.com/company/academic-work" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                             </li>
                             <li>
-                                <a href="http://martinwestfelt.eu.pn" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                <a onclick="cornify_add();return false;" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Heaven is waiting</h3>
-                        <p>Best in the business <a href="http://martinwestfelt.eu.pn">Welcome to heaven</a>.</p>
+                        <h3>Academic Work</h3>
+                        <p>Powered by <a href="http://www.academicwork.se">www.academicwork.se</a></p>
                     </div>
                 </div>
             </div>
@@ -182,11 +181,52 @@
         </a>
     </div>
 
-    <!--Modal About Welcome Talent -->
-    <div id="worklife" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+    <!-- Modal for employees -->
 
-            <!-- Modal content-->
+    <div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="nameInfo">Information for applicants</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">This is what we want you to do</div>
+                            <div class="panel-body">
+
+                                We will find you, and we will kill you<br />
+                                We will not give any data to anyone else, and it will never be presented publicly.
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">These are your rights</div>
+                            <div class="panel-body">
+                                Rights? you have no rights, what did you think?
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Can I earn money?</div>
+                            <div class="panel-body">
+                                hopefully<br />
+                                not.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--Modal Worklife In Sweden -->
+
+    <div class="modal fade" id="worklifemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -210,44 +250,25 @@
                                 Fu fu fu
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                @*<button type="button" class="btn btn-default" onclick="contact()">Apply now!</button>*@
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!--Modal Worklife In Sweden -->
-    <div id="about" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="nameInfo">Information for employees</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="panel-group">
                         <div class="panel panel-default">
-                            <div class="panel-heading">About worklife in Sweden</div>
+                            <div class="panel-heading">Why you should spread the word</div>
                             <div class="panel-body">
-                                Bla bla bla<br />
-                                Bli bli bli<br />
-                                Blu blu blu
+                                Fa fa fa<br />
+                                Fi fi fi<br />
+                                Fu fu fu
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                @*<button type="button" class="btn btn-default" onclick="contact()">Apply now!</button>*@
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 </body>
 </html>
+
+<script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>

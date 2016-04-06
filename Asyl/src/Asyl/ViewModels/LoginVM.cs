@@ -19,6 +19,6 @@ namespace Asyl.ViewModels
         public string Password { get; set; }
 
         public bool IsLoggedIn { get; set; }
-
+        
     }
 }
