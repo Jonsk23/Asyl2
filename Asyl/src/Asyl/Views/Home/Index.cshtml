@@ -12,10 +12,11 @@
         function applyForJob() {
             var bla = $('#jobApplicationId').text();
             var applyText = $("#applyText").val();
-            alert(bla + applyText);
 
             $.post("/Home/PostApplication", { "coverLetter": applyText, "jobAdId2": bla }, function (result) {
-                alert("You have now applied for this job");
+                //alert("You have now applied for this job");
+                $("#apply").prop('disabled', true);
+                $("#applyText").val("Application sent, thank you for applying. Your future is close.");
 
             });
 
@@ -33,7 +34,10 @@
             var CompanyLogo = $("#CompanyLogo" + id).text();
             var JobApplicationId = $("#HiddenJobId" + id).text();
 
+
             //anpassar modal
+            $("#apply").prop('disabled', false);
+            $("#applyText").val("");
             $('#jobDescription').text(Description);
             $('#companyName').text(CompanyName);
             $('#title').text(Title);
@@ -302,7 +306,7 @@
                             </ul>
                             @if (User.Identity.IsAuthenticated)
                             {
-                            <textarea id="applyText" class="form-control" placeholder="Tell me why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
+                            <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
                                 <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
                             }
                             else
