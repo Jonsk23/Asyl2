@@ -52,6 +52,15 @@ namespace Asyl.Controllers
             return RedirectToAction(nameof(HomeController.Index));
         }
 
+        //public IActionResult Profiles()
+        //{
+        //    DataManager dm = new DataManager(context);
+        //    TalentProfileVM vm = null;
+        //    if (Request.Cookies["username"].Count() > 0)
+        //        vm = dm.MyProfile(Request.Cookies["username"].ToString());
+        //    return View(vm);
+        //}
+
         public IActionResult RegistrationPage()
         {
             return View();
