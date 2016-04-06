@@ -9,10 +9,9 @@ namespace Asyl.ViewModels
     public class MyProfileVM
     {
         #region My information
-        [Required]
+
         public string Username { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
