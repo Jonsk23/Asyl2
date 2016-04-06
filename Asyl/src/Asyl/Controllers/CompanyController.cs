@@ -6,6 +6,8 @@ using Microsoft.AspNet.Mvc;
 using Asyl.ViewModels;
 using Asyl.Models;
 using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,9 +19,19 @@ namespace Asyl.Controllers
         AzureDbContext context;
         DataManager dataManager;
 
-        public CompanyController(AzureDbContext context)
+
+        SignInManager<IdentityUser> signInManager;
+        UserManager<IdentityUser> userManager;
+        IdentityDbContext idContext;
+        RoleManager<IdentityRole> roleManager;
+
+        public CompanyController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IdentityDbContext idContext, AzureDbContext context, RoleManager<IdentityRole> roleManager)
         {
+            this.signInManager = signInManager;
+            this.userManager = userManager;
+            this.idContext = idContext;
             this.context = context;
+            this.roleManager = roleManager;
         }
 
         [Authorize(Roles = "company user")]
@@ -43,15 +55,17 @@ namespace Asyl.Controllers
         [HttpPost]
         public IActionResult CreateJobAd(JobAdVM viewModel)
         {
+            dataManager = new DataManager(context);
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
+            var userName = User.Identity.Name;
 
-            dataManager.CreateJobAd(viewModel, User.Identity.Name);
+            dataManager.CreateJobAd(viewModel, userName);
             //dataManager.CreateJobAd(viewModel, "Doktorn");
 
-            return RedirectToAction(nameof (CompanyController.Index));
+            return RedirectToAction(nameof (CompanyController.Index), "Company");
         }
 
         [Authorize(Roles = "company user")]
