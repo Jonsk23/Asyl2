@@ -15,5 +15,7 @@ namespace Asyl.ViewModels
         public string Title { get; set; }
         public int LocationId { get; set; }
         public int DurationInWeeks { get; set; }
+        public string Logo { get; set; }
+
     }
 }

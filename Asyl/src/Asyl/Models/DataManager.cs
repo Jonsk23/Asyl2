@@ -75,7 +75,8 @@ namespace Asyl.Models
                       DurationInWeeks = o.DurationInWeeks,
                       LocationId = o.LocationId,
                       Title = o.Title,
-                      JobAdId = o.Id
+                      JobAdId = o.Id,
+                      Logo = o.Company.Logo
                   })
                   .ToArray();
 
@@ -94,43 +95,38 @@ namespace Asyl.Models
                     ContactPerson = viewModel.ContactPerson,
                     CompanyWebPage = viewModel.CompanyWebPage,
                     Email = viewModel.Email,
-                    CompanyUsername = viewModel.Username                    
+                    CompanyUsername = viewModel.Username
                 });
                 context.SaveChanges();
             }
             else
                 throw new Exception("Company already exists!");
 
-        } 
+        }
 
-        public List<ApplicationVM> ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
+        public ApplicationsOnJobVM[] ListAllApplication(int jobId) // Listar alla ansökningar för ett specifikt jobb. Avsedd för Företag.
         {
             //tar in jobID som tillhör det jobb vi vill ha ut ansökningar för.
             return context.Applications
                 .Where(o => o.JobAdId == jobId)
                 .OrderBy(o => o.Talent.Id)
-                  .Select(o => new ApplicationVM
+                  .Select(o => new ApplicationsOnJobVM
                   {
-                      JobAdId = o.JobAdId,
                       TalentId = o.TalentId,
                       Name = o.Talent.Name,
                       Email = o.Talent.Email,
                       CoverLetter = o.CoverLetter,
                       WorkExperience = o.Talent.WorkExperience,
-                      DrivingLicense = o.Talent.DrivingLicense,
+                      DrivingLicense = (o.Talent.DrivingLicense == true) ? "yes" : "no",
                       PhoneNumber = o.Talent.PhoneNumber,
-                      SpeaksSwedish = o.Talent.SpeaksSwedish,
-                      SpeaksEnglish = o.Talent.SpeaksEnglish,
+                      SpeaksSwedish = (o.Talent.SpeaksSwedish == true) ? "yes" : "no",
+                      SpeaksEnglish = (o.Talent.SpeaksEnglish == true) ? "yes" : "no",
                       YearsInPrimarySchool = o.Talent.YearsInPrimarySchool,
                       YearsInSecondarySchool = o.Talent.YearsInSecondarySchool
                   })
-                  .ToList();
+                  .ToArray();
         }
 
-        public void CreateApplication() //Skapar en ansökan , avsedd för privata användare
-        {
-
-        }
 
         public CompanyExistingAdsVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
 
@@ -160,5 +156,23 @@ namespace Asyl.Models
 
 
         }
+
+        public void SaveApplication(string talentUsername, string coverLetter, int jobAdId)
+        {
+            var talentId = context.Talents  //Hämtar Företags ID baserat på inloggat företags anv.namn
+         .Where(o => o.Username == talentUsername)
+         .Select(o => o.Id)
+         .Single();
+
+
+            context.Applications.Add(new Application
+            {
+                CoverLetter = coverLetter,
+                JobAdId = jobAdId,
+                TalentId = talentId
+            });
+            context.SaveChanges();
+
+        } // skapar en ansökan , avsedd för privata anv.
     }
 }

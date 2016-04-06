@@ -9,7 +9,18 @@
 <html lang="en">
 <head>
     <script>
+        function applyForJob() {
+            var bla = $('#jobApplicationId').text();
+            var applyText = $("#applyText").val();
+            alert(bla + applyText);
 
+            $.post("/Home/PostApplication", { "coverLetter": applyText, "jobAdId2": bla }, function (result) {
+                alert("You have now applied for this job");
+
+            });
+            
+
+        }
         function viewApplicationInfo(id) {
 
             //hämtar info
@@ -19,7 +30,9 @@
             var DurationInWeeks = $("#DurationInWeeks" + id).text();
             var LocationId = $("#LocationId" + id).text();
             var CompanyWebpage = $("#CompanyWebpage" + id).text();
-
+            //var CompanyLogo = $("#CompanyLogo" + id).text();
+            var JobApplicationId = $("#HiddenJobId" + id).text();
+            
             //anpassar modal
             $('#jobDescription').text(Description);
             $('#companyName').text(CompanyName);
@@ -27,6 +40,9 @@
             $('#durationInWeeks').text(DurationInWeeks);
             $('#locationId').text(LocationId);
             $('#companyWebpage').text(CompanyWebpage);
+            $('#companyLogo').text(CompanyLogo);
+            $('#jobApplicationId').text(JobApplicationId);
+            //$('#companyLogo').attr('src', CompanyLogo); // byter image src
 
             $('#portfolioModal3').modal('show');
         }
@@ -83,19 +99,21 @@
                                                     <i class="fa fa-search-plus fa-3x"></i>
                                                 </div>
                                             </div>
-                                            <img src="~/img/portfolio/submarine.png" class="img-responsive" alt="">
+                                            <img src="@item.Logo" class="img-responsive" alt="">
                                         </a>
                                     </div>
+                                    @*<p hidden id="@string.Format("companyLogo{0}",item.JobAdId)">@item.Logo</p>*@
+                                    <p hidden id="@string.Format("HiddenJobId{0}",item.JobAdId)">@item.JobAdId</p> 
                                     <h3 class="post-title" id="@string.Format("Title{0}",item.JobAdId)">
+                                        
                                         @*Janitor for popular elementary school*@
                                         @item.Title
                                     </h3>
-                                    <h4 hidden class="post-subtitle" id="@string.Format("Description{0}",item.JobAdId)">
-                                        @*Are you a handy and social person, who think that children are our future? Apply this internship now!*@
+                                    <h4 hidden class="post-subtitle" id="@string.Format("Description{0}",item.JobAdId)">                                      
                                         @item.Description
                                     </h4>
                                     <h6 class="post-subtitle" id="@string.Format("FieldOfWork{0}",item.JobAdId)">Field of work: @item.FieldOfWork</h6>
-                                    <h6 class="post-subtitle" id="@string.Format("DurationInWeeks{0}",item.JobAdId)">Duration in Weeks: @item.DurationInWeeks</h6>
+                                    <h6 class="post-subtitle" id="@string.Format("DurationInWeeks{0}",item.JobAdId)">Duration: @item.DurationInWeeks weeks</h6>
                                     <h6 hidden class="post-subtitle" id="@string.Format("CompanyName{0}",item.JobAdId)">@item.CompanyName</h6>
                                     <h6 hidden class="post-subtitle" id="@string.Format("LocationId{0}",item.JobAdId)">@item.LocationId</h6>
 
@@ -260,9 +278,10 @@
                         <div class="modal-body">
                             <h2 id="title"></h2>
                             <hr class="star-primary">
-                            <img src="~/img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            @*<img id="companyLogo" src="~/img/portfolio/circus.png" class="img-responsive img-centered" alt="">*@
                             <h4 id="companyName"></h4>
                             <p id="jobDescription">Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p hidden id="jobApplicationId"></p>
                             <ul class="list-inline item-details">
                                 <li>
                                     <strong>
@@ -282,7 +301,9 @@
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <textarea id="applyText" class="form-control" placeholder="Tell me why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
+                            <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
+                            <button type="button" class="btn btn-danger btn-group nutmegbtn" data-dismiss="modal"> Close</button>
                         </div>
                     </div>
                 </div>
