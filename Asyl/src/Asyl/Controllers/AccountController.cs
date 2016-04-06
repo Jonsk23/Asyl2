@@ -142,7 +142,7 @@ namespace Asyl.Controllers
         }
 
         [Authorize]  /*<-- denna ska vara på.ska bara vara synlig för privata användare.*/
-        public IActionResult MyApplications()
+        public IActionResult MyProfile()
         {
             dataManager = new DataManager(context);
             var model = dataManager.ViewMyApplications(User.Identity.Name); /*< --den riktiga*/
