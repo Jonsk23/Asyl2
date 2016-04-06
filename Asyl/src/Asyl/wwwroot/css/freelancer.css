@@ -462,3 +462,12 @@ footer {
 .nutmegbtn {
     width: 225px;
 }
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    }
+.paddbtn {
+    padding-right: 25px;
+    padding-left: 25px;
+
+}
