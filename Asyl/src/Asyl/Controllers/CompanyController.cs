@@ -22,24 +22,24 @@ namespace Asyl.Controllers
             this.context = context;
         }
 
-        //[Authorize(Roles = "company user")]
+        [Authorize(Roles = "company user")]
         public IActionResult Index()
         {
             dataManager = new DataManager(context);
-            //var model = dataManager.ListAllJobsAdsForCompany(User.Identity.Name);  <-- den riktiga
-            var model = dataManager.ListAllJobsAdsForCompany("Doktorn");
+            var model = dataManager.ListAllJobsAdsForCompany(User.Identity.Name);
+            //var model = dataManager.ListAllJobsAdsForCompany("Doktorn");
             return View(model);
 
             //return View();
         }
 
-        //[Authorize(Roles = "company user")]
+        [Authorize(Roles = "company user")]
         public IActionResult CreateJobAd()
         {
             return View();
         }
 
-        //[Authorize(Roles = "company user")]
+        [Authorize(Roles = "company user")]
         [HttpPost]
         public IActionResult CreateJobAd(JobAdVM viewModel)
         {
@@ -48,13 +48,13 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            //dataManager.CreateJobAd(viewModel, User.Identity.Name); <-- den riktiga
-            dataManager.CreateJobAd(viewModel, "Doktorn");
+            dataManager.CreateJobAd(viewModel, User.Identity.Name);
+            //dataManager.CreateJobAd(viewModel, "Doktorn");
 
             return RedirectToAction(nameof (CompanyController.Index));
         }
 
-        //[Authorize(Roles = "company user")]
+        [Authorize(Roles = "company user")]
         public IActionResult Applications(int id)
         {
 

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity.EntityFramework;
+@using Microsoft.AspNet.Identity;
+@inject UserManager<IdentityUser> userManager
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -67,7 +71,7 @@
                         <a href="#page-top"></a>
                     <li class="page-scroll">
                         <a asp-controller="home" asp-action="index">Find internship <span class="glyphicon glyphicon-search" style="font-size:30px; color:white"></span></a>
-                        
+
                     </li>
                     <li>
                         @*<li class="page-scroll">*@
@@ -86,17 +90,29 @@
                     </li>
                     <li>
                         <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li><a href="~/account/myapplications">My Applications</a></li>
-                                <li><a href="~/account/Logout">Log out</a></li>
+                        <ul class="dropdown-menu">                            
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    var user = await userManager.FindByNameAsync(User.Identity.Name);
 
-                            }
-                            else
-                            { 
-                            <li><a href="~/account/registrationpage">Register</a></li>
-                            <li><a href="~/account/loginpage">Login</a></li>
+                                    if (await userManager.IsInRoleAsync(user, "company user"))
+                                    {
+                                        <li><a href="~/company/index">View company page</a></li>
+                                        <li><a href="~/account/Logout">Log out</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="~/account/myapplications">My Applications</a></li>
+                                        <li><a href="~/account/Logout">Log out</a></li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li><a href="~/account/registrationpage">Register</a></li>
+                                    <li><a href="~/account/loginpage">Login</a></li>
+
+                                }
                             }
                         </ul>
                     </li>
@@ -108,7 +124,8 @@
     </nav>
 
     <!--Page content will be put here!-->
-    <div>
+    <div>       
+
         @RenderBody()
     </div>
 

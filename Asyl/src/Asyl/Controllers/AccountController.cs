@@ -49,19 +49,19 @@ namespace Asyl.Controllers
             }
 
             await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
+            var user = await userManager.FindByNameAsync(viewModel.Username);
+            var isInrole = await userManager.IsInRoleAsync(user, "company user");            
+            if (isInrole) 
+            {
+                return RedirectToAction(nameof(CompanyController.Index), "Company");
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
 
-            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-
-        //public IActionResult Profiles()
-        //{
-        //    DataManager dm = new DataManager(context);
-        //    TalentProfileVM vm = null;
-        //    if (Request.Cookies["username"].Count() > 0)
-        //        vm = dm.MyProfile(Request.Cookies["username"].ToString());
-        //    return View(vm);
-        //}
-
+     
         public IActionResult RegistrationPage()
         {
             return View();
@@ -81,14 +81,14 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            //var rolename = "talent user"; //eventuellt skapa en klass för detta. 
-            //var role = await roleManager.CreateAsync(new IdentityRole(rolename));
+            var rolename = "talent user"; //eventuellt skapa en klass för detta. 
+            var role = await roleManager.CreateAsync(new IdentityRole(rolename));
 
 
             await idContext.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
-            //var currentUser = userManager.FindByNameAsync(viewModel.Username);
-            //var newResult = await userManager.AddToRoleAsync(currentUser.Result, rolename);
+            var currentUser = userManager.FindByNameAsync(viewModel.Username);
+            var newResult = await userManager.AddToRoleAsync(currentUser.Result, rolename);
 
             //Visa eventuella felmeddelanden
             if (!result.Succeeded)
@@ -118,14 +118,14 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            //var rolename = "company user"; //eventuellt skapa en klass för detta. 
-            //var role = await roleManager.CreateAsync(new IdentityRole(rolename));
+            var rolename = "company user"; //eventuellt skapa en klass för detta. 
+            var role = await roleManager.CreateAsync(new IdentityRole(rolename));
 
             //Skapar användare(företag)
             await context.Database.EnsureCreatedAsync();
             var result = await userManager.CreateAsync(new IdentityUser(viewModel.Username), viewModel.Password);
-            //var currentUser = userManager.FindByNameAsync(viewModel.Username);
-            //var newResult = await userManager.AddToRoleAsync(currentUser.Result, "company user");
+            var currentUser = userManager.FindByNameAsync(viewModel.Username);
+            var newResult = await userManager.AddToRoleAsync(currentUser.Result, "company user");
 
             //Visa eventuella felmeddelanden
             if (!result.Succeeded)
@@ -141,7 +141,7 @@ namespace Asyl.Controllers
             return RedirectToAction(nameof(CompanyController.Index), "Company");
         }
 
-        [Authorize]  /*<-- denna ska vara på.ska bara vara synlig för privata användare.*/
+        [Authorize(Roles = "talent user")]  /*<-- denna ska vara på.ska bara vara synlig för privata användare.*/
         public IActionResult MyApplications()
         {
             dataManager = new DataManager(context);
