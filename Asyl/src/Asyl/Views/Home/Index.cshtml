@@ -1,4 +1,7 @@
-﻿@using Asyl.ViewModels
+﻿@using Microsoft.AspNet.Identity.EntityFramework;
+@using Microsoft.AspNet.Identity;
+@inject UserManager<IdentityUser> userManager 
+@using Asyl.ViewModels
 @model PublishAdVM[]
 @addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
 
@@ -59,6 +62,42 @@
     <header>
         <div class="container">
             <div class="row">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+                    if (await userManager.IsInRoleAsync(user, "talent user"))
+                    {
+                        <div class="col-lg-12">
+                            <div>
+                                @*utan bilden*@
+                                @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
+                                <div class="intro-text">
+                                    <span class="name">Welcome @User.Identity.Name!</span>
+                                    <span class="skills">Start searching for your jobs</span>
+                                </div>
+                                <hr class="star-light">
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-12">
+                            <div>
+                                @*utan bilden*@
+                                @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
+                                <div class="intro-text">
+                                    <span class="name">Welcome Company</span>
+                                    <span class="skills">Start your new life</span>
+                                </div>
+                                <hr class="star-light">
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+
                 <div class="col-lg-12">
                     <div>
                         @*utan bilden*@
@@ -70,6 +109,8 @@
                         <hr class="star-light">
                     </div>
                 </div>
+
+                }
             </div>
         </div>
     </header>
@@ -306,8 +347,18 @@
                             </ul>
                             @if (User.Identity.IsAuthenticated)
                             {
+                                var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+                                if (await userManager.IsInRoleAsync(user, "talent user"))
+                                {
+
                             <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
                                 <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
+                                }
+                                else
+                                {
+                                    <a href="~/company/createjobad">Why you look for jobs? U are company, add some job ads instead... Click here!</a><br /><br />
+                                }
                             }
                             else
                             {
