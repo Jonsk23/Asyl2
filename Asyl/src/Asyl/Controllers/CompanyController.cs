@@ -48,7 +48,8 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            dataManager.CreateJobAd(viewModel, User.Identity.Name);
+            //dataManager.CreateJobAd(viewModel, User.Identity.Name); <-- den riktiga
+            dataManager.CreateJobAd(viewModel, "Doktorn");
 
             return RedirectToAction(nameof (CompanyController.Index));
         }
