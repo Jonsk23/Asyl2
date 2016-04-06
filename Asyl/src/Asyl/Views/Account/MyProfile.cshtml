@@ -1,270 +1,206 @@
 ﻿@using Asyl.ViewModels
 @model MyProfileVM
-@addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
+    @addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
 
-@{
-    Layout = "~/Views/Shared/_Layout";
-}
+    @{
+        Layout = "~/Views/Shared/_Layout";
+    }
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script>
-        
-        function viewApplicationInfo(id) {
-            var Description = $("#Description" + id).text();
-            var CompanyName = $("#CompanyName" + id).text();
-            var Title = $("#Title" + id).text();
-            var DurationInWeeks = $("#DurationInWeeks" + id).text();
-            var LocationId = $("#Location" + id).text();
-            var CoverLetter = $("#CoverLetter" + id).text();
-
-            //anpassar modal
-            $('#jobDescription').text(Description);
-            $('#companyName').text(CompanyName);
-            $('#title').text(Title);
-            $('#durationInWeeks').text(DurationInWeeks);
-            $('#locationId').text(LocationId);
-            $('#coverletter').text(CoverLetter);
-
-            //visa modal
-            $('#myModal').modal('show');
-        }
-
-    </script>
-</head>
 <body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    @*<div class="intro-text">
-                            <span class="name">Company Registration</span>
+    <section>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @*<div class="intro-text">
+                        <span class="name">Company Registration</span>
                         </div>*@
-                    <div class="row" style="padding-bottom: 200px">
-                        <div class="box">
-                            <div class="col-lg-12" align="center">
-                                <hr />
-                                <h1 style="padding-bottom: 20px">
-                                    My profile
-                                </h1>
-                                <hr />
-                                <hr class="star-light">
-                                <section>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <div class="container">
+                        <div class="row" style="padding-bottom: 200px">
+                            <div class="box">
+                                <div class="col-lg-12" align="center">
+                                    <hr />
+                                    <h1 style="padding-bottom: 20px">
+                                        My profile
+                                    </h1>
+                                    <hr />
+                                    <hr class="star-light">
+        </header>
+    </section>
 
-                                        <p>Your active applications</p>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Job title</th>
-                                                    <th>Company</th>
-                                                    <th>Location</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var item in Model)
-                                                {
-                                                    <tr>
-                                                        <td id="@string.Format("Title{0}",item.JobAdId)">@item.Title</td>
+    <section>
+        @Component.Invoke("Applications", User.Identity.Name)
+    </section>
+    <section>
+        <form asp-controller="Account" asp-action="RegistrationPage">
 
-                                                        <td id="@string.Format("CompanyName{0}",item.JobAdId)">@item.CompanyName</td>
-                                                        <td id="@string.Format("Location{0}",item.JobAdId)">@item.LocationId</td>
-                                                        <td hidden id="@string.Format("CoverLetter{0}",item.JobAdId)">@item.CoverLetter</td>
-                                                        <td hidden id="@string.Format("Description{0}",item.JobAdId)">@item.Description</td>
-                                                        <td hidden id="@string.Format("FieldOfWork{0}",item.JobAdId)">@item.FieldOfWork</td>
-                                                        <td hidden id="@string.Format("DurationInWeeks{0}",item.JobAdId)">@item.DurationInWeeks weeks</td>
-                                                        <td><button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-primary btn-md">View this application</button></td>
-                                                    </tr>
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Username"></label>
 
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-                                <br />
-                                <section>
-                                    <form asp-controller="Account" asp-action="RegistrationPage">
-
-                                        <div class="row">
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="Username"></label>
-
-                                                    <input asp-for="Username" class="form-control" placeholder="ex: Zlatan10" tabindex="1">
-                                                    <span asp-validation-for="Username"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="Name"></label>
-
-                                                    <input asp-for="Name" class="form-control" placeholder="Firstname and/or Lastname" tabindex="2">
-                                                    <span asp-validation-for="Name" class="text-danger"></span>
-                                                    <br />
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="Email"></label>
-                                                    <input asp-for="Email" placeholder="example@email.com" class="form-control" tabindex="3">
-                                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="PhoneNumber"></label>
-
-                                                    <input asp-for="PhoneNumber" placeholder="Not required" class="form-control" tabindex="4">
-                                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="YearsInPrimarySchool"></label>
-                                                    <input asp-for="YearsInPrimarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="5">
-                                                    <span asp-validation-for="YearsInPrimarySchool" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="YearsInSecondarySchool"></label>
-
-                                                    <input asp-for="YearsInSecondarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="6">
-                                                    <span asp-validation-for="YearsInSecondarySchool" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-16 col-sm-8 col-md-8">
-                                                <div class="form-group">
-                                                    <label asp-for="WorkExperience"></label>
-                                                    <textarea asp-for="WorkExperience" placeholder="Tell us about your experience" class="form-control input-lg" rows="5" tabindex="7" data-val-maxlength-max="420"></textarea>
-                                                    <span asp-validation-for="WorkExperience" class="text-danger"></span>
-                                                    <br />
-                                                </div>
-                                                <div class="col-xs-4 col-sm-2 col-md-2">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="font-size:larger ">
-                                            <div class="col-xs-3 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-6 col-sm-2 col-md-2">
-                                                <input asp-for="SpeaksEnglish" data-val="false" />
-                                                <label asp-for="SpeaksEnglish"></label>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-3 col-md-3">
-                                                <input asp-for="SpeaksSwedish" data-val="false" />
-                                                <label asp-for="SpeaksSwedish"></label>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-3 col-md-3">
-                                                <input asp-for="DrivingLicense" data-val="false" />
-                                                <label asp-for="DrivingLicense"></label>
-                                            </div>
-                                            <div class="col-xs-3 col-sm-1 col-md-1">
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="Password"></label>
-
-                                                    <input asp-for="Password" type="password" placeholder="Password" class="form-control" tabindex="8">
-                                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="ComparePassword"></label>
-
-                                                    <input asp-for="ComparePassword" type="password" placeholder="Password" class="form-control" tabindex="9">
-                                                    <span asp-validation-for="ComparePassword" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>
-
-                                        <div class="row" style="font-size:larger">
-                                            <div class="col-xs-3 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-6 col-sm-2 col-md-2">
-                                                <larger>
-                                                </larger>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-3 col-md-3">
-                                            </div>
-                                            <div class="col-xs-6 col-sm-3 col-md-3">
-                                  
-                                            <div class="col-xs-16 col-sm-8 col-md-8 text-right">
-                                                <a href="~/customers/login"><input type="submit" value="Register" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px"></a>
-
-                                                <a href="~/account/loginpage" class="btn btn-primary btn-group nutmegbtn paddbtn">Already registered? - Login</a>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>
-
-                                        <br />
-
-                                    </form>
-
-
-                            </div>
-                        </div>
+                        <input asp-for="Username" class="form-control" placeholder="ex: Zlatan10" tabindex="1">
+                        <span asp-validation-for="Username"></span>
                     </div>
                 </div>
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel" style="color:black">Terms & Conditions</h4>
-                            </div>
-                            <div class="modal-body" style="color:#000000">
-                                <p>When you accept these terms we will have the right to handle your data and present it to the interested corporations.</p>
-                                <p>We will not give any data to anyone else, and it will never be presented publicly.</p>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                        <input asp-for="Name" class="form-control" placeholder="Firstname and/or Lastname" tabindex="2">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <br />
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
             </div>
-    </header>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" placeholder="example@email.com" class="form-control" tabindex="3">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+
+                        <input asp-for="PhoneNumber" placeholder="Not required" class="form-control" tabindex="4">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="YearsInPrimarySchool"></label>
+                        <input asp-for="YearsInPrimarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="5">
+                        <span asp-validation-for="YearsInPrimarySchool" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="YearsInSecondarySchool"></label>
+
+                        <input asp-for="YearsInSecondarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="6">
+                        <span asp-validation-for="YearsInSecondarySchool" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-16 col-sm-8 col-md-8">
+                    <div class="form-group">
+                        <label asp-for="WorkExperience"></label>
+                        <textarea asp-for="WorkExperience" placeholder="Tell us about your experience" class="form-control input-lg" rows="5" tabindex="7" data-val-maxlength-max="420"></textarea>
+                        <span asp-validation-for="WorkExperience" class="text-danger"></span>
+                        <br />
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-2">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="font-size:larger ">
+                <div class="col-xs-3 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-6 col-sm-2 col-md-2">
+                    <input asp-for="SpeaksEnglish" data-val="false" />
+                    <label asp-for="SpeaksEnglish"></label>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-3">
+                    <input asp-for="SpeaksSwedish" data-val="false" />
+                    <label asp-for="SpeaksSwedish"></label>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-3">
+                    <input asp-for="DrivingLicense" data-val="false" />
+                    <label asp-for="DrivingLicense"></label>
+                </div>
+                <div class="col-xs-3 col-sm-1 col-md-1">
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+
+                        <input asp-for="Password" type="password" placeholder="Password" class="form-control" tabindex="8">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ComparePassword"></label>
+
+                        <input asp-for="ComparePassword" type="password" placeholder="Password" class="form-control" tabindex="9">
+                        <span asp-validation-for="ComparePassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                </div>
+            </div>
+
+            <div class="row" style="font-size:larger">
+                <div class="col-xs-3 col-sm-2 col-md-2">
+                </div>
+                <div class="col-xs-6 col-sm-2 col-md-2">
+                    <larger>
+                    </larger>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-3">
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-3">
+
+                    <div class="col-xs-16 col-sm-8 col-md-8 text-right">
+                        <a href="~/customers/login"><input type="submit" value="Register" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px"></a>
+
+                        <a href="~/account/loginpage" class="btn btn-primary btn-group nutmegbtn paddbtn">Already registered? - Login</a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-2">
+                    </div>
+                </div>
+
+                <br />
+
+        </form>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel" style="color:black">Terms & Conditions</h4>
+                    </div>
+                    <div class="modal-body" style="color:#000000">
+                        <p>When you accept these terms we will have the right to handle your data and present it to the interested corporations.</p>
+                        <p>We will not give any data to anyone else, and it will never be presented publicly.</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
     </section>
 
@@ -277,8 +213,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             @*<div class="intro-text">
-                                    <span class="name">Company Registration</span>
-                                </div>*@
+                            <span class="name">Company Registration</span>
+                            </div>*@
                             <div class="row" style="padding-bottom: 200px">
                                 <div class="box">
                                     <div class="col-lg-12" align="center">

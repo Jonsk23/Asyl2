@@ -1,4 +1,7 @@
-﻿@using Asyl.ViewModels
+﻿@using Microsoft.AspNet.Identity.EntityFramework;
+@using Microsoft.AspNet.Identity;
+@inject UserManager<IdentityUser> userManager 
+@using Asyl.ViewModels
 @model PublishAdVM[]
 @addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
 
@@ -59,6 +62,42 @@
     <header>
         <div class="container">
             <div class="row">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+                    if (await userManager.IsInRoleAsync(user, "talent user"))
+                    {
+                        <div class="col-lg-12">
+                            <div>
+                                @*utan bilden*@
+                                @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
+                                <div class="intro-text">
+                                    <span class="name">Welcome @User.Identity.Name!</span>
+                                    <span class="skills">Start searching for your jobs</span>
+                                </div>
+                                <hr class="star-light">
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-12">
+                            <div>
+                                @*utan bilden*@
+                                @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
+                                <div class="intro-text">
+                                    <span class="name">Welcome Company</span>
+                                    <span class="skills">Start your new life</span>
+                                </div>
+                                <hr class="star-light">
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+
                 <div class="col-lg-12">
                     <div>
                         @*utan bilden*@
@@ -70,6 +109,8 @@
                         <hr class="star-light">
                     </div>
                 </div>
+
+                }
             </div>
         </div>
     </header>
@@ -267,104 +308,69 @@
 
 
 
-    @*<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">*@
-        <div class="portfolio-modal fade modal" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2 id="title"></h2>
-                                <hr class="star-primary">
-                                @*<img id="companyLogo" src="~/img/portfolio/circus.png" class="img-responsive img-centered" alt="">*@
-                                <h4 id="companyName"></h4>
-                                <p id="jobDescription">Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <p hidden id="jobApplicationId"></p>
-                                <ul class="list-inline item-details">
-                                    <li>
-                                        <strong>
-                                            <p id="durationInWeeks"></p>
-                                        </strong>
-                                    </li>
-                                    <li>
-                                        Location:
-                                        <strong>
-                                            <p id="locationId"></p>
-                                        </strong>
-                                    </li>
-                                    <li>
-                                        Webpage:
-                                        <strong>
-                                            <a id="companyWebpage" href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                @if (User.Identity.IsAuthenticated)
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2 id="title"></h2>
+                            <hr class="star-primary">
+                            @*<img id="companyLogo" src="~/img/portfolio/circus.png" class="img-responsive img-centered" alt="">*@
+                            <h4 id="companyName"></h4>
+                            <p id="jobDescription">Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <p hidden id="jobApplicationId"></p>
+                            <ul class="list-inline item-details">
+                                <li>
+                                    <strong>
+                                        <p id="durationInWeeks"></p>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Location:
+                                    <strong>
+                                        <p id="locationId"></p>
+                                    </strong>
+                                </li>
+                                <li>
+                                    Webpage:
+                                    <strong>
+                                        <a id="companyWebpage" href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+                                if (await userManager.IsInRoleAsync(user, "talent user"))
                                 {
-                                    <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
-                                    <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
+
+                            <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
+                                <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
                                 }
                                 else
                                 {
-                                    <a href="~/account/loginpage">You must login to be able to apply for this job, click here to log in</a><br /><br />
+                                    <a href="~/company/createjobad">Why you look for jobs? U are company, add some job ads instead... Click here!</a><br /><br />
                                 }
-                                <button type="button" class="btn btn-danger btn-group nutmegbtn" data-dismiss="modal"> Close</button>
-                            </div>
+                            }
+                            else
+                            {
+                                <a href="~/account/loginpage">You must login to be able to apply for this job, click here to log in</a><br /><br />
+                            }
+                            <button type="button" class="btn btn-danger btn-group nutmegbtn" data-dismiss="modal"> Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    <!-- Lite modallek, nu kör vi-->
-
-    <div class="modal fade" id="episkmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="nameInfo">Information for employers</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">What we do at Welcome Talent</div>
-                            <div class="panel-body">
-                                Fa fa fa<br />
-                                Fi fi fi<br />
-                                Fu fu fu
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">What you do at Welcome Talent</div>
-                            <div class="panel-body">
-                                Fa fa fa<br />
-                                Fi fi fi<br />
-                                Fu fu fu
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Why you should spread the word</div>
-                            <div class="panel-body">
-                                Fa fa fa<br />
-                                Fi fi fi<br />
-                                Fu fu fu
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div>
 
 </body>
 </html>
