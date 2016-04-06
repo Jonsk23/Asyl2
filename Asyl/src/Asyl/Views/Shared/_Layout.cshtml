@@ -68,11 +68,13 @@
                     <li class="page-scroll">
                         <a href="#portfolio">Find internship <span class="glyphicon glyphicon-search" style="font-size:30px; color:white"></span></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#about">About Welcome Talent <span class="glyphicon glyphicon-heart" style="font-size:30px; color:white"></span></a>
+                    <li>
+                        @*<li class="page-scroll">*@
+                        <a href="#about" data-toggle="modal">For employees <span class="glyphicon glyphicon-heart" style="font-size:30px; color:white"></span></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Worklife in Sweden <span class="glyphicon glyphicon-briefcase" style="font-size:30px; color:white"></span></a>
+                    <li>
+                        @*<li class="page-scroll">*@
+                        <a href="#worklife" data-toggle="modal">For employers <span class="glyphicon glyphicon-briefcase" style="font-size:30px; color:white"></span></a>
                     </li>
                     <li>
                         <a href="~/home/index" type="button" data-toggle="dropdown">Language <span class="glyphicon glyphicon-globe" style="font-size:30px; color:white"></span><span class="caret"></span></a>
@@ -107,10 +109,10 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>St: eriksgatan 121<br>Stockholm</p>
+                        <p>St: Eriksgatan 121<br>Stockholm</p>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Fins us elsewhere</h3>
+                        <h3>Find us elsewhere</h3>
                         <ul class="list-inline">
                             <li>
                                 <a href="https://www.facebook.com/AcademicWork/" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -151,6 +153,74 @@
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
+    </div>
+
+    <!--Modal About Welcome Talent -->
+    <div id="worklife" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="nameInfo">Information for employers</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">What we do at Welcome Talent</div>
+                            <div class="panel-body">
+                                Fa fa fa<br />
+                                Fi fi fi<br />
+                                Fu fu fu
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">What you do at Welcome Talent</div>
+                            <div class="panel-body">
+                                Fa fa fa<br />
+                                Fi fi fi<br />
+                                Fu fu fu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-default" onclick="contact()">Apply now!</button>*@
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Worklife In Sweden -->
+    <div id="about" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="nameInfo">Information for employees</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">About worklife in Sweden</div>
+                            <div class="panel-body">
+                                Bla bla bla<br />
+                                Bli bli bli<br />
+                                Blu blu blu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-default" onclick="contact()">Apply now!</button>*@
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
