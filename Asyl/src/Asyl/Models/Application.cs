@@ -13,6 +13,7 @@ namespace Asyl.Models
         public string CoverLetter { get; set; }
 
         public virtual Talent Talent { get; set; }
+        public virtual JobAd JobAd { get; set; }
 
         //Commit issues
     }
