@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using Asyl.ViewModels;
 using Asyl.Models;
+using Microsoft.AspNet.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -125,5 +126,15 @@ namespace Asyl.Controllers
             dataManager.CreateCompany(viewModel);
             return RedirectToAction(nameof(CompanyController.Index));
         }
+
+        //[Authorize]  <-- denna ska vara på . ska bara vara synlig för privata användare.
+        public IActionResult MyApplications()
+        {
+            dataManager = new DataManager(context);
+            //var model = dataManager.ViewMyApplications(User.Identity.Name); <-- den riktiga
+            var model = dataManager.ViewMyApplications("Barack");
+            return View(model);
+        }
+
     }
 }

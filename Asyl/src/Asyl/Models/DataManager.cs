@@ -159,7 +159,7 @@ namespace Asyl.Models
 
         public void SaveApplication(string talentUsername, string coverLetter, int jobAdId)
         {
-            var talentId = context.Talents  //Hämtar Företags ID baserat på inloggat företags anv.namn
+            var talentId = context.Talents  //Hämtar talangID baserat på inloggads anv.namn
          .Where(o => o.Username == talentUsername)
          .Select(o => o.Id)
          .Single();
@@ -174,5 +174,30 @@ namespace Asyl.Models
             context.SaveChanges();
 
         } // skapar en ansökan , avsedd för privata anv.
+
+        public MyApplicationsVM[] ViewMyApplications(string talentUsername) // hämtar alla ansökningar för en viss talang. avsedd för talangen.
+        {
+            var talentId = context.Talents  //Hämtar talangID baserat på inloggads anv.namn
+         .Where(o => o.Username == talentUsername)
+         .Select(o => o.Id)
+         .Single();
+
+            return context.Applications
+                .Where(o => o.TalentId == talentId)
+                .OrderBy(o => o.JobAdId)
+                .Select(o => new MyApplicationsVM
+                {
+                    JobAdId = o.JobAdId,
+                    CoverLetter = o.CoverLetter,
+                    Title = o.JobAd.Title,
+                    CompanyName = o.JobAd.Company.CompanyName,
+                    DurationInWeeks = o.JobAd.DurationInWeeks,
+                    LocationId = o.JobAd.DurationInWeeks,
+                    Description = o.JobAd.Description,
+                    FieldOfWork = o.JobAd.FieldOfWork
+                })
+                   .ToArray();
+        }
+
     }
 }
