@@ -27,9 +27,10 @@
 
         </script>
     </head>
-        <div class="container">
+        <div class="container table-responsive">
             <h2>Your active applications</h2>
-            <table class="table table-hover">
+            <table class="table table-hover table-active table-bordered">
+
                 <thead>
                     <tr>
                         <th>Job title</th>
@@ -44,21 +45,20 @@
                             <td id="@string.Format("Title{0}",item.JobAdId)">@item.Title</td>
 
                             <td id="@string.Format("CompanyName{0}",item.JobAdId)">@item.CompanyName</td>
-                            <td id="@string.Format("Location{0}",item.JobAdId)">@item.LocationId</td>
+                            <td id="@string.Format("Location{0}",item.JobAdId)">@item.Location</td>
                             <td hidden id="@string.Format("CoverLetter{0}",item.JobAdId)">@item.CoverLetter</td>
                             <td hidden id="@string.Format("Description{0}",item.JobAdId)">@item.Description</td>
                             <td hidden id="@string.Format("FieldOfWork{0}",item.JobAdId)">@item.FieldOfWork</td>
                             <td hidden id="@string.Format("DurationInWeeks{0}",item.JobAdId)">@item.DurationInWeeks weeks</td>
                             <td><button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-primary btn-md">View this application</button></td>
                         </tr>
-
                     }
                 </tbody>
             </table>
         </div>
         <br />
 <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" style="color:black">
         <div class="modal-content">
             <div class="modal-header">
 

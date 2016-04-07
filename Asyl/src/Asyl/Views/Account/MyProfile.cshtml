@@ -6,196 +6,215 @@
     Layout = "~/Views/Shared/_Layout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    <section>
+@*<!DOCTYPE html>
+<html lang="en">*@
+@*<body>*@
+    @*<section>*@
         <!-- Header -->
+
         <header>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div>
-                            @*utan bilden*@
-                            @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
-                            <div class="intro-text">
-                                <span class="name">My profile</span>
+                        <div class="row" style="padding-bottom: 200px">
+                            <div class="box">
+                                <div class="col-lg-12" align="center">
+                                    <hr />
+                                    <h1 style="padding-bottom: 20px">
+                                        Your profile information
+                                        <hr />
+                                    </h1>
+                                    <hr class="star-light">
+                                    <div class="text-center">
+
+                                        @*<header>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div>
+                                                                <img class="img-responsive" src="~/img/profile.png" alt="">
+                                                                <div class="intro-text">
+                                                                    <span class="name">My profile</span>
+                                                                </div>
+                                                                <hr class="star-light">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </header>*@
+                                        @*</section>
+                                            <section>*@
+                                        @*</section>*@
+
+                                        @*<section>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="row" style="padding-bottom: 200px">
+                                                            <div class="box">
+                                                                <div class="col-lg-12" align="center">
+                                                                    <hr />
+                                                                    <h1 style="padding-bottom: 20px">
+                                                                        Your information
+                                                                    </h1>
+                                                                    <hr />
+                                                                    <hr class="star-light">*@
+                                        <form asp-controller="Account" asp-action="MyProfile">
+
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                                <div class="col-xs-8 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label asp-for="Username"></label>
+
+                                                        <input asp-for="Username" class="form-control" placeholder="ex: Zlatan10" tabindex="1" readonly>
+                                                        <span asp-validation-for="Username"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-8 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label asp-for="Name"></label>
+
+                                                        <input asp-for="Name" class="form-control" placeholder="Firstname and/or Lastname" tabindex="2">
+                                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                                <div class="col-xs-8 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label asp-for="Email"></label>
+                                                        <input asp-for="Email" placeholder="example@email.com" class="form-control" tabindex="3">
+                                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-8 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label asp-for="PhoneNumber"></label>
+
+                                                        <input asp-for="PhoneNumber" placeholder="Not required" class="form-control" tabindex="4">
+                                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                                <div class="col-xs-8 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label asp-for="YearsInPrimarySchool"></label>
+                                                        <input asp-for="YearsInPrimarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="5">
+                                                        <span asp-validation-for="YearsInPrimarySchool" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-8 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label asp-for="YearsInSecondarySchool"></label>
+
+                                                        <input asp-for="YearsInSecondarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="6">
+                                                        <span asp-validation-for="YearsInSecondarySchool" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                                <div class="col-xs-16 col-sm-8 col-md-8">
+                                                    <div class="form-group">
+                                                        <label asp-for="WorkExperience"></label>
+                                                        <textarea asp-for="WorkExperience" placeholder="Tell us about your experience" class="form-control input-lg" rows="5" tabindex="7" data-val-maxlength-max="420"></textarea>
+                                                        <span asp-validation-for="WorkExperience" class="text-danger"></span>
+                                                        <br />
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-2 col-md-2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="font-size:larger ">
+                                                <div class="col-xs-3 col-sm-2 col-md-2">
+                                                </div>
+                                                <div class="col-xs-6 col-sm-2 col-md-2">
+                                                    <input asp-for="SpeaksEnglish" data-val="false" />
+                                                    <label asp-for="SpeaksEnglish"></label>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-3 col-md-3">
+                                                    <input asp-for="SpeaksSwedish" data-val="false" />
+                                                    <label asp-for="SpeaksSwedish"></label>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-3 col-md-3">
+                                                    <input asp-for="DrivingLicense" data-val="false" />
+                                                    <label asp-for="DrivingLicense"></label>
+                                                </div>
+                                                <div class="col-xs-3 col-sm-1 col-md-1">
+                                                </div>
+                                            </div>
+                                            <br />
+                                            @*<div class="row">
+                                                    <div class="col-xs-4 col-sm-2 col-md-2">
+                                                    </div>
+                                                    <div class="col-xs-8 col-sm-4 col-md-4">
+                                                        <div class="form-group">
+                                                            <label asp-for="Password"></label>
+
+                                                            <input asp-for="Password" type="password" placeholder="Password" class="form-control" tabindex="8">
+                                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-8 col-sm-4 col-md-4">
+                                                        <div class="form-group">
+                                                            <label asp-for="ComparePassword"></label>
+
+                                                            <input asp-for="ComparePassword" type="password" placeholder="Password" class="form-control" tabindex="9">
+                                                            <span asp-validation-for="ComparePassword" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-2 col-md-2">
+                                                    </div>
+                                                </div>*@
+
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+
+                                                <div class="col-xs-16 col-sm-8 col-md-8 text-right">
+                                                    @*<a href="~/account/myprofile">*@<input type="submit" value="Update" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px">@*</a>*@
+
+                                                    <a href="~/home/index" class="btn btn-primary btn-group nutmegbtn paddbtn">Cancel</a>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                        @Component.Invoke("Applications", User.Identity.Name)
+
+
+                                    </div>
+                                </div>
                             </div>
-                            <hr class="star-light">
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-    </section>
-    <section>
-        @Component.Invoke("TalentApplications", User.Identity.Name)
-    </section>
+    @*</section>*@
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row" style="padding-bottom: 200px">
-                        <div class="box">
-                            <div class="col-lg-12" align="center">
-                                <hr />
-                                <h1 style="padding-bottom: 20px">
-                                    Your information
-                                </h1>
-                                <hr />
-                                <hr class="star-light">
-                                <form asp-controller="Account" asp-action="MyProfile">
-
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                        <div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="Username"></label>
-
-                                                <input asp-for="Username" class="form-control" placeholder="ex: Zlatan10" tabindex="1" readonly>
-                                                <span asp-validation-for="Username"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="Name"></label>
-
-                                                <input asp-for="Name" class="form-control" placeholder="Firstname and/or Lastname" tabindex="2">
-                                                <span asp-validation-for="Name" class="text-danger"></span>
-                                                <br />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                        <div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="Email"></label>
-                                                <input asp-for="Email" placeholder="example@email.com" class="form-control" tabindex="3">
-                                                <span asp-validation-for="Email" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="PhoneNumber"></label>
-
-                                                <input asp-for="PhoneNumber" placeholder="Not required" class="form-control" tabindex="4">
-                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                        <div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="YearsInPrimarySchool"></label>
-                                                <input asp-for="YearsInPrimarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="5">
-                                                <span asp-validation-for="YearsInPrimarySchool" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="YearsInSecondarySchool"></label>
-
-                                                <input asp-for="YearsInSecondarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="6">
-                                                <span asp-validation-for="YearsInSecondarySchool" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                        <div class="col-xs-16 col-sm-8 col-md-8">
-                                            <div class="form-group">
-                                                <label asp-for="WorkExperience"></label>
-                                                <textarea asp-for="WorkExperience" placeholder="Tell us about your experience" class="form-control input-lg" rows="5" tabindex="7" data-val-maxlength-max="420"></textarea>
-                                                <span asp-validation-for="WorkExperience" class="text-danger"></span>
-                                                <br />
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="font-size:larger ">
-                                        <div class="col-xs-3 col-sm-2 col-md-2">
-                                        </div>
-                                        <div class="col-xs-6 col-sm-2 col-md-2">
-                                            <input asp-for="SpeaksEnglish" data-val="false" />
-                                            <label asp-for="SpeaksEnglish"></label>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3 col-md-3">
-                                            <input asp-for="SpeaksSwedish" data-val="false" />
-                                            <label asp-for="SpeaksSwedish"></label>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3 col-md-3">
-                                            <input asp-for="DrivingLicense" data-val="false" />
-                                            <label asp-for="DrivingLicense"></label>
-                                        </div>
-                                        <div class="col-xs-3 col-sm-1 col-md-1">
-                                        </div>
-                                    </div>
-                                    <br />
-                                    @*<div class="row">
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="Password"></label>
-
-                                                    <input asp-for="Password" type="password" placeholder="Password" class="form-control" tabindex="8">
-                                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-8 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="ComparePassword"></label>
-
-                                                    <input asp-for="ComparePassword" type="password" placeholder="Password" class="form-control" tabindex="9">
-                                                    <span asp-validation-for="ComparePassword" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-2 col-md-2">
-                                            </div>
-                                        </div>*@
-
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-
-                                        <div class="col-xs-16 col-sm-8 col-md-8 text-right">
-                                            @*<a href="~/account/myprofile">*@<input type="submit" value="Update" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px">@*</a>*@
-                                           
-                                            <a href="~/home/index" class="btn btn-primary btn-group nutmegbtn paddbtn">Cancel</a>
-                                        </div>
-                                        <div class="col-xs-4 col-sm-2 col-md-2">
-                                        </div>
-                                    </div>
-
-
-                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+@*</body>*@
+@*</html>*@
 
 
 

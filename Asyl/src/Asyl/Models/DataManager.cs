@@ -50,13 +50,17 @@ namespace Asyl.Models
                 .Select(o => o.Id)
                 .Single();
 
+            var locationID = context.Location
+                .SingleOrDefault(o => o.City == viewModel.Location)
+                .Id;           
+
             context.Add(new JobAd
             {
                 FieldOfWork = viewModel.FieldOfWork,
                 Description = viewModel.Description,
                 Title = viewModel.Title,
                 DurationInWeeks = viewModel.DurationInWeeks,
-                LocationId = viewModel.LocationId,
+                LocationId = locationID,
                 CompanyId = companyId
             });
             context.SaveChanges();
@@ -74,7 +78,7 @@ namespace Asyl.Models
                       CompanyName = o.Company.CompanyName,
                       CompanyWebPage = o.Company.CompanyWebPage,
                       DurationInWeeks = o.DurationInWeeks,
-                      LocationId = o.LocationId,
+                      Location = o.Location.City,
                       Title = o.Title,
                       JobAdId = o.Id,
                       Logo = o.Company.Logo
@@ -153,7 +157,7 @@ namespace Asyl.Models
          .Select(o => o.Id)
          .Single();
 
-            var temp = context.Applications
+            return context.Applications
                 .Where(o => o.TalentId == talentId)
                 .OrderBy(o => o.JobAdId)
                 .Select(o => new MyProfileVM
@@ -163,13 +167,11 @@ namespace Asyl.Models
                     Title = o.JobAd.Title,
                     CompanyName = o.JobAd.Company.CompanyName,
                     DurationInWeeks = o.JobAd.DurationInWeeks,
-                    LocationId = o.JobAd.DurationInWeeks,
+                    Location = o.JobAd.Location.City,
                     Description = o.JobAd.Description,
                     FieldOfWork = o.JobAd.FieldOfWork
                 })
                    .ToArray();
-
-            return temp;
         }
 
         public MyProfileVM ViewMyProfile(string talentUsername) // hämtar cv för en viss talang. avsedd för talangen.
@@ -212,9 +214,9 @@ namespace Asyl.Models
                 talent.YearsInPrimarySchool = viewModel.YearsInPrimarySchool;
                 talent.YearsInSecondarySchool = viewModel.YearsInSecondarySchool;
 
-            }
-            context.Talents.Update(talent);
-            context.SaveChanges();
+            }           
+                context.Talents.Update(talent);            
+                context.SaveChanges();    
 
         }
 
@@ -267,6 +269,11 @@ namespace Asyl.Models
             var company = context.Company
                 .Where(o => o.CompanyUsername == companyUsername)
                 .FirstOrDefault<Company>();
+        public string[] GetAllCities()
+        {
+            return context.Location
+                .Select(o => o.City)
+                .ToArray();
 
             if (company != null)
             {
@@ -277,10 +284,10 @@ namespace Asyl.Models
                 company.CorporateIdentityNumber = viewModel.CorporateIdentityNumber;
                 company.Email = viewModel.Email;
 
-            }
+        }
             context.Company.Update(company);
             context.SaveChanges();
 
-        }
     }
+}
 }
