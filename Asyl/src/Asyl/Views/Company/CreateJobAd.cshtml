@@ -68,6 +68,7 @@
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
@@ -83,6 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
@@ -94,28 +96,25 @@
                                             <span asp-validation-for="DurationInWeeks"></span>
                                         </div>
                                     </div>
-                                    @*<div class="col-xs-8 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <label asp-for="Location"></label>
+                                    <div class="col-xs-8 col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Location"></label>
+                                            <select asp-for="Location" class="form-control" id="selectLocation"></select>
+                                            <span asp-validation-for="Location"></span>
 
-                                                <input asp-for="Location" class="form-control" placeholder="Where is the position located" tabindex="5" />
-                                                <span asp-validation-for="Location"></span>
-                                            </div>
-                                        </div>*@
-                                    <label asp-for="Location"></label>
-                                    <select asp-for="Location" class="form-control" id="selectLocation"></select>
-                                    <span asp-validation-for="Location"></span>
-
-
+                                
+                                        </div>
+                                    </div>
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
 
-                                    <div class="col-xs-16 col-sm-8 col-md-8 text-right">
-                                        <a href="~/company/createjobad"><input type="submit" value="Create" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="6" style="padding-right:25px"></a>
+                                    <div class="col-xs-16 col-sm-8 col-md-8 text-center">
+                                        <a href="~/company/createjobad" style="padding-right:25px"><input type="submit" value="Create" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="6" style="padding-right:25px"></a>
 
                                         <a href="~/company/index" class="btn btn-primary btn-group nutmegbtn paddbtn">Cancel</a>
                                     </div>
