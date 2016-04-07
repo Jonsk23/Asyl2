@@ -18,7 +18,7 @@ namespace Asyl.ViewModels
 
         [Required]
         [Range(1,40)]
-        public int LocationId { get; set; }
+        public string LocationId { get; set; }
         [Required]
         [Range(1,104)]
         public int DurationInWeeks { get; set; }
