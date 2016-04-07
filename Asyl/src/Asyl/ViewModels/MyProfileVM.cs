@@ -15,6 +15,11 @@ namespace Asyl.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ComparePassword { get; set; }
+
         public string Name { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

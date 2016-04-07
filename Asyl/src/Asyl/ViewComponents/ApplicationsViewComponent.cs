@@ -11,18 +11,15 @@ namespace Asyl.ViewComponents
 {
     public class ApplicationsViewComponent: ViewComponent
     {
-        public ApplicationsViewComponent(DataManager datamanager, UserManager<IdentityUser> userManager)
+        public DataManager datamanager;
+        
+        public ApplicationsViewComponent(AzureDbContext context)
         {
-            this.datamanager = datamanager;
-            this.userManager = userManager;
+            datamanager = new DataManager(context);
         }
 
-        public DataManager datamanager;
-        UserManager<IdentityUser> userManager;
-
         public IViewComponentResult Invoke(string Username)
-        {
-            
+        {            
             var viewModel = datamanager.ViewMyApplications(Username);
             return View(viewModel);
         }
