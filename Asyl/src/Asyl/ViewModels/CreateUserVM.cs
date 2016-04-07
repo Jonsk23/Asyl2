@@ -20,7 +20,7 @@ namespace Asyl.ViewModels
         [Required(ErrorMessage = "E-mail is required")]
         [EmailAddress(ErrorMessage = "E-mail format is invalid")]
         public string Email { get; set; }
-        [Display(Name = "Phone number / #")]
+        [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
         [Display(Name = "School experience")]
         [Range(0,12)]
@@ -30,7 +30,7 @@ namespace Asyl.ViewModels
         public int YearsInSecondarySchool { get; set; }
         [Required]
         [StringLength(420)]
-        [Display(Name = "Work Experiance or other merits")]
+        [Display(Name = "Work Experiance and/or other merits")]
         public string WorkExperience { get; set; }
         [Display(Name = "Swedish")]
         public bool SpeaksSwedish { get; set; }
@@ -45,6 +45,5 @@ namespace Asyl.ViewModels
         public string ComparePassword { get; set; }
         [Range(typeof(bool), "true", "true", ErrorMessage = "You have to accept our terms and conditions")]
         public bool AcceptTerms { get; set; }
-
     }
 }
