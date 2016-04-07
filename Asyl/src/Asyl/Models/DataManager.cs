@@ -52,7 +52,7 @@ namespace Asyl.Models
 
             var locationID = context.Location
                 .SingleOrDefault(o => o.City == viewModel.Location)
-                .Id;           
+                .Id;
 
             context.Add(new JobAd
             {
@@ -214,46 +214,46 @@ namespace Asyl.Models
                 talent.YearsInPrimarySchool = viewModel.YearsInPrimarySchool;
                 talent.YearsInSecondarySchool = viewModel.YearsInSecondarySchool;
 
-            }           
-                context.Talents.Update(talent);            
-                context.SaveChanges();    
+            }
+            context.Talents.Update(talent);
+            context.SaveChanges();
 
         }
 
         //FÖRETAG NEDAN
 
-    public MyCompanyProfileVM ViewMyCompanyProfile(string companyUsername) // listar företagets information
-    {
-        return context.Company
-            .Where(o => o.CompanyUsername == companyUsername)
-            .Select(o => new MyCompanyProfileVM
-            {
-                Id = o.Id,
-                Logo = o.Logo,
-                CompanyUsername = o.CompanyUsername,
-                CompanyName = o.CompanyName,
-                CorporateIdentityNumber = o.CorporateIdentityNumber,
-                ContactPerson = o.ContactPerson,
-                Email = o.Email,
-                CompanyWebPage = o.CompanyWebPage         
-            })
-               .Single();
-    }
-    public MyCompanyProfileVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
-    {
+        public MyCompanyProfileVM ViewMyCompanyProfile(string companyUsername) // listar företagets information
+        {
+            return context.Company
+                .Where(o => o.CompanyUsername == companyUsername)
+                .Select(o => new MyCompanyProfileVM
+                {
+                    Id = o.Id,
+                    Logo = o.Logo,
+                    CompanyUsername = o.CompanyUsername,
+                    CompanyName = o.CompanyName,
+                    CorporateIdentityNumber = o.CorporateIdentityNumber,
+                    ContactPerson = o.ContactPerson,
+                    Email = o.Email,
+                    CompanyWebPage = o.CompanyWebPage
+                })
+                   .Single();
+        }
+        public MyCompanyProfileVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+        {
 
-        var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
-            .Where(o => o.CompanyUsername == companyUsername)
-            .Select(o => o.Id)
-            .Single();
+            var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
+                .Where(o => o.CompanyUsername == companyUsername)
+                .Select(o => o.Id)
+                .Single();
 
-        return context.JobAd
-            .Where(o => o.CompanyId == companyId)
-           .OrderBy(o => o.Id)
-             .Select(o => new MyCompanyProfileVM
-             {
-                 JobAdId= o.Id,
-                 ApplicationCount = o.Applications.Count,
+            return context.JobAd
+                .Where(o => o.CompanyId == companyId)
+               .OrderBy(o => o.Id)
+                 .Select(o => new MyCompanyProfileVM
+                 {
+                     JobAdId = o.Id,
+                     ApplicationCount = o.Applications.Count,
                  //CompanyId = o.CompanyId,
                  //Description = o.Description,
                  //FieldOfWork = o.FieldOfWork,
@@ -261,19 +261,14 @@ namespace Asyl.Models
                  //DurationInWeeks = o.DurationInWeeks,
                  //LocationId = o.LocationId
              })
-             .ToArray();
-    }
+                 .ToArray();
+        }
         public void UpdateCompanyProfile(string companyUsername, MyCompanyProfileVM viewModel)
         {
 
             var company = context.Company
                 .Where(o => o.CompanyUsername == companyUsername)
                 .FirstOrDefault<Company>();
-        public string[] GetAllCities()
-        {
-            return context.Location
-                .Select(o => o.City)
-                .ToArray();
 
             if (company != null)
             {
@@ -284,10 +279,16 @@ namespace Asyl.Models
                 company.CorporateIdentityNumber = viewModel.CorporateIdentityNumber;
                 company.Email = viewModel.Email;
 
-        }
+            }
             context.Company.Update(company);
             context.SaveChanges();
 
+        }
+        public string[] GetAllCities()
+        {
+            return context.Location
+                .Select(o => o.City)
+                .ToArray();
+        }
     }
-}
 }
