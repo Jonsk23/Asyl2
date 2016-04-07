@@ -158,6 +158,15 @@ namespace Asyl.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult MyProfile(MyProfileVM viewModel)
+        {
+            dataManager = new DataManager(context);
+            dataManager.UpdateProfile(User.Identity.Name, viewModel);
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
+
 
 
     }
