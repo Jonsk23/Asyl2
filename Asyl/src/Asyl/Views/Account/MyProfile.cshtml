@@ -106,6 +106,7 @@
                                                 <div class="col-xs-4 col-sm-2 col-md-2">
                                                 </div>
                                             </div>
+                                            <br />
 
                                             <div class="row">
                                                 <div class="col-xs-4 col-sm-2 col-md-2">
@@ -128,6 +129,7 @@
                                                 <div class="col-xs-4 col-sm-2 col-md-2">
                                                 </div>
                                             </div>
+                                            <br />
 
                                             <div class="row">
                                                 <div class="col-xs-4 col-sm-2 col-md-2">
@@ -189,8 +191,8 @@
                                                 <div class="col-xs-4 col-sm-2 col-md-2">
                                                 </div>
 
-                                                <div class="col-xs-16 col-sm-8 col-md-8 text-right">
-                                                    @*<a href="~/account/myprofile">*@<input type="submit" value="Update" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px">@*</a>*@
+                                                <div class="col-xs-16 col-sm-8 col-md-8 text-center">
+                                                    <a href="~/account/myprofile" style="padding-right:25px"><input type="submit" value="Update" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px"></a>
 
                                                     <a href="~/home/index" class="btn btn-primary btn-group nutmegbtn paddbtn">Cancel</a>
                                                 </div>
@@ -198,7 +200,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        @Component.Invoke("Applications", User.Identity.Name)
+                                        @Component.Invoke("TalentApplications", User.Identity.Name)
 
 
                                     </div>
