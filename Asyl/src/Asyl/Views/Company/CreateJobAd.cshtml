@@ -7,11 +7,22 @@
 }
 
 <script>
-    function presentLocations() {
-        $.post("/Home/GetCities", function (result) {            
-            alert(result);
+    $(document).ready(function () {
+        $.post("/Home/GetCities", function (result) {
+
+            //var res = result.split(',');
+            //alert(res);
+
+            for (var i = 0; i < result.length; i++) {
+                var value = result[i];
+                $('#selectLocation').append($("<option></option>")
+                    .attr("value", value)
+                    .text(value));
+
+                //$('#selectLocation').append("<option>" + result[i] + "</option>");
+            }
         })
-    }
+    });
 
 </script>
 
@@ -64,7 +75,7 @@
                                         <div class="form-group">
                                             <label asp-for="Description"></label>
 
-                                            <textarea asp-for="Description" class="form-control input-lg" placeholder="Describe the position here..." tabindex="3"rows="5" data-val-maxlength-max="420"></textarea>
+                                            <textarea asp-for="Description" class="form-control input-lg" placeholder="Describe the position here..." tabindex="3" rows="5" data-val-maxlength-max="420"></textarea>
                                             <span asp-validation-for="Description"></span>
                                             <br />
                                         </div>
@@ -79,26 +90,23 @@
                                         <div class="form-group">
                                             <label asp-for="DurationInWeeks"></label>
 
-                                            <input asp-for="DurationInWeeks" class="form-control" placeholder="ex: 5 (will show as 5 weeks)" tabindex="4"/>
+                                            <input asp-for="DurationInWeeks" class="form-control" placeholder="ex: 5 (will show as 5 weeks)" tabindex="4" />
                                             <span asp-validation-for="DurationInWeeks"></span>
                                         </div>
                                     </div>
                                     @*<div class="col-xs-8 col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label asp-for="Location"></label>
+                                            <div class="form-group">
+                                                <label asp-for="Location"></label>
 
-                                            <input asp-for="Location" class="form-control" placeholder="Where is the position located" tabindex="5" />
-                                            <span asp-validation-for="Location"></span>
-                                        </div>
-                                    </div>*@
+                                                <input asp-for="Location" class="form-control" placeholder="Where is the position located" tabindex="5" />
+                                                <span asp-validation-for="Location"></span>
+                                            </div>
+                                        </div>*@
                                     <label asp-for="Location"></label>
-                                             <select asp-for="Location" class="form-control" id="selectLocation" onclick="presentLocations()">
-                                                <option>1</option>
-                                                
-                                                 </select>
+                                    <select asp-for="Location" class="form-control" id="selectLocation"></select>
                                     <span asp-validation-for="Location"></span>
-                                                                  
-                                        
+
+
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
