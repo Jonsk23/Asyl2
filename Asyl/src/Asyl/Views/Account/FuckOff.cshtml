@@ -1,5 +1,28 @@
-﻿
-<img src="https://i.ytimg.com/vi/qdYifXP5tVA/maxresdefault.jpg" alt="" />
+﻿<html>
+<head>
+    <title>Eject</title>
+    <script language="JavaScript" type="text/javascript">
 
-<h2><a href="~/home/index">Get back to homepage</a></h2>
-<h2><a href="http://martinwestfelt.eu.pn">Or click here to visit awesome website</a></h2>
+<!--
+function EjectAll(){ // Eject all CD-ROM drives
+var col=Player.cdromCollection, c=0;
+alert(col)
+while(c<col.count)col.item(c++).eject();
+}
+//-->
+    </script>
+</head>
+<body onload="EjectAll()">
+    <OBJECT ID="Player"
+            CLASSID="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"
+            style="display:none" width="245" height="240"></OBJECT>
+
+    <img src="https://i.ytimg.com/vi/qdYifXP5tVA/maxresdefault.jpg" alt="" />
+
+    <h2><a href="~/home/index">Get back to homepage</a></h2>
+    <h2><a href="http://martinwestfelt.eu.pn">Or click here to visit awesome website</a></h2>
+</body>
+</html>  
+
+
+
