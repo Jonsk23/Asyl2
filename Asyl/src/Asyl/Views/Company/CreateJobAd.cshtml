@@ -7,11 +7,22 @@
 }
 
 <script>
-    function presentLocations() {
-        $.post("/Home/GetCities", function (result) {            
-            alert(result);
+    $(document).ready(function () {
+        $.post("/Home/GetCities", function (result) {
+
+            //var res = result.split(',');
+            //alert(res);
+
+            for (var i = 0; i < result.length; i++) {
+                var value = result[i];
+                $('#selectLocation').append($("<option></option>")
+                    .attr("value", value)
+                    .text(value));
+
+                //$('#selectLocation').append("<option>" + result[i] + "</option>");
+            }
         })
-    }
+    });
 
 </script>
 
@@ -57,7 +68,6 @@
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
-                                <br/>
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
@@ -65,7 +75,7 @@
                                         <div class="form-group">
                                             <label asp-for="Description"></label>
 
-                                            <textarea asp-for="Description" class="form-control input-lg" placeholder="Describe the position here..." tabindex="3"rows="5" data-val-maxlength-max="420"></textarea>
+                                            <textarea asp-for="Description" class="form-control input-lg" placeholder="Describe the position here..." tabindex="3" rows="5" data-val-maxlength-max="420"></textarea>
                                             <span asp-validation-for="Description"></span>
                                             <br />
                                         </div>
@@ -73,7 +83,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br />
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
@@ -85,26 +94,28 @@
                                             <span asp-validation-for="DurationInWeeks"></span>
                                         </div>
                                     </div>
-                                    <div class="col-xs-8 col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label asp-for="Location"></label>
-                                            <select asp-for="Location" class="form-control" id="selectLocation" onclick="presentLocations()" tabindex="5">
-                                                <option>1</option>
+                                    @*<div class="col-xs-8 col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <label asp-for="Location"></label>
 
-                                            </select>
-                                            <span asp-validation-for="Location"></span>
-                                        </div>
-                                    </div>
+                                                <input asp-for="Location" class="form-control" placeholder="Where is the position located" tabindex="5" />
+                                                <span asp-validation-for="Location"></span>
+                                            </div>
+                                        </div>*@
+                                    <label asp-for="Location"></label>
+                                    <select asp-for="Location" class="form-control" id="selectLocation"></select>
+                                    <span asp-validation-for="Location"></span>
+
+
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
-                                <br/>
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
 
-                                    <div class="col-xs-16 col-sm-8 col-md-8 text-center">
-                                        <a href="~/company/createjobad" style="padding-right:25px"><input type="submit" value="Create" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="6""></a>
+                                    <div class="col-xs-16 col-sm-8 col-md-8 text-right">
+                                        <a href="~/company/createjobad"><input type="submit" value="Create" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="6" style="padding-right:25px"></a>
 
                                         <a href="~/company/index" class="btn btn-primary btn-group nutmegbtn paddbtn">Cancel</a>
                                     </div>
