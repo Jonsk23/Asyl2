@@ -239,7 +239,7 @@ namespace Asyl.Models
                 })
                    .Single();
         }
-        public MyCompanyProfileVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+        public CompanyExistingAdsVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
         {
 
             var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
@@ -250,9 +250,9 @@ namespace Asyl.Models
             return context.JobAd
                 .Where(o => o.CompanyId == companyId)
                .OrderBy(o => o.Id)
-                 .Select(o => new MyCompanyProfileVM
+                 .Select(o => new CompanyExistingAdsVM
                  {
-                     JobAdId = o.Id,
+                     Id = o.Id,
                      ApplicationCount = o.Applications.Count,
                  //CompanyId = o.CompanyId,
                  //Description = o.Description,
