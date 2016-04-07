@@ -52,7 +52,7 @@
             //$('#companyLogo').attr('src', CompanyLogo); // byter image src
 
             $('#portfolioModal3').modal('show');
-            //$('#episkmodal').modal('show');
+            //$('#episkmodal2').modal('show');
         }
 
     </script>
@@ -463,6 +463,98 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <!-- epic 2 -->
+    <!-- Lite modallek, nu kör vi-->
+
+    <div class="modal fade" id="episkmodal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="modal-body">
+                            <h2 id="title"></h2>
+                            <hr class="star-primary">
+                            <h4 id="companyName"></h4>
+                            <div id="jobDescription"></div>
+                            <p hidden id="jobApplicationId"></p>
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Duration:</div>
+                                    <div class="panel-body" id="durationInWeeks"> weeks
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">What you do at Welcome Talent</div>
+                                    <div class="panel-body">
+                                        Fa fa fa<br />
+                                        Fi fi fi<br />
+                                        Fu fu fu
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Why you should spread the word</div>
+                                    <div class="panel-body">
+                                        Fa fa fa<br />
+                                        Fi fi fi<br />
+                                        Fu fu fu
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+
+
+
+                        <ul class="list-inline item-details">
+                            <li>
+                                <strong>
+                                    <p </p>
+                                </strong>
+                            </li>
+                            <li>
+                                Location:
+                                <strong>
+                                    <p id="locationId"></p>
+                                </strong>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+                            if (await userManager.IsInRoleAsync(user, "talent user"))
+                            {
+
+                                <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
+                                        <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
+                            }
+                            else
+                            {
+                                <a href="~/company/createjobad">Why you look for jobs? U are company, add some job ads instead... Click here!</a><br /><br />
+                            }
+                        }
+                        else
+                        {
+                            <a href="~/account/loginpage">You must login to be able to apply for this job, click here to log in</a><br /><br />
+                        }
+                        <button type="button" class="btn btn-danger btn-group nutmegbtn" data-dismiss="modal"> Close</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
 </body>
 </html>
