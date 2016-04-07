@@ -53,7 +53,7 @@ namespace Asyl.Controllers
             var isInrole = await userManager.IsInRoleAsync(user, "company user");            
             if (isInrole) 
             {
-                return RedirectToAction(nameof(CompanyController.Index), "Company");
+                return RedirectToAction(nameof(CompanyController.CompanyProfile), "Company");
             }
             else
             {
@@ -138,7 +138,7 @@ namespace Asyl.Controllers
 
             dataManager = new DataManager(context);
             dataManager.CreateCompany(viewModel);
-            return RedirectToAction(nameof(CompanyController.Index), "Company");
+            return RedirectToAction(nameof(CompanyController.CompanyProfile), "Company");
         }
 
         [Authorize(Roles = "talent user")]  /*<-- denna ska vara på.ska bara vara synlig för privata användare.*/

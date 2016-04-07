@@ -1,0 +1,49 @@
+﻿@using Asyl.ViewModels
+@model MyCompanyProfileVM[]
+@addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
+
+@section script{
+    <script src="~/scripts/jquery.validate.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+
+<div class="row">
+    <div class="col-xs-4 col-sm-2 col-md-2">
+    </div>
+    <div class="col-xs-8 col-sm-4 col-md-4">
+        <div class="form-group">
+
+        </div>
+    </div>
+    <div class="col-xs-8 col-sm-4 col-md-4">
+        <div class="form-group">
+
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-2 col-md-2">
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="container">
+        <p>Your active job ads</p>
+
+        <div class="list-group">
+            @foreach (var item in Model)
+            {
+                <a asp-controller="Company" asp-action="Applications" asp-route-id="@item.Id" class="list-group-item"><b>Job ID:</b> @item.Id <b>Job Title:</b> @item.Title <b>No of applications:</b> @item.ApplicationCount</a>
+            }
+        </div>
+        <a asp-controller="Company" asp-action="CreateJobAd">Create a new job ad</a>
+    </div>
+
+
+</div>
+
+

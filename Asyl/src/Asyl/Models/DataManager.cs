@@ -132,36 +132,6 @@ namespace Asyl.Models
                   .ToArray();
         }
 
-
-        public CompanyExistingAdsVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
-
-        {
-
-            var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
-                .Where(o => o.CompanyUsername == companyUsername)
-                .Select(o => o.Id)
-                .Single();
-
-            return context.JobAd
-                .Where(o => o.CompanyId == companyId)
-               .OrderBy(o => o.Id)
-                 .Select(o => new CompanyExistingAdsVM
-                 {
-                     Id = o.Id,
-                     ApplicationCount = o.Applications.Count,
-                     CompanyId = o.CompanyId,
-                     Description = o.Description,
-                     FieldOfWork = o.FieldOfWork,
-                     Title = o.Title,
-                     DurationInWeeks = o.DurationInWeeks,
-                     Location = o.Location.City
-                 })
-                 .ToArray();
-
-
-
-        }
-
         public void SaveApplication(string talentUsername, string coverLetter, int jobAdId)
         {
             var talentId = context.Talents  //Hämtar talangID baserat på inloggads anv.namn
@@ -204,7 +174,7 @@ namespace Asyl.Models
                    .ToArray();
         }
 
-        public MyProfileVM ViewMyProfile(string talentUsername) // hämtar alla ansökningar för en viss talang. avsedd för talangen.
+        public MyProfileVM ViewMyProfile(string talentUsername) // hämtar cv för en viss talang. avsedd för talangen.
         {
             return context.Talents
                 .Where(o => o.Username == talentUsername)
@@ -248,18 +218,76 @@ namespace Asyl.Models
                 context.Talents.Update(talent);            
                 context.SaveChanges();    
 
-
-
-
         }
 
+        //FÖRETAG NEDAN
+
+    public MyCompanyProfileVM ViewMyCompanyProfile(string companyUsername) // listar företagets information
+    {
+        return context.Company
+            .Where(o => o.CompanyUsername == companyUsername)
+            .Select(o => new MyCompanyProfileVM
+            {
+                Id = o.Id,
+                Logo = o.Logo,
+                CompanyUsername = o.CompanyUsername,
+                CompanyName = o.CompanyName,
+                CorporateIdentityNumber = o.CorporateIdentityNumber,
+                ContactPerson = o.ContactPerson,
+                Email = o.Email,
+                CompanyWebPage = o.CompanyWebPage         
+            })
+               .Single();
+    }
+    public MyCompanyProfileVM[] ListAllJobsAdsForCompany(string companyUsername) //Listar alla jobbannonser som ett företag har lagt ut
+    {
+
+        var companyId = context.Company  //Hämtar Företags ID baserat på inloggat företags anv.namn
+            .Where(o => o.CompanyUsername == companyUsername)
+            .Select(o => o.Id)
+            .Single();
+
+        return context.JobAd
+            .Where(o => o.CompanyId == companyId)
+           .OrderBy(o => o.Id)
+             .Select(o => new MyCompanyProfileVM
+             {
+                 JobAdId= o.Id,
+                 ApplicationCount = o.Applications.Count,
+                 //CompanyId = o.CompanyId,
+                 //Description = o.Description,
+                 //FieldOfWork = o.FieldOfWork,
+                 Title = o.Title
+                 //DurationInWeeks = o.DurationInWeeks,
+                 //LocationId = o.LocationId
+             })
+             .ToArray();
+    }
+        public void UpdateCompanyProfile(string companyUsername, MyCompanyProfileVM viewModel)
+        {
+
+            var company = context.Company
+                .Where(o => o.CompanyUsername == companyUsername)
+                .FirstOrDefault<Company>();
         public string[] GetAllCities()
         {
             return context.Location
                 .Select(o => o.City)
                 .ToArray();
 
+            if (company != null)
+            {
+                company.CompanyUsername = viewModel.CompanyUsername;
+                company.CompanyName = viewModel.CompanyName;
+                company.ContactPerson = viewModel.ContactPerson;
+                company.CompanyWebPage = viewModel.CompanyWebPage;
+                company.CorporateIdentityNumber = viewModel.CorporateIdentityNumber;
+                company.Email = viewModel.Email;
+
         }
+            context.Company.Update(company);
+            context.SaveChanges();
 
     }
+}
 }
