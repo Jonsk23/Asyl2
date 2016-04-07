@@ -74,5 +74,12 @@ namespace Asyl.Controllers
             dataManager.UpdateCompanyProfile(User.Identity.Name, viewModel);
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
+        public IActionResult Applications(int jobid)
+        {
+            dataManager = new DataManager(context);
+            var model = dataManager.ListAllApplication(jobid);
+            return View(model);
+        }
     }
 }
