@@ -40,6 +40,13 @@ namespace Asyl.Controllers
             return Json(model);
         }
 
+        public IActionResult GetCities()
+        {
+            var dataManager = new DataManager(context);
+            var model = dataManager.GetAllCities();
+            return Json(model);   
+        }
+
 
     }
 }

@@ -12,6 +12,7 @@ namespace Asyl.Models
         public DbSet<Company> Company { get; set; }
         public DbSet<JobAd> JobAd { get; set; }
         public DbSet<Talent> Talents { get; set; }
+        public DbSet<Location> Location { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -21,7 +21,7 @@ namespace Asyl.ViewModels
 
         [Required]
         [Display(Name = "Location")]
-        public int LocationId { get; set; }
+        public string Location { get; set; }
         [Required]
         [Range(1,104)]
         [Display(Name = "Duration")]

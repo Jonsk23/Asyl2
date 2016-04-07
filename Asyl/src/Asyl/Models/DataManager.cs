@@ -50,13 +50,17 @@ namespace Asyl.Models
                 .Select(o => o.Id)
                 .Single();
 
+            var locationID = context.Location
+                .SingleOrDefault(o => o.City == viewModel.Location)
+                .Id;           
+
             context.Add(new JobAd
             {
                 FieldOfWork = viewModel.FieldOfWork,
                 Description = viewModel.Description,
                 Title = viewModel.Title,
                 DurationInWeeks = viewModel.DurationInWeeks,
-                LocationId = viewModel.LocationId,
+                LocationId = locationID,
                 CompanyId = companyId
             });
             context.SaveChanges();
@@ -246,6 +250,14 @@ namespace Asyl.Models
 
 
 
+
+        }
+
+        public string[] GetAllCities()
+        {
+            return context.Location
+                .Select(o => o.City)
+                .ToArray();
 
         }
 
