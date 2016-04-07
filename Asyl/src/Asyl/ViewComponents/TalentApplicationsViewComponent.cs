@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Asyl.ViewComponents
 {
-    public class ApplicationsViewComponent: ViewComponent
+    public class TalentApplicationsViewComponent: ViewComponent
     {
         public DataManager datamanager;
         
-        public ApplicationsViewComponent(AzureDbContext context)
+        public TalentApplicationsViewComponent(AzureDbContext context)
         {
             datamanager = new DataManager(context);
         }

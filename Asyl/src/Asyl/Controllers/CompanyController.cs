@@ -35,17 +35,6 @@ namespace Asyl.Controllers
         }
 
         [Authorize(Roles = "company user")]
-        public IActionResult Index()
-        {
-            dataManager = new DataManager(context);
-            var model = dataManager.ListAllJobsAdsForCompany(User.Identity.Name);
-            //var model = dataManager.ListAllJobsAdsForCompany("Doktorn");
-            return View(model);
-
-            //return View();
-        }
-
-        [Authorize(Roles = "company user")]
         public IActionResult CreateJobAd()
         {
             return View();
@@ -65,17 +54,25 @@ namespace Asyl.Controllers
             dataManager.CreateJobAd(viewModel, userName);
             //dataManager.CreateJobAd(viewModel, "Doktorn");
 
-            return RedirectToAction(nameof (CompanyController.Index), "Company");
+            return RedirectToAction(nameof (CompanyController.CompanyProfile), "Company");
         }
 
         [Authorize(Roles = "company user")]
-        public IActionResult Applications(int id)
+        public IActionResult CompanyProfile()
         {
-
-            dataManager = new DataManager(context);           
-            var model = dataManager.ListAllApplication(id);
+            dataManager = new DataManager(context);
+            var model = dataManager.ViewMyCompanyProfile(User.Identity.Name);
+            //var model = dataManager.ListAllJobsAdsForCompany("Doktorn");
             return View(model);
 
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCompanyProfile(MyCompanyProfileVM viewModel)
+        {
+            dataManager = new DataManager(context);
+            dataManager.UpdateCompanyProfile(User.Identity.Name, viewModel);
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }

@@ -1,0 +1,143 @@
+﻿@using Asyl.ViewModels
+@model MyCompanyProfileVM
+@addTagHelper "*,Microsoft.AspNet.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Views/Shared/_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row" style="padding-bottom: 200px">
+                        <div class="box">
+                            <div class="col-lg-12" align="center">
+                                <hr />
+                                <h1 style="padding-bottom: 20px">
+                                    Your company information                             
+                                </h1>
+                                <hr />
+                                <hr class="star-light">
+
+                                <div class="text-center">
+                                    <form asp-controller="Admin" asp-action="AddUser">
+
+                                        <div class="row">
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="CompanyUsername"></label>
+
+                                                    <input asp-for="CompanyUsername" class="form-control" placeholder="ex: Zlatan10" tabindex="1">
+                                                    <span asp-validation-for="CompanyUsername"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    @*<label asp-for="Password"></label>
+
+                                                    <input asp-for="Password" class="form-control" placeholder="ex: Abc_123" tabindex="2">
+                                                    <span asp-validation-for="Password" class="text-danger"></span>*@
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Email"></label>
+
+                                                    <input asp-for="Email" class="form-control" placeholder="ex: Zlatan10" tabindex="3">
+                                                    <span asp-validation-for="Email"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="CompanyName"></label>
+
+                                                    <input asp-for="CompanyName" class="form-control" placeholder="ex: Abc_123" tabindex="4">
+                                                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="CorporateIdentityNumber"></label>
+
+                                                    <input asp-for="CorporateIdentityNumber" class="form-control" placeholder="" tabindex="5">
+                                                    <span asp-validation-for="CorporateIdentityNumber"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="CompanyWebPage"></label>
+
+                                                    <input asp-for="CompanyWebPage" class="form-control" placeholder="http://www.yourhomepage.com" tabindex="6">
+                                                    <span asp-validation-for="CompanyWebPage" class="text-danger"></span>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ContactPerson"></label>
+
+                                                    <input asp-for="ContactPerson" class="form-control" placeholder="ex: Bill Gates" tabindex="7">
+                                                    <span asp-validation-for="ContactPerson" class="text-danger"></span>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-4 col-md-4">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                            <div class="col-xs-16 col-sm-8 col-md-8 text-right">
+                                                <a href="~/customers/login"><input type="submit" value="Create" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10"></a>
+
+                                                <a href="~/account/loginpage" class="btn btn-primary btn-group nutmegbtn paddbtn">Cancel</a>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-2 col-md-2">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        @Component.Invoke("CompanyApplications", User.Identity.Name)
+    </section>
+</body>
+</html>
+
