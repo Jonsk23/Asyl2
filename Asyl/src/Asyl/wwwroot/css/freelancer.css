@@ -471,6 +471,43 @@ input[type="checkbox"] {
     padding-left: 25px;
 
 }
-.nutmodalcolor{
-    color:
+.nutpic {
+    /*margin: 0;
+ background-image: url(http://blogg.academicwork.se/wp-content/uploads/2015/03/johan_skarborg.jpg);
+ background-size: 1920px 1440px;
+ background-repeat:no-repeat;
+ display:flex;
+ font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+
+    background-image: url('../img/skog.jpg');
+
+    .container {
+    height: 300px;
+    width: 240px;
+    background-color: red;
+    float: left;
+    overflow: hidden;
+    margin: 20px;
+}
+.container img {
+    display: block;
+}
+
+.portrait img {
+    width: 100%;
+}
+.landscape img {
+    height: 100%;
+}
+
+    /*background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    overflow:hidden; 
+  max-width: 100%;
+  max-height: 100%;*/
 }
