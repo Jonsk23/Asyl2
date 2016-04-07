@@ -20,6 +20,7 @@ namespace Asyl.Models
             modelBuilder.Entity<Company>().ToTable("Company");
             modelBuilder.Entity<JobAd>().ToTable("JobAd");
             modelBuilder.Entity<Talent>().ToTable("Talents");
+            modelBuilder.Entity<Location>().ToTable("Location");
         }
     }
 }

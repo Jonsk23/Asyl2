@@ -18,6 +18,7 @@ namespace Asyl.ViewModels
         [Required]
         [Display(Name = "Title")]
         public string Title { get; set; }
+
         [Required]
         [Display(Name = "Location")]
         public int LocationId { get; set; }
