@@ -18,10 +18,10 @@ namespace Asyl.ViewModels
         public string Logo { get; set; }
         #endregion
 
-        #region My Ads
-        public int JobAdId { get; set; }
-        public string Title { get; set; }
-        public int ApplicationCount { get; set; }
-        #endregion
+        //#region My Ads
+        //public int JobAdId { get; set; }
+        //public string Title { get; set; }
+        //public int ApplicationCount { get; set; }
+        //#endregion
     }
 }
