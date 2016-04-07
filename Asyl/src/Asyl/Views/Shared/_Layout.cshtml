@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity.EntityFramework;
 @using Microsoft.AspNet.Identity;
-@inject UserManager<IdentityUser> userManager 
+@inject UserManager<IdentityUser> userManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,7 @@
                 <a class="navbar-brand" href="#page-top"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="hidden">
                         <a href="#page-top"></a>
@@ -88,34 +88,36 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            @{
-                                if (User.Identity.IsAuthenticated)
-                                {
-                                    var user = await userManager.FindByNameAsync(User.Identity.Name);
+                        @{if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:lightseagreen"></span><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
 
-                                    if (await userManager.IsInRoleAsync(user, "company user"))
-                                    {
-                                        <li><a href="~/company/companyprofile">My company profile</a></li>
-                                        <li><a href="~/account/Logout">Log out</a></li>
-                                    }
-                                    else
+                                    @{var user = await userManager.FindByNameAsync(User.Identity.Name);
 
-                                    {
-                                        <li><a href="~/account/myprofile">My Profile</a></li>
-                                        <li><a href="~/account/Logout">Log out</a></li>
-                                    }
-                                }
-                                else
-                                {
+                                        if (await userManager.IsInRoleAsync(user, "company user"))
+                                        {
+                                    <li><a href="~/company/companyprofile">My company profile</a></li>
+                                    <li><a href="~/account/Logout">Log out</a></li>
+                                        }
+                                        else
+                                        {
+                                    <li><a href="~/account/myprofile">My Profile</a></li>
+                                    <li><a href="~/account/Logout">Log out</a></li>
+                                            }
+                                        }
+                                </ul>
+                            }
+                            else
+                            {
+                                <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
                                     <li><a href="~/account/registrationpage">Register</a></li>
                                     <li><a href="~/account/loginpage">Login</a></li>
-
-                                }
+                                </ul>
                             }
-                        </ul>
-                    </li>                    
+                        }
+                    </li>
                 </ul>
                 <!-- /.navbar-collapse -->
             </div>
@@ -222,7 +224,6 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
     <!--Modal Worklife In Sweden -->
 
     <div class="modal fade" id="worklifemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -260,10 +261,10 @@
                         </div>
                     </div>
                 </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                </div><!-- /.modal-content -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
