@@ -46,7 +46,7 @@ namespace Asyl
                 .UseCookieAuthentication(o =>
             {
                 o.AutomaticChallenge = true;
-                o.LoginPath = new PathString("/Members/Login/");
+                o.LoginPath = new PathString("/account/fuckoff/");
             });
                        
             app.UseMvcWithDefaultRoute();

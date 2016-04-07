@@ -166,6 +166,11 @@ namespace Asyl.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
+        public IActionResult FuckOff()
+        {            
+            return View();
+        }
+
 
 
 
