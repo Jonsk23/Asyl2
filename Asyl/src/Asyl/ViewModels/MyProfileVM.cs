@@ -21,13 +21,27 @@ namespace Asyl.ViewModels
         public string ComparePassword { get; set; }
 
         public string Name { get; set; }
+        [Display(Name = "E-mail")]
+        [Required(ErrorMessage = "E-mail is required")]
+        [EmailAddress(ErrorMessage = "E-mail format is invalid")]
         public string Email { get; set; }
+        [Display(Name = "Phone number / #")]
         public string PhoneNumber { get; set; }
+        [Display(Name = "School experience")]
+        [Range(0, 12)]
         public int YearsInPrimarySchool { get; set; }
+        [Display(Name = "Years of higher education")]
+        [Range(0, 15)]
         public int YearsInSecondarySchool { get; set; }
+        [Required]
+        [StringLength(420)]
+        [Display(Name = "Work Experiance and/or other merits")]
         public string WorkExperience { get; set; }
+        [Display(Name = "Swedish")]
         public bool SpeaksSwedish { get; set; }
+        [Display(Name = "English")]
         public bool SpeaksEnglish { get; set; }
+        [Display(Name = "Drivers License")]
         public bool DrivingLicense { get; set; }
         #endregion
 

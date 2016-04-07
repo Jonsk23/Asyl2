@@ -51,7 +51,7 @@ namespace Asyl.Models
                 .Single();
 
             var locationID = context.Location
-                .SingleOrDefault(o => o.City == viewModel.LocationId)
+                .SingleOrDefault(o => o.City == viewModel.Location)
                 .Id;           
 
             context.Add(new JobAd

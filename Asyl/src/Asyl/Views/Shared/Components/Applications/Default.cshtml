@@ -27,9 +27,10 @@
 
         </script>
     </head>
-        <div class="container">
+        <div class="container table-responsive">
             <h2>Your active applications</h2>
-            <table class="table table-hover">
+            <table class="table table-hover table-active table-bordered">
+
                 <thead>
                     <tr>
                         <th>Job title</th>
@@ -51,7 +52,6 @@
                             <td hidden id="@string.Format("DurationInWeeks{0}",item.JobAdId)">@item.DurationInWeeks weeks</td>
                             <td><button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-primary btn-md">View this application</button></td>
                         </tr>
-
                     }
                 </tbody>
             </table>
