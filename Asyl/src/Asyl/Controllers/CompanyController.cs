@@ -75,10 +75,10 @@ namespace Asyl.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
-        public IActionResult Applications(int jobid)
+        public IActionResult Applications(int Id)
         {
             dataManager = new DataManager(context);
-            var model = dataManager.ListAllApplication(jobid);
+            var model = dataManager.ListAllApplication(Id);
             return View(model);
         }
     }
