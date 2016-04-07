@@ -221,8 +221,33 @@ namespace Asyl.Models
                    .Single();
         }
 
+        public void UpdateProfile(string talentUsername, MyProfileVM viewModel)
+        {
 
+            var talent = context.Talents
+                .Where(o => o.Username == talentUsername)
+                .FirstOrDefault<Talent>();
+
+            if (talent != null)
+            {
+                talent.Name = viewModel.Name;
+                talent.PhoneNumber = viewModel.PhoneNumber;
+                talent.WorkExperience = viewModel.WorkExperience;
+                talent.Email = viewModel.Email;
+                talent.DrivingLicense = viewModel.DrivingLicense;
+                talent.SpeaksEnglish = viewModel.SpeaksEnglish;
+                talent.SpeaksSwedish = viewModel.SpeaksSwedish;
+                talent.YearsInPrimarySchool = viewModel.YearsInPrimarySchool;
+                talent.YearsInSecondarySchool = viewModel.YearsInSecondarySchool;
+
+            }           
+                context.Talents.Update(talent);            
+                context.SaveChanges();    
+
+
+
+
+        }
 
     }
-
 }
