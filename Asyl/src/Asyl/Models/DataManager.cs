@@ -74,7 +74,7 @@ namespace Asyl.Models
                       CompanyName = o.Company.CompanyName,
                       CompanyWebPage = o.Company.CompanyWebPage,
                       DurationInWeeks = o.DurationInWeeks,
-                      LocationId = o.LocationId,
+                      Location = o.Location.City,
                       Title = o.Title,
                       JobAdId = o.Id,
                       Logo = o.Company.Logo
@@ -150,7 +150,7 @@ namespace Asyl.Models
                      FieldOfWork = o.FieldOfWork,
                      Title = o.Title,
                      DurationInWeeks = o.DurationInWeeks,
-                     LocationId = o.LocationId
+                     Location = o.Location.City
                  })
                  .ToArray();
 
@@ -193,7 +193,7 @@ namespace Asyl.Models
                     Title = o.JobAd.Title,
                     CompanyName = o.JobAd.Company.CompanyName,
                     DurationInWeeks = o.JobAd.DurationInWeeks,
-                    LocationId = o.JobAd.DurationInWeeks,
+                    Location = o.JobAd.Location.City,
                     Description = o.JobAd.Description,
                     FieldOfWork = o.JobAd.FieldOfWork
                 })

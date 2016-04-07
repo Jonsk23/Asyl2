@@ -13,7 +13,7 @@ namespace Asyl.ViewModels
         public string FieldOfWork { get; set; }
         public int CompanyId { get; set; }
         public string Title { get; set; }
-        public int LocationId { get; set; }
+        public string Location { get; set; }
         public int DurationInWeeks { get; set; }
 
         //public virtual Company Company { get; set; }

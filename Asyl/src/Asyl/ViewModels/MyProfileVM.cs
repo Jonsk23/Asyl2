@@ -35,7 +35,7 @@ namespace Asyl.ViewModels
         public int JobAdId { get; set; }
         public string CoverLetter { get; set; }
         public string Title { get; set; }
-        public int LocationId { get; set; }
+        public string Location { get; set; }
         public int DurationInWeeks { get; set; }
         public string CompanyName { get; set; }
         public string Description { get; set; }

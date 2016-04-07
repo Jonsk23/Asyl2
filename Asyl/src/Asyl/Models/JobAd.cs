@@ -13,6 +13,7 @@ namespace Asyl.Models
         public int CompanyId { get; set; }
         public string Title { get; set; }
         public int LocationId { get; set; }
+        public virtual Location Location { get; set; }
         public int DurationInWeeks { get; set; }
         public virtual Company Company { get; set; }
         //Navigation property

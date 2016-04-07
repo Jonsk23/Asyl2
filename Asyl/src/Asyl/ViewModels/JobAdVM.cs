@@ -15,6 +15,7 @@ namespace Asyl.ViewModels
         public string FieldOfWork { get; set; }
         [Required]
         public string Title { get; set; }
+
         [Required]
         [Range(1,40)]
         public int LocationId { get; set; }
