@@ -74,21 +74,24 @@
                             <div class="col-lg-12" align="center">
                                 <hr />
 
-                                <h1 class="text-center">
+                                @*</h1>
                                     <hr class="star-light">
-                                  Find your internship!
-                                    </h1>
+                                    <div class="text-center">*@
+
+
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     var user = await userManager.FindByNameAsync(User.Identity.Name);
 
                                     if (await userManager.IsInRoleAsync(user, "talent user"))
                                     {
-                                        <h1 style="padding-bottom: 20px">
-                                            <div><span class="name">Welcome @User.Identity.Name!</span></div>
-                                            <hr />
+                                        <hr class="nutcolor" />
+
+                                        <h1 style="padding-bottom: 20px" class="nutcolor">
+                                            <div><span class="name">welcome @User.Identity.Name!</span></div>
+                                            <hr class="nutcolor"/>
                                         </h1>
-                                        <hr class="star-light">
+                                        @*<hr class="star-light">*@
                                         <div class="text-center">
 
                                         </div>
@@ -100,11 +103,12 @@
                                             <div>
                                                 @*utan bilden*@
                                                 @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
-                                                <div class="intro-text">
+                                                <div class="intro-text nutcolor">
                                                     <span class="name">Welcome @User.Identity.Name!</span>
                                                     <span class="skills">Start someone else's new life</span>
                                                 </div>
-                                                <hr class="star-light">
+                                                <hr />
+                                                @*<hr class="star-light">*@
                                             </div>
                                         </div>
                                     }
@@ -120,6 +124,7 @@
                                                 <span class="name">Welcome Talent!</span>
                                                 <span class="skills">Start your new life</span>
                                             </div>
+                                            <hr />
                                             @*<hr class="star-light">*@
                                         </div>
                                     </div>
