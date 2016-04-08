@@ -8,6 +8,7 @@ namespace Asyl.Models
 {
     public class AzureDbContext : DbContext
     {
+
         public DbSet<Application> Applications { get; set; }
         public DbSet<Company> Company { get; set; }
         public DbSet<JobAd> JobAd { get; set; }
@@ -24,4 +25,5 @@ namespace Asyl.Models
             modelBuilder.Entity<Location>().ToTable("Location");
         }
     }
+
 }
