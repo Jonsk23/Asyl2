@@ -366,7 +366,6 @@
                                         <a id="companyWebpage" href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
-                            </ul>
                             @if (User.Identity.IsAuthenticated)
                             {
                                 var user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -375,6 +374,8 @@
                                 {
 
                                     <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
+                                    <br />
+                                    <br />
                                     <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
                                 }
                                 else
