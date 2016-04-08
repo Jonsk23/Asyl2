@@ -74,11 +74,10 @@
                             <div class="col-lg-12" align="center">
                                 <hr />
 
-                                @*</h1>
+                                <h1 class="text-center">
                                     <hr class="star-light">
-                                    <div class="text-center">*@
-
-
+                                  Find your internship!
+                                    </h1>
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     var user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -86,7 +85,7 @@
                                     if (await userManager.IsInRoleAsync(user, "talent user"))
                                     {
                                         <h1 style="padding-bottom: 20px">
-                                            <div><span class="name">welcome @User.Identity.Name!</span></div>
+                                            <div><span class="name">Welcome @User.Identity.Name!</span></div>
                                             <hr />
                                         </h1>
                                         <hr class="star-light">
