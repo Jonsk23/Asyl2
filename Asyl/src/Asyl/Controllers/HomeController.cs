@@ -17,10 +17,12 @@ namespace Asyl.Controllers
         public HomeController(AzureDbContext context)
         {
             this.context = context;
+            
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
+            //var result = await context.Database.EnsureCreatedAsync(); - skapar databas
             var dataManager = new DataManager(context);
             var model = dataManager.ListAllJobAds(); //Här skickas sorteringsvariabel in
             return View(model);
