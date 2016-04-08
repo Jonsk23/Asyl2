@@ -523,14 +523,47 @@ input[type="checkbox"] {
 
 .nutbron {
     background-image: url('../img/bronbred.jpg');
+    .container;
+
+{
+    height: 300px;
+    width: 240px;
+    background-color: red;
+    float: left;
+    overflow: hidden;
+    margin: 20px;
 }
 
 .nutskog {
     background-image: url('../img/skog.jpg');
+    .container;
+
+{
+    height: 300px;
+    width: 240px;
+    background-color: red;
+    float: left;
+    overflow: hidden;
+    margin: 20px;
 }
 
 .nutskogvatten {
+    /*margin: 0;
+ background-image: url(http://blogg.academicwork.se/wp-content/uploads/2015/03/johan_skarborg.jpg);
+ background-size: 1920px 1440px;
+ background-repeat:no-repeat;
+ display:flex;
+ font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     background-image: url('../img/skogvatten.jpg');
+    .container;
+
+{
+    height: 300px;
+    width: 240px;
+    background-color: red;
+    float: left;
+    overflow: hidden;
+    margin: 20px;
 }
 
 .nutsthlm {
@@ -539,18 +572,38 @@ input[type="checkbox"] {
 
 .nutsthlmbred {
     background-image: url('../img/sthlmbred.jpg');
+    .container;
+
+{
+    height: 300px;
+    width: 240px;
+    background-color: red;
+    float: left;
+    overflow: hidden;
+    margin: 20px;
+}
+.flush{
+    color:#2c3e50;
 }
 
-
 .nutcolor {
+    color: #2c3e50;
+}
+.nutcolor3 {
     color: #2c3e50;
 }
 .nutcolor2 {
     color: #000000;
 }
 
-.nutborder {
-    color: #2c3e50;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-}
 
+.nutsthlm2{
+    .container {
+    width: 150px;
+    height: 100px;
+    background-image: url('../img/skog.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}?
+}
