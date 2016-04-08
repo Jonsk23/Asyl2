@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Asyl.Models;
+using Microsoft.Data.Entity.Storage;
 
 namespace Asyl
 {
@@ -20,9 +21,9 @@ namespace Asyl
         {
             services.AddMvc();
 
-            var connString = @"Data Source=project3server.database.windows.net;Initial Catalog=project3database;User ID=ProjectAwesomer;Password=Academy2016";
-            var identityConnString = @"Data Source=project3server.database.windows.net;Initial Catalog=project3database;User ID=ProjectAwesomer;Password=Academy2016";
-
+            var connString = @"Data Source=examenprojektserver.database.windows.net;Initial Catalog=TalentsDB;User ID=Awesomer;Password=Academy2016";
+            var identityConnString = @"Data Source=examenprojektserver.database.windows.net;Initial Catalog=IdentityDB;User ID=Awesomer;Password=Academy2016";
+            
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<IdentityDbContext>(o => o.UseSqlServer(identityConnString));
@@ -34,6 +35,8 @@ namespace Asyl
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<AzureDbContext>(o => o.UseSqlServer(connString));
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +44,8 @@ namespace Asyl
         {
             app.UseStaticFiles();
             app.UseDeveloperExceptionPage();
+            
+
 
             app.UseIdentity()
                 .UseCookieAuthentication(o =>
