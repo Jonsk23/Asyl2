@@ -582,18 +582,10 @@ input[type="checkbox"] {
     overflow: hidden;
     margin: 20px;
 }
-.flush{
-    color:#2c3e50;
-}
+
 
 .nutcolor {
-    color: #2c3e50;
-}
-.nutcolor3 {
-    color: #2c3e50;
-}
-.nutcolor2 {
-    color: #000000;
+    color: red;
 }
 
 
