@@ -4,6 +4,10 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+h1{
+    color:#2c3e50;
+}
+
 div.panel-heading{
 
     font-weight:bold;
