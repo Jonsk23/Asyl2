@@ -8,32 +8,20 @@
 }
 
 
-<div class="row">
-    <div class="col-xs-4 col-sm-2 col-md-2">
-    </div>
+@*<div class="row">
     <div class="col-xs-8 col-sm-4 col-md-4">
         <div class="form-group">
-
-        </div>
-    </div>
-    <div class="col-xs-8 col-sm-4 col-md-4">
-        <div class="form-group">
-
         </div>
     </div>
     <div class="col-xs-4 col-sm-2 col-md-2">
     </div>
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<div class="container">
+<div class="container">*@
     <div class="container">
-        <p>Your active job ads</p>
-
+        <hr />
+        <h2 style="text-align:center">Your active job ads</h2>
+        <hr />
+        <br />
         <div class="list-group">
             @foreach (var item in Model)
             {
@@ -42,8 +30,5 @@
         </div>
         <a asp-controller="Company" asp-action="CreateJobAd">Create a new job ad</a>
     </div>
-
-
-</div>
 
 
