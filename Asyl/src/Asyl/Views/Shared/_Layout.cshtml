@@ -97,25 +97,25 @@
 
                                         if (await userManager.IsInRoleAsync(user, "company user"))
                                         {
-                                    <li><a href="~/company/companyprofile">My company profile</a></li>
-                                    <li><a href="~/account/Logout">Log out</a></li>
+                                            <li><a href="~/company/companyprofile">My company profile</a></li>
+                                            <li><a href="~/account/Logout">Log out</a></li>
                                         }
                                         else
                                         {
-                                    <li><a href="~/account/myprofile">My Profile</a></li>
-                                    <li><a href="~/account/Logout">Log out</a></li>
-                                            }
+                                            <li><a href="~/account/myprofile">My Profile</a></li>
+                                            <li><a href="~/account/Logout">Log out</a></li>
                                         }
+                                    }
                                 </ul>
-                            }
-                            else
-                            {
-                                <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="~/account/registrationpage">Register</a></li>
-                                    <li><a href="~/account/loginpage">Login</a></li>
-                                </ul>
-                            }
+                                        }
+                                        else
+                                        {
+                                            <a href="~/home/index" type="button" data-toggle="dropdown">My account <span class="glyphicon glyphicon-user" style="font-size:30px; color:white"></span><span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="~/account/registrationpage">Register</a></li>
+                                                <li><a href="~/account/loginpage">Login</a></li>
+                                            </ul>
+                                        }
                         }
                     </li>
                 </ul>
@@ -196,24 +196,37 @@
                 <div class="modal-body">
                     <div class="panel-group">
                         <div class="panel panel-default">
-                            <div class="panel-heading">This is what we want you to do</div>
+                            <div class="panel-heading">How does the application process work?</div>
                             <div class="panel-body">
-
-                                We will find you, and we will kill you<br />
-                                We will not give any data to anyone else, and it will never be presented publicly.
+                                <ul>
+                                    <li>Register an account and enter your profile information.</li>
+                                    <li>Search the internship page to find the job of your dreams.</li>
+                                    <li>Click apply, and write a short motivation on why you should get the job.</li>
+                                    <li>The information in your profile will be sent to the employer along with the cover letter.</li>
+                                    <li>The employer will contact you if they want to meet up for an interview.</li>
+                                    <li>You will receive an email notification when the internship position has been filled. The ad will also be removed from your active applications.</li>
+                                    <li>The application process time lenght can differ from one internship to another. The approximate time an ad is active is 90 days.</li>
+                                </ul>
                             </div>
                         </div>
                         <div class="panel panel-default">
-                            <div class="panel-heading">These are your rights</div>
+                            <div class="panel-heading">What is an internship?</div>
                             <div class="panel-body">
-                                Rights? you have no rights, what did you think?
+                                The main difference between an apprenticeship and an internship is that internships are more exploratory. You're not bound to work for your employer after the internship is over (although many do receive job offers).
+                                Internships can be paid or unpaid — though, if they are unpaid, they’re usually subject to stringent labor guidelines. In Sweden federal law mandates that unpaid interns must not benefit the company economically or be used to displace the work done by paid employees.
+                                Most internships are work experience internships — essentially on-the-job training in a field that the worker wants to learn more about. But there are also research internships, more common in scientific fields, in which a higher-level student examines a particular topic on behalf of a business before producing a written study or presentation.
+                                Though employment isn’t guaranteed at the end of an internship, many employers use internships as a way to train and evaluate future employees. In fact, a 2009 NACE survey of U.S. employers with interns found that 67% of those interns were given job offers after their terms were complete.
                             </div>
                         </div>
                         <div class="panel panel-default">
-                            <div class="panel-heading">Can I earn money?</div>
+                            <div class="panel-heading">How to prepare for an interview?</div>
                             <div class="panel-body">
-                                hopefully<br />
-                                not.
+                                The interview is your first face-to-face contact with the organization you want to intern for, and first impressions are critical.
+                                If you've done your homework and practiced your interview skills, this can be your time to shine. By following the steps below, you can be confident that you're projecting yourself as a likable, professional candidate.
+                                <ul>
+                                    <li>Getting ready: Before you step into the hot seat, make sure you've come prepared.</li>
+                                    <li>How to speak and listen: Your interviewer will read a lot into your body language, tone and conversational style. Make sure they get the right impression.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
