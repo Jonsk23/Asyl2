@@ -84,16 +84,14 @@
                                     var user = await userManager.FindByNameAsync(User.Identity.Name);
 
                                     if (await userManager.IsInRoleAsync(user, "talent user"))
-                                    {
-                                        <hr class="nutcolor" />
-
-                                        <h1 style="padding-bottom: 20px" class="nutcolor">
-                                            <div><span class="name">welcome @User.Identity.Name!</span></div>
-                                            <hr class="nutcolor"/>
-                                        </h1>
-                                        @*<hr class="star-light">*@
-                                        <div class="text-center">
-
+                                    {                                       
+                                        <div class="col-lg-12">
+                                            <div>
+                                                <div class="intro-text" style="color:#2c3e50">
+                                                    <span class="name">welcome @User.Identity.Name!</span>
+                                                </div>
+                                                <hr />
+                                            </div>
                                         </div>
 
                                     }
@@ -103,7 +101,7 @@
                                             <div>
                                                 @*utan bilden*@
                                                 @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
-                                                <div class="intro-text nutcolor">
+                                                <div class="intro-text" style="color:#2c3e50">
                                                     <span class="name">Welcome @User.Identity.Name!</span>
                                                     <span class="skills">Start someone else's new life</span>
                                                 </div>
@@ -141,6 +139,7 @@
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
+            <h2 style="text-align:center">Find Your internship!</h2>
             <div class="row">
 
                 @*test utan headline över internships*@
@@ -380,7 +379,7 @@
                                 }
                                 else
                                 {
-                                    <a href="~/company/createjobad">Why you look for jobs? U are company, add some job ads instead... Click here!</a><br /><br />
+                                    <a href="~/company/createjobad">Why you look for jobs? U are company, ad some job ads instead... Click here!</a><br /><br />
                                 }
                             }
                             else
@@ -453,11 +452,6 @@
                                 <a href="~/account/loginpage">You must login to be able to apply for this job, click here to log in</a><br /><br />
                             }
                             <button type="button" class="btn btn-danger btn-group nutmegbtn" data-dismiss="modal"> Close</button>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -487,7 +481,8 @@
                             <div class="panel-group">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Duration:</div>
-                                    <div class="panel-body" id="durationInWeeks"> weeks
+                                    <div class="panel-body" id="durationInWeeks">
+                                        weeks
                                     </div>
                                 </div>
                                 <div class="panel panel-default">
@@ -511,9 +506,6 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                         </div>
-
-
-
                         <ul class="list-inline item-details">
                             <li>
                                 <strong>
@@ -537,7 +529,7 @@
                             {
 
                                 <textarea id="applyText" class="form-control" placeholder="Tell us why we should hire you!" rows="4" data-val-maxlength-max="420"></textarea>
-                                        <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
+                                <button type="button" class="btn btn-primary btn-group nutmegbtn" id="apply" onclick="applyForJob()">Apply</button>
                             }
                             else
                             {
@@ -551,14 +543,10 @@
                         <button type="button" class="btn btn-danger btn-group nutmegbtn" data-dismiss="modal"> Close</button>
                     </div>
                 </div>
-
             </div>
             <div class="modal-footer">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
 </body>
 </html>
