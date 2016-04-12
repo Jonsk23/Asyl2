@@ -10,6 +10,7 @@ namespace Asyl.ViewModels
     {
         #region Company information
         public int Id { get; set; }
+        [Display(Name = "Company Username")]
         public string CompanyUsername { get; set; }
 
 

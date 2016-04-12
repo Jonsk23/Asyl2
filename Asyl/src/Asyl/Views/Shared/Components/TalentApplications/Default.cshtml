@@ -54,6 +54,7 @@
                             <td hidden id="@string.Format("FieldOfWork{0}",item.JobAdId)">@item.FieldOfWork</td>
                             <td hidden id="@string.Format("DurationInWeeks{0}",item.JobAdId)">@item.DurationInWeeks weeks</td>
                             <td><button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-primary btn-md">View this application</button></td>
+                            <td><a asp-controller="account" asp-action="DeleteUserApplication" asp-route-id="@item.JobAdId" class="btn btn-danger">Delete add</a></td>
                         </tr>
                     }
                 </tbody>
