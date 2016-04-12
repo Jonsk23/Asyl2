@@ -171,7 +171,12 @@ namespace Asyl.Controllers
             return View();
         }
 
-
+        public IActionResult DeleteUserApplication(int id)
+        {
+            dataManager = new DataManager(context);
+            dataManager.DeleteUserApplication(User.Identity.Name, id);
+            return RedirectToAction(nameof(AccountController.MyProfile), "Account");
+        }
 
 
     }

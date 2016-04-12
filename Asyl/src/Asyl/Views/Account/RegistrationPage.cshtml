@@ -8,20 +8,6 @@
 
 
 
-@*<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-
-                <div class="row" style="padding-bottom: 200px">
-                    <div class="box">
-                        <div class="col-lg-12" align="center">
-                            <hr />
-                            <h1 style="padding-bottom: 20px">
-                                Create an account
-                            </h1>
-                            <hr class="star-light"></hr>*@
-
 <header class="nutpic">
     <div class="container">
         <div class="row">
@@ -32,22 +18,19 @@
                 <div class="row" style="padding-bottom: 200px">
                     <div class="box">
                         <div class="col-lg-12 text-center" align="center">
-                            <hr/>
+                            <hr />
                             <h1 style="color:#2c3e50">
                                 Create your account
                             </h1>
-                                <hr />
-
-                            <form asp-controller="Account" asp-action="RegistrationPage" style="font-size:x-large">
-
+                            <hr />
+                            <br />
+                            <form asp-controller="Account" asp-action="RegistrationPage" style="font-size:large">
                                 <div class="row">
-
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                     <div class="col-xs-8 col-sm-4 col-md-4">
                                         <div class="form-group">
                                             <label asp-for="Username"></label>
-
                                             <input asp-for="Username" class="form-control" placeholder="ex: Zlatan10" tabindex="1">
                                             <span asp-validation-for="Username"></span>
                                         </div>
@@ -55,7 +38,6 @@
                                     <div class="col-xs-8 col-sm-4 col-md-4">
                                         <div class="form-group">
                                             <label asp-for="Name"></label>
-
                                             <input asp-for="Name" class="form-control" placeholder="Firstname and/or Lastname" tabindex="2">
                                             <span asp-validation-for="Name" class="text-danger"></span>
                                             <br />
@@ -64,7 +46,6 @@
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
@@ -78,7 +59,6 @@
                                     <div class="col-xs-8 col-sm-4 col-md-4">
                                         <div class="form-group">
                                             <label asp-for="PhoneNumber"></label>
-
                                             <input asp-for="PhoneNumber" placeholder="Not required" class="form-control" tabindex="4">
                                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                         </div>
@@ -108,7 +88,6 @@
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
-
                                 <br />
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
@@ -116,7 +95,7 @@
                                     <div class="col-xs-16 col-sm-8 col-md-8">
                                         <div class="form-group">
                                             <label asp-for="WorkExperience"></label>
-                                            <textarea asp-for="WorkExperience" placeholder="Tell us about your experience" class="form-control input-lg" rows="5" tabindex="7" data-val-maxlength-max="420"></textarea>
+                                            <textarea asp-for="WorkExperience" placeholder="Tell us about your experience" class="form-control input-md" rows="5" tabindex="7" data-val-maxlength-max="420"></textarea>
                                             <span asp-validation-for="WorkExperience" class="text-danger"></span>
                                             <br />
                                         </div>
@@ -124,7 +103,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="font-size:larger ">
+                                <div class="row" style="font-size:large ">
                                     <div class="col-xs-3 col-sm-2 col-md-2">
                                     </div>
                                     <div class="col-xs-6 col-sm-2 col-md-2">
@@ -149,7 +128,6 @@
                                     <div class="col-xs-8 col-sm-4 col-md-4">
                                         <div class="form-group">
                                             <label asp-for="Password"></label>
-
                                             <input asp-for="Password" type="password" placeholder="Password" class="form-control" tabindex="8">
                                             <span asp-validation-for="Password" class="text-danger"></span>
                                         </div>
@@ -165,8 +143,7 @@
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
-
-                                <div class="row" style="font-size:larger">
+                                <div class="row" style="font-size:large">
                                     <div class="col-xs-3 col-sm-2 col-md-2">
                                     </div>
                                     <div class="col-xs-6 col-sm-2 col-md-2">
@@ -176,11 +153,9 @@
                                     <div class="col-xs-6 col-sm-3 col-md-3">
                                     </div>
                                     <div class="col-xs-6 col-sm-3 col-md-3">
-
                                         <input asp-for="AcceptTerms" data-val="false" />
-
                                         <a href="#" data-toggle="modal" data-target="#modal" style="color:#ffffff">
-                                            Terms and Conditions
+                                            I accept Terms & Conditions
                                         </a>
                                         <span asp-validation-for="AcceptTerms" class="text-danger"></span>
                                     </div>
@@ -188,24 +163,19 @@
                                     </div>
                                 </div>
                                 <br />
+                                <br />
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
-
                                     <div class="col-xs-16 col-sm-8 col-md-8 text-center">
                                         <a href="~/account/loginpage" style="padding-right:25px"><input type="submit" value="Register" class="btn btn-primary btn-group nutmegbtn paddbtn" tabindex="10" style="padding:10px"></a>
-
                                         <a href="~/account/loginpage" class="btn btn-primary btn-group nutmegbtn paddbtn">Already registered? - Login</a>
                                     </div>
                                     <div class="col-xs-4 col-sm-2 col-md-2">
                                     </div>
                                 </div>
-
                                 <br />
-
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -218,98 +188,17 @@
                             <h4 class="modal-title" id="myModalLabel" style="color:black">Terms & Conditions</h4>
                         </div>
                         <div class="modal-body" style="color:#000000">
-                            <p>When you accept these terms we will have the right to handle your data and present it to the interested corporations.</p>
+                            <p>When you accept these terms you agree to let Welcome Talent handle your data and present it to employers.</p>
                             <p>We will not give any data to anyone else, and it will never be presented publicly.</p>
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>
         </div>
 </header>
-
-@*<div class="form">
-
-        <ul class="tab-group">
-            <li class="tab active"><a href="#signup">Sign Up</a></li>
-            <li class="tab"><a href="#login">Log In</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div id="signup">
-                <h1>Sign Up for Free</h1>
-
-                <form action="/" method="post">
-
-                    <div class="top-row">
-                        <div class="field-wrap">
-                            <label>
-                                First Name<span class="req">*</span>
-                            </label>
-                            <input type="text" required autocomplete="off" />
-                        </div>
-
-                        <div class="field-wrap">
-                            <label>
-                                Last Name<span class="req">*</span>
-                            </label>
-                            <input type="text" required autocomplete="off" />
-                        </div>
-                    </div>
-
-                    <div class="field-wrap">
-                        <label>
-                            Email Address<span class="req">*</span>
-                        </label>
-                        <input type="email" required autocomplete="off" />
-                    </div>
-
-                    <div class="field-wrap">
-                        <label>
-                            Set A Password<span class="req">*</span>
-                        </label>
-                        <input type="password" required autocomplete="off" />
-                    </div>
-
-                    <button type="submit" class="button button-block" />Get Started</button>
-
-                </form>
-
-            </div>
-
-            <div id="login">
-                <h1>Welcome Back!</h1>
-
-                <form action="/" method="post">
-
-                    <div class="field-wrap">
-                        <label>
-                            Email Address<span class="req">*</span>
-                        </label>
-                        <input type="email" required autocomplete="off" />
-                    </div>
-
-                    <div class="field-wrap">
-                        <label>
-                            Password<span class="req">*</span>
-                        </label>
-                        <input type="password" required autocomplete="off" />
-                    </div>
-
-                    <p class="forgot"><a href="#">Forgot Password?</a></p>
-
-                    <button class="button button-block" />Log In</button>
-
-                </form>
-
-            </div>
-
-        </div><!-- tab-content -->
-
-    </div> <!-- /form -->*@
 
 @section script{
     <script src="~/scripts/jquery.validate.js"></script>
