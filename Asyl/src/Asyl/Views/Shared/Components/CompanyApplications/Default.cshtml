@@ -9,26 +9,42 @@
 
 
 @*<div class="row">
-    <div class="col-xs-8 col-sm-4 col-md-4">
-        <div class="form-group">
+        <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-2 col-md-2">
         </div>
     </div>
-    <div class="col-xs-4 col-sm-2 col-md-2">
-    </div>
-</div>
-<div class="container">*@
-    <div class="container">
-        <hr />
-        <h2 style="text-align:center">Your active job ads</h2>
-        <hr />
-        <br />
-        <div class="list-group">
+    <div class="container">*@
+
+<div class="container nutpic">
+
+    <h2 style="text-align:center">Your current job ads</h2>
+    <br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Job Id</th>
+                <th>Job Title</th>
+                <th>No of Applications</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach (var item in Model)
             {
-                <a asp-controller="Company" asp-action="Applications" asp-route-id="@item.Id" class="list-group-item"><b>Job ID:</b> @item.Id <b>Job Title:</b> @item.Title <b>Number of applications:</b> @item.ApplicationCount</a>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.ApplicationCount</td>
+                    <td><a asp-controller="company" asp-action="applications" asp-route-id="@item.Id" class="btn btn-default">View Applications</a></td>
+                    <td><a asp-controller="company" asp-action="DeleteJobAd" asp-route-id="@item.Id" class="btn btn-danger">Delete Job Ad</a></td>
+                </tr>
             }
-        </div>
-        <a class="btn btn-primary btn-group nutmegbtn paddbtn" asp-controller="Company" asp-action="CreateJobAd">Create new job ad</a>
+            </tbody>
+        </table>
+    <a class="btn btn-primary btn-group nutmegbtn paddbtn" asp-controller="Company" asp-action="CreateJobAd">Create new job ad</a>
     </div>
+
 
 

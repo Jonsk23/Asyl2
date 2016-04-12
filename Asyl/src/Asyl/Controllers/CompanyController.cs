@@ -81,5 +81,13 @@ namespace Asyl.Controllers
             var model = dataManager.ListAllApplication(Id);
             return View(model);
         }
+
+       
+        public IActionResult DeleteJobAd(int Id)
+        {
+            dataManager = new DataManager(context);
+            dataManager.DeleteJobAd(Id);
+            return RedirectToAction(nameof(CompanyController.CompanyProfile), "Company");
+        }
     }
 }
