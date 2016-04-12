@@ -4,6 +4,10 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+h1{
+    color:#2c3e50;
+}
+
 div.panel-heading{
 
     font-weight:bold;
@@ -572,28 +576,14 @@ input[type="checkbox"] {
 
 .nutsthlmbred {
     background-image: url('../img/sthlmbred.jpg');
-    .container;
-
-{
-    height: 300px;
-    width: 240px;
-    background-color: red;
     float: left;
     overflow: hidden;
     margin: 20px;
 }
-.flush{
-    color:#2c3e50;
-}
+
 
 .nutcolor {
-    color: #2c3e50;
-}
-.nutcolor3 {
-    color: #2c3e50;
-}
-.nutcolor2 {
-    color: #000000;
+    color: red;
 }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Asyl.ViewModels
 {
@@ -9,11 +10,23 @@ namespace Asyl.ViewModels
     {
         #region Company information
         public int Id { get; set; }
-        public string CompanyName { get; set; }
         public string CompanyUsername { get; set; }
+
+
+
+        [Display(Name = "Company Name")]
+        public string CompanyName { get; set; }
+        [Display(Name = "Corporate Identity Number")]
+
         public string CorporateIdentityNumber { get; set; }
+        [Display(Name = "Contact Person")]
+
         public string ContactPerson { get; set; }
+        [Display(Name = "Website")]
+
         public string CompanyWebPage { get; set; }
+        [Display(Name = "Email")]
+
         public string Email { get; set; }
         public string Logo { get; set; }
         #endregion
