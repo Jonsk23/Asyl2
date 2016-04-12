@@ -81,7 +81,8 @@ namespace Asyl.Controllers
                 return View(viewModel);
             }
 
-            var rolename = "talent user"; //eventuellt skapa en klass för detta. 
+            var rolename = "talent user";  //eventuellt skapa en klass för detta. 
+
             var role = await roleManager.CreateAsync(new IdentityRole(rolename));
 
 
@@ -102,7 +103,7 @@ namespace Asyl.Controllers
             dataManager = new DataManager(context);
             dataManager.CreateUser(viewModel);
             return RedirectToAction(nameof(HomeController.Index), "Home");
-          
+
         }
 
         public IActionResult CreateCompany()
@@ -141,12 +142,11 @@ namespace Asyl.Controllers
             return RedirectToAction(nameof(CompanyController.CompanyProfile), "Company");
         }
 
-        [Authorize(Roles = "talent user")]  /*<-- denna ska vara på.ska bara vara synlig för privata användare.*/
+        [Authorize(Roles = "talent user")]  
         public IActionResult MyApplications()
         {
             dataManager = new DataManager(context);
-            var model = dataManager.ViewMyApplications(User.Identity.Name); /*< --den riktiga*/
-            //var model = dataManager.ViewMyApplications("Barack");
+            var model = dataManager.ViewMyApplications(User.Identity.Name); 
             return View(model);
         }
 

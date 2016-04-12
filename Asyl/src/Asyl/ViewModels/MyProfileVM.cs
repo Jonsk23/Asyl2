@@ -29,9 +29,11 @@ namespace Asyl.ViewModels
         public string PhoneNumber { get; set; }
         [Display(Name = "School experience")]
         [Range(0, 12)]
+        [Required]
         public int YearsInPrimarySchool { get; set; }
         [Display(Name = "Years of higher education")]
         [Range(0, 15)]
+        [Required]
         public int YearsInSecondarySchool { get; set; }
         [Required]
         [StringLength(420)]
