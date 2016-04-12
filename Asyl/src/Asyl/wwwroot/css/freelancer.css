@@ -600,3 +600,6 @@ input[type="checkbox"] {
 .jon {
     color:black;
 }
+.table-hovernutmeg > tbody > tr:hover {
+  background-color: #2c3e50;
+}
