@@ -93,7 +93,7 @@
                                     <div class="col-xs-8 col-sm-4 col-md-4">
                                         <div class="form-group">
                                             <label asp-for="YearsInPrimarySchool"></label>
-                                            <input asp-for="YearsInPrimarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="5">
+                                            <input asp-for="YearsInPrimarySchool" placeholder="In years: 0-12" class="form-control" tabindex="5">
                                             <span asp-validation-for="YearsInPrimarySchool" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                         <div class="form-group">
                                             <label asp-for="YearsInSecondarySchool"></label>
 
-                                            <input asp-for="YearsInSecondarySchool" placeholder="Not required / In years: YY" class="form-control" tabindex="6">
+                                            <input asp-for="YearsInSecondarySchool" placeholder="In years: 0-YY" class="form-control" tabindex="6">
                                             <span asp-validation-for="YearsInSecondarySchool" class="text-danger"></span>
                                         </div>
                                     </div>
