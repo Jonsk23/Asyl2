@@ -284,6 +284,20 @@ namespace Asyl.Models
             context.SaveChanges();
 
         }
+
+        public void DeleteJobAd(int jobAdId)
+        {
+            var itemToRemove = context.JobAd
+                .Where(x => x.Id == jobAdId)
+                .SingleOrDefault(); //hämtar en jobannons som matchar id:t
+
+            if (itemToRemove != null)
+            {
+                context.JobAd.Remove(itemToRemove);
+                context.SaveChanges();
+            }
+        }
+
         public string[] GetAllCities()
         {
             return context.Location
