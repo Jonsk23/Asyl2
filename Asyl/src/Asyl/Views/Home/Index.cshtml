@@ -73,12 +73,6 @@
                         <div class="box">
                             <div class="col-lg-12" align="center">
                                 <hr />
-
-                                @*</h1>
-                                    <hr class="star-light">
-                                    <div class="text-center">*@
-
-
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     var user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -93,7 +87,6 @@
                                                 <hr />
                                             </div>
                                         </div>
-
                                     }
                                     else
                                     {
@@ -103,10 +96,9 @@
                                                 @*<img class="img-responsive" src="~/img/profile.png" alt="">*@
                                                 <div class="intro-text" style="color:#2c3e50">
                                                     <span class="name">Welcome @User.Identity.Name!</span>
+                                                    <hr />
                                                     <span class="skills">Start someone else's new life</span>
                                                 </div>
-                                                <hr />
-                                                @*<hr class="star-light">*@
                                             </div>
                                         </div>
                                     }
@@ -173,7 +165,6 @@
                                     <h6 class="post-subtitle" id="@string.Format("DurationInWeeks{0}",item.JobAdId)">Duration: @item.DurationInWeeks weeks</h6>
                                     <h6 hidden class="post-subtitle" id="@string.Format("CompanyName{0}",item.JobAdId)">@item.CompanyName</h6>
                                     <h6 hidden class="post-subtitle" id="@string.Format("LocationId{0}",item.JobAdId)">@item.Location</h6>
-
                                 </a>
                                 <br />
                                 <button type="button" onclick="viewApplicationInfo(@item.JobAdId)" class="btn btn-default">View Job</button>
@@ -181,7 +172,6 @@
                             </div>
                             <hr>
                         }
-
                         <!-- Pager -->
                         <ul class="pager">
                             <li class="next">
