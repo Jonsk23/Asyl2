@@ -254,13 +254,13 @@ namespace Asyl.Models
                  {
                      Id = o.Id,
                      ApplicationCount = o.Applications.Count,
-                 //CompanyId = o.CompanyId,
-                 //Description = o.Description,
-                 //FieldOfWork = o.FieldOfWork,
-                 Title = o.Title
-                 //DurationInWeeks = o.DurationInWeeks,
-                 //LocationId = o.LocationId
-             })
+                     //CompanyId = o.CompanyId,
+                     //Description = o.Description,
+                     //FieldOfWork = o.FieldOfWork,
+                     Title = o.Title
+                     //DurationInWeeks = o.DurationInWeeks,
+                     //LocationId = o.LocationId
+                 })
                  .ToArray();
         }
         public void UpdateCompanyProfile(string companyUsername, MyCompanyProfileVM viewModel)
@@ -289,6 +289,22 @@ namespace Asyl.Models
             return context.Location
                 .Select(o => o.City)
                 .ToArray();
+        }
+
+        public void DeleteUserApplication(string talentUsername, int jobAdId)
+        {
+            var talentId = context.Talents  //Hämtar talangID baserat på inloggads anv.namn
+                .Where(o => o.Username == talentUsername)
+                .Select(o => o.Id)
+                .Single();
+
+            var applicationId = context.Applications //Hämtar application
+                .Where(a => a.JobAdId == jobAdId && a.TalentId == talentId)
+                .SingleOrDefault();
+
+            context.Applications.Remove(applicationId);
+
+            context.SaveChanges();
         }
     }
 }
