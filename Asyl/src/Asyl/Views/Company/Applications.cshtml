@@ -29,7 +29,7 @@
             var DrivingLicense = $("#DrivingLicense" + id).text();
             var CoverLetter = $("#CoverLetter" + id).text();
 
-            
+
             ////Anpassar modal.
             $('#emailInfo').text(Email);
             $('#coverInfo').text(CoverLetter);
@@ -46,22 +46,15 @@
 
     </script>
 </head>
-<body>   
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-    <div class="nutpic" style="height:555px">
-        <br />
-<hr class="nutcolor"/>
-        <h1 style="text-align:center">Applicants summary</h1>
-        <hr />
-    </div>
-        <div class="container nutpic">
-           <br />
-            <table class="table table-hover">
+<body>
+    <header class="nutpic" style="height:555px">
+        <div class="container" style="font-size:large">
+            <br />
+            <hr />
+            <h1 class="flush">Applicants summary</h1>
+            <hr />
+            <br />
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -85,62 +78,61 @@
                             <td hidden id="@string.Format("CoverLetter{0}",item.TalentId)">@item.CoverLetter</td>
                             <td><button type="button" onclick="viewApplicationInfo(@item.TalentId)" class="btn btn-primary btn-md">View Application</button></td>
                         </tr>
-
                     }
                 </tbody>
             </table>
         </div>
+    </header>
 
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="nameInfo">"Name of job seeker"</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Cover Letter</div>
-                                <div class="panel-body" id="coverInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Work Expreience</div>
-                                <div class="panel-body" id="workInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Email</div>
-                                <div class="panel-body" id="emailInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Phone Number</div>
-                                <div class="panel-body" id="phoneInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Driving Licence</div>
-                                <div class="panel-body" id="drivingInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Years in primary school</div>
-                                <div class="panel-body" id="primaryInfo"></div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Years in secondary school</div>
-                                <div class="panel-body" id="secondaryInfo"></div>
-                            </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="nameInfo">"Name of job seeker"</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Cover Letter</div>
+                            <div class="panel-body" id="coverInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Work Expreience</div>
+                            <div class="panel-body" id="workInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Email</div>
+                            <div class="panel-body" id="emailInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Phone Number</div>
+                            <div class="panel-body" id="phoneInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Driving Licence</div>
+                            <div class="panel-body" id="drivingInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Years in primary school</div>
+                            <div class="panel-body" id="primaryInfo"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Years in secondary school</div>
+                            <div class="panel-body" id="secondaryInfo"></div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onclick="contact()">Contact</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="contact()">Contact</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
+    </div>
 
 </body>
 </html>
